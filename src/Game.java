@@ -1,6 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -18,16 +19,16 @@ public class Game extends Canvas implements Runnable {
     private Thread thread;
 
     private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
-    private BufferedImage spriteSheet = null;
+    private static BufferedImage spriteSheet = null;
 
-    private LinkedList<MapObject> listMapObjects = new LinkedList<MapObject>();
-    private GoalObject goalObject;
-    private Player p;
+    private static LinkedList<MapObject> listMapObjects = new LinkedList<MapObject>();
+    private static GoalObject goalObject;
+    private static Player p;
     private Menu m;
     private Name n;
     private Levelselect l;
-    private Highscore h;
-    private FileController map;
+    private static Highscore h;
+    private static FileController map;
 
     private static int track;
 
@@ -39,7 +40,7 @@ public class Game extends Canvas implements Runnable {
         SCORE
     };
 
-    private STATUS status = STATUS.MENU; //Spiel startet im status MENU
+    private static STATUS status = STATUS.MENU; //Spiel startet im status MENU
 
     public static void main(String args[]){
         Game instance = new Game(); //erstellt instanz unseres spiels
@@ -142,8 +143,9 @@ public class Game extends Canvas implements Runnable {
 
         requestFocus();
 
-        addKeyListener(new KeyInput(this)); //ruft unsere KeyInput klasse auf und übergibt
-                                            // ihr die instanz unseres spiels
+        addKeyListener(new KeyInput());     //ruft unsere KeyInput klasse auf und übergibt
+                                                        // ihr die instanz unseres spiels
+        addMouseListener(new MouseInput());             //ruft unsere MouseInput klasse auf
 
 
     }
@@ -198,7 +200,7 @@ public class Game extends Canvas implements Runnable {
     }
 
     // diese funktion wird durch die KeyInput klasse beim drücken einer taste aufgerufen
-    public void keyPressed(KeyEvent e){
+    public static void keyPressed(KeyEvent e){
         int key = e.getKeyCode();
 
         switch(key){
@@ -283,7 +285,7 @@ public class Game extends Canvas implements Runnable {
     }
 
     // diese funktion wird durch die KeyInput klasse beim drücken einer taste aufgerufen
-    public void keyReleased(KeyEvent e){
+    public static void keyReleased(KeyEvent e){
         int key = e.getKeyCode();
 
         switch(key){
@@ -302,27 +304,30 @@ public class Game extends Canvas implements Runnable {
             }
     }
 
-    private void initMap(int nr){
+    public static void mousePressed(MouseEvent e) {
+        System.out.println(e.getX() + " ");
+    }
+
+
+
+    private static void initMap(int nr){
         //liste enthält Spieler, Ziel und Mapobjects
         LinkedList<String[]> tempList;
         map = new FileController("res/map_" + nr + ".crsp");
         tempList= map.read();
         p = new Player( Double.parseDouble(tempList.get(0)[0]),
                         Double.parseDouble(tempList.get(0)[1]),
-                        Double.parseDouble(tempList.get(0)[2]),
-                        this);
+                        Double.parseDouble(tempList.get(0)[2]));
         goalObject = new GoalObject(Double.parseDouble(tempList.get(1)[0]),
                                     Double.parseDouble(tempList.get(1)[1]),
                                     Double.parseDouble(tempList.get(1)[2]),
-                                    Double.parseDouble(tempList.get(1)[3]),
-                                    this );
+                                    Double.parseDouble(tempList.get(1)[3]));
         listMapObjects.clear();
         for(int i = 2; i<tempList.size();i++){
             listMapObjects.add(new MapObject(   Double.parseDouble(tempList.get(i)[0]),
                                                 Double.parseDouble(tempList.get(i)[1]),
                                                 Double.parseDouble(tempList.get(i)[2]),
-                                                Double.parseDouble(tempList.get(i)[3]),
-                                                this));
+                                                Double.parseDouble(tempList.get(i)[3])));
         }
     }
 
@@ -331,7 +336,7 @@ public class Game extends Canvas implements Runnable {
     }
 
 
-    public BufferedImage getSpriteSheet(){
+    public static BufferedImage getSpriteSheet(){
         return spriteSheet;
     }
 

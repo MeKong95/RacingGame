@@ -18,12 +18,12 @@ public class Player {
     private BufferedImage sprite0, sprite1, sprite2,sprite3,sprite4,sprite5,sprite6,sprite7; // variable für sprites des spielers
     private Timer timer;
 
-    public Player(double x, double y, double winkel, Game game){
+    public Player(double x, double y, double winkel){
         //konstruktor legt startposition und sprite fest
         this.x = x;
         this.y = y;
         this.winkel = winkel;
-        SpriteSheet ss = new SpriteSheet(game.getSpriteSheet());
+        SpriteSheet ss = new SpriteSheet(Game.getSpriteSheet());
 
         sprite0 = ss.grabImage(1, 1, 32, 32);
         sprite1 = ss.grabImage(2, 1, 32, 32);

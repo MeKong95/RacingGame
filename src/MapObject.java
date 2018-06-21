@@ -11,14 +11,14 @@ public class MapObject {
     private BufferedImage mapobj;
 
     // konstruktor legt dimension, position und sprite fest
-    public MapObject(double x, double y, double width, double height, Game gameobj){
+    public MapObject(double x, double y, double width, double height){
 
         this.xpos = x;
         this.ypos = y;
         this.xlen = width;
         this.ylen = height;
 
-        SpriteSheet ss = new SpriteSheet(gameobj.getSpriteSheet());
+        SpriteSheet ss = new SpriteSheet(Game.getSpriteSheet());
 
         mapobj = ss.grabImage(1, 2, 32, 32);
     }

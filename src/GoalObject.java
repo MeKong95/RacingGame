@@ -11,14 +11,14 @@ public class GoalObject {
     private BufferedImage goalobj;
 
     // konstruktor legt dimension, position und sprite fest
-    public GoalObject(double x, double y, double width, double height, Game gameobj){
+    public GoalObject(double x, double y, double width, double height){
 
         this.xpos = x;
         this.ypos = y;
         this.xlen = width;
         this.ylen = height;
 
-        SpriteSheet ss = new SpriteSheet(gameobj.getSpriteSheet());
+        SpriteSheet ss = new SpriteSheet(Game.getSpriteSheet());
 
         goalobj = ss.grabImage(2, 2, 32, 32);
     }
