@@ -24,7 +24,7 @@ public class Game extends Canvas implements Runnable {
     private static LinkedList<MapObject> listMapObjects = new LinkedList<MapObject>();
     private static GoalObject goalObject;
     private static Player p;
-    private Menu m;
+    private static Menu m;
     private Name n;
     private Levelselect l;
     private static Highscore h;
@@ -305,7 +305,12 @@ public class Game extends Canvas implements Runnable {
     }
 
     public static void mousePressed(MouseEvent e) {
-        System.out.println(e.getX() + " ");
+        if(
+                e.getX() > m.playButton.x &&
+                e.getX() < m.playButton.x + m.playButton.width &&
+                e.getY() > m.playButton.y &&
+                e.getY() < m.playButton.y + m.playButton.height)
+            status = STATUS.NAME;
     }
 
 
@@ -315,19 +320,24 @@ public class Game extends Canvas implements Runnable {
         LinkedList<String[]> tempList;
         map = new FileController("res/map_" + nr + ".crsp");
         tempList= map.read();
-        p = new Player( Double.parseDouble(tempList.get(0)[0]),
-                        Double.parseDouble(tempList.get(0)[1]),
-                        Double.parseDouble(tempList.get(0)[2]));
-        goalObject = new GoalObject(Double.parseDouble(tempList.get(1)[0]),
-                                    Double.parseDouble(tempList.get(1)[1]),
-                                    Double.parseDouble(tempList.get(1)[2]),
-                                    Double.parseDouble(tempList.get(1)[3]));
+        p = new Player(
+                Double.parseDouble(tempList.get(0)[0]),
+                Double.parseDouble(tempList.get(0)[1]),
+                Double.parseDouble(tempList.get(0)[2]));
+
+        goalObject = new GoalObject(
+                Double.parseDouble(tempList.get(1)[0]),
+                Double.parseDouble(tempList.get(1)[1]),
+                Double.parseDouble(tempList.get(1)[2]),
+                Double.parseDouble(tempList.get(1)[3]));
+
         listMapObjects.clear();
         for(int i = 2; i<tempList.size();i++){
-            listMapObjects.add(new MapObject(   Double.parseDouble(tempList.get(i)[0]),
-                                                Double.parseDouble(tempList.get(i)[1]),
-                                                Double.parseDouble(tempList.get(i)[2]),
-                                                Double.parseDouble(tempList.get(i)[3])));
+            listMapObjects.add(new MapObject(
+                    Double.parseDouble(tempList.get(i)[0]),
+                    Double.parseDouble(tempList.get(i)[1]),
+                    Double.parseDouble(tempList.get(i)[2]),
+                    Double.parseDouble(tempList.get(i)[3])));
         }
     }
 

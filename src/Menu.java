@@ -5,6 +5,7 @@ public class Menu {
     public Rectangle playButton = new Rectangle(Game.WIDTH /2 -90, 400, 180,50);
     public Rectangle scoreButton = new Rectangle(Game.WIDTH /2 -90, 500, 280,50);
     public Rectangle quitButton = new Rectangle(Game.WIDTH /2 -90, 600, 180,50);
+
     public Menu(){
 
     }
