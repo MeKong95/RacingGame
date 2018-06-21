@@ -302,7 +302,7 @@ public class Game extends Canvas implements Runnable {
             }
     }
 
-    public void initMap(int nr){
+    private void initMap(int nr){
         //liste enthält Spieler, Ziel und Mapobjects
         LinkedList<String[]> tempList;
         map = new FileController("res/map_" + nr + ".crsp");
