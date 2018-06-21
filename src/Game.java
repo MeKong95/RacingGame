@@ -25,7 +25,7 @@ public class Game extends Canvas implements Runnable {
     private static GoalObject goalObject;
     private static Player p;
     private static Menu m;
-    private Name n;
+    private static Name n;
     private Levelselect l;
     private static Highscore h;
     private static FileController map;
@@ -311,6 +311,26 @@ public class Game extends Canvas implements Runnable {
                 e.getY() > m.playButton.y &&
                 e.getY() < m.playButton.y + m.playButton.height)
             status = STATUS.NAME;
+
+        else if(
+                e.getX() > m.scoreButton.x &&
+                e.getX() < m.scoreButton.x + m.scoreButton.width &&
+                e.getY() > m.scoreButton.y &&
+                e.getY() < m.scoreButton.y + m.scoreButton.height)
+            status = STATUS.SCORE; //dieser geht nicht
+        else if(
+                e.getX() > n.playButton.x &&
+                e.getX() < n.playButton.x + n.playButton.width &&
+                e.getY() > n.playButton.y &&
+                e.getY() < n.playButton.y + n.playButton.height)
+            status = STATUS.LEVEL; //dieser geht auch nicht
+
+        else if (
+                e.getX() > m.quitButton.x &&
+                e.getX() < m.quitButton.x + m.quitButton.width &&
+                e.getY() > m.quitButton.y &&
+                e.getY() < m.quitButton.y + m.quitButton.height)
+            System.exit(0);
     }
 
 
