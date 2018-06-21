@@ -11,8 +11,9 @@ public class FileController {
     }
 
     public void write(String s, String n){
+        //beschreiben der highscore datei
+        // s: Zeit, n: Name
         try{
-
             FileWriter fw = new FileWriter(f, true); // true for appending
             PrintWriter pw = new PrintWriter(fw, true); // true for auto-flush
             pw.println(s + ";" + n);
@@ -30,9 +31,7 @@ public class FileController {
         try{
             BufferedReader br = new BufferedReader(new FileReader(f));
             //1. Spieler: xPos; yPos; startwinkel
-            Data.add(br.readLine().split(";"));
             //2. GoalObject xPos; yPos; länge; breite
-            Data.add(br.readLine().split(";"));
             //3. MapObject xPos; yPos; länge; breite
             while((str=br.readLine())!=null) {
                 Data.add(str.split(";"));
@@ -45,6 +44,7 @@ public class FileController {
     }
 
      public LinkedList<String> readScr(){
+        //liest highscore dateien und gibt eine liste von Strings zurück
         String str;
         LinkedList<String> Data = new LinkedList<String>();
         try{
