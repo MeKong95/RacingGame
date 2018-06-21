@@ -1,0 +1,23 @@
+Stand nach Abschluss der ersten Entwicklungsstufe(alpha)
+Beruecksichtigt werden nur Features. Bugs und Fixes werden gesondert gelistet
+
+001 - Escape Drücken führt vom Spiel zurück ins Menü und Beendet das Spiel aus dem Menü heraus
+
+002 - F2 startet ein neues Spiel nach beenden 
+
+003 - Status zur Eingabe des Namen bevor Spiel beginnt - https://docs.oracle.com/javase/7/docs/api/java/awt/TextField.html
+
+004 - Maps werden nun aus Dateien (map_x.crsp) geladen, im format: Spieler, Ziel, Mapobjects
+
+005 - Strecken können vom spieler geladen werden
+
+006 - Highscore angelegt
+
+007 - 
+
+008 - 
+
+009 - 
+
+010 - 
+
