@@ -1,5 +1,5 @@
 import java.awt.*;
-
+//https://stackoverflow.com/questions/37977143/get-an-input-from-the-user-using-graphics
 public class Name {
 
     public Rectangle playButton = new Rectangle(Game.WIDTH /2 -130, 400, 330,50);
