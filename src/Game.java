@@ -5,7 +5,7 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.LinkedList;
-
+//Comment
 public class Game extends Canvas implements Runnable {
 
     private static final long serialVersionUID = 1L;
