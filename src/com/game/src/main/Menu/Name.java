@@ -14,7 +14,6 @@ public class Name extends MenuElement{
     private Rectangle playButton = new Rectangle(Game.WIDTH /2 -130, 400, 330,50);
     private Rectangle nameField = new Rectangle(Game.WIDTH /2 -130,200,250,30);
 
-
     private String name = "";
 
     public Name(){
