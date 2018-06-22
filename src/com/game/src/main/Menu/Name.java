@@ -23,11 +23,13 @@ public class Name extends MenuElement{
     }
 
     public void addChar(KeyEvent e){
-        if (e.getKeyCode()>65&&e.getKeyCode()<90){
+        if (e.getKeyCode()>=65&&e.getKeyCode()<=90){
             name+=e.getKeyChar();
-        }
+        }//nur zeichen a bis z
+        if (e.getKeyCode()==8){
 
-        System.out.println(e);
+        }//fuer backspace/loeschen
+
     }
 
     public String getName(){
