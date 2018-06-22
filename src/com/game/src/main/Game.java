@@ -327,13 +327,16 @@ public class Game extends Canvas implements Runnable {
                 temp = checkClick(m,e);
                 switch(temp){
                     case 0:
+                        //play button
                         status = STATUS.NAME;
                         break;
                     case 1:
+                        //score button
                         h = new Highscore();
                         status = STATUS.SCORE;
                         break;
                     case 2:
+                        //exit button
                         System.exit(1);
                         break;
                     default:
@@ -344,6 +347,7 @@ public class Game extends Canvas implements Runnable {
                 temp = checkClick(n,e);
                 switch(temp){
                     case 0:
+                        //enter button
                         status = STATUS.LEVEL;
                         break;
                     default:
@@ -354,21 +358,25 @@ public class Game extends Canvas implements Runnable {
                 temp = checkClick(l,e);
                 switch(temp){
                     case 0:
+                        //track 1 button
                         track = 1;
                         initMap(track);
                         status = STATUS.GAME;
                         break;
                     case 1:
+                        //track 2 button
                         track = 2;
                         initMap(track);
                         status = STATUS.GAME;
                         break;
                     case 2:
+                        //track 3 button
                         track = 3;
                         initMap(track);
                         status = STATUS.GAME;
                         break;
                     case 3:
+                        //track 4 button
                         track = 4;
                         initMap(track);
                         status = STATUS.GAME;
