@@ -218,85 +218,62 @@ public class Game extends Canvas implements Runnable {
     public static void keyPressed(KeyEvent e){
         int key = e.getKeyCode();
 
-        if(status == STATUS.NAME)
-            n.addChar(e);
+        switch(status){
+            case MENU:
+                switch(key) {
+                    case KeyEvent.VK_ESCAPE:
+                        System.exit(1);
+                        break;
+                }
+                break;
 
-        switch(key){
-            case KeyEvent.VK_W:
-                p.setAccY(-0.1);
-                break;
-            case KeyEvent.VK_A:
-                p.setAccX(-0.1);
-                break;
-            case KeyEvent.VK_S:
-                p.setAccY(0.1);
-                break;
-            case KeyEvent.VK_D:
-                p.setAccX(0.1);
-                break;
-            case KeyEvent.VK_F1:
-                if(status == STATUS.MENU) { //if wieder hinzugefügt da funktion des restart sonst im Game doppelt belegt
-                    status = STATUS.NAME;
+            case GAME:
+                switch(key) {
+                    case KeyEvent.VK_W:
+                        p.setAccY(-0.1);
+                        break;
+                    case KeyEvent.VK_A:
+                        p.setAccX(-0.1);
+                        break;
+                    case KeyEvent.VK_S:
+                        p.setAccY(0.1);
+                        break;
+                    case KeyEvent.VK_D:
+                        p.setAccX(0.1);
+                        break;
+                    case KeyEvent.VK_F2:
+                        initMap(track);
+                        break;
+                    case KeyEvent.VK_ESCAPE:
+                        status = STATUS.MENU;
+                        break;
                 }
                 break;
-            case KeyEvent.VK_F2:
-                if(status == STATUS.GAME){
-                    initMap(track);
-                }
-                else if(status==STATUS.MENU){
-                    // Highscore wird hier erstellt damit zeiten nachdem sie aufgestellt wurden direkt angezeigt werden können
-                    h = new Highscore();
-                    status=STATUS.SCORE;
+            case NAME:
+                switch(key){
+                    case KeyEvent.VK_ENTER:
+                        status = STATUS.LEVEL;
+                        break;
+                    case KeyEvent.VK_ESCAPE:
+                        status = STATUS.MENU;
+                        break;
+                    default:
+                        n.addChar(e);
+                        break;
+                    }
+                break;
+            case LEVEL:
+                switch(key) {
+                    case KeyEvent.VK_ESCAPE:
+                        status = STATUS.MENU;
+                        break;
                 }
                 break;
-            case KeyEvent.VK_ENTER:
-                if (status==STATUS.NAME) {
-                    status = STATUS.LEVEL;
-                }
-                break;
-            case KeyEvent.VK_1:
-                if (status==STATUS.LEVEL){
-                    track = 1;
-                    initMap(track);
-                    status = STATUS.GAME;
-                }
-                break;
-            case KeyEvent.VK_2:
-                if (status==STATUS.LEVEL){
-                    track = 2;
-                    initMap(track);
-                    status = STATUS.GAME;
-                }
-                break;
-            case KeyEvent.VK_3:
-                if (status==STATUS.LEVEL){
-                    track = 3;
-                    initMap(track);
-                    status = STATUS.GAME;
-                }
-                break;
-            case KeyEvent.VK_4:
-                if (status==STATUS.LEVEL){
-                    track = 4;
-                    initMap(track);
-                    status = STATUS.GAME;
-                }
-                break;
-            case KeyEvent.VK_ESCAPE:
-                if(status==STATUS.GAME) {
-                    status = STATUS.MENU;
-                }
-                else if(status==STATUS.LEVEL){
-                    status = STATUS.MENU;
-                }
-                else if(status==STATUS.NAME){
-                    status = STATUS.MENU;
-                }
-                else if(status==STATUS.SCORE){
-                    status = STATUS.MENU;
-                }
-                else if(status==STATUS.MENU){
-                    System.exit(0);
+            case SCORE:
+                switch(key) {
+                    case KeyEvent.VK_ESCAPE:
+                        status = STATUS.MENU;
+                        break;
                 }
                 break;
         }
@@ -392,32 +369,7 @@ public class Game extends Canvas implements Runnable {
                 break;
         }
 
-        /*if(
-                e.getX() > m.playButton.x &&
-                e.getX() < m.playButton.x + m.playButton.width &&
-                e.getY() > m.playButton.y &&
-                e.getY() < m.playButton.y + m.playButton.height)
-            status = STATUS.NAME;
 
-        else if(
-                e.getX() > m.scoreButton.x &&
-                e.getX() < m.scoreButton.x + m.scoreButton.width &&
-                e.getY() > m.scoreButton.y &&
-                e.getY() < m.scoreButton.y + m.scoreButton.height)
-            status = STATUS.SCORE; //dieser geht nicht
-        else if(
-                e.getX() > n.playButton.x &&
-                e.getX() < n.playButton.x + n.playButton.width &&
-                e.getY() > n.playButton.y &&
-                e.getY() < n.playButton.y + n.playButton.height)
-            status = STATUS.LEVEL; //dieser geht auch nicht
-
-        else if (
-                e.getX() > m.quitButton.x &&
-                e.getX() < m.quitButton.x + m.quitButton.width &&
-                e.getY() > m.quitButton.y &&
-                e.getY() < m.quitButton.y + m.quitButton.height)
-            System.exit(0);*/
     }
 
     public static int checkClick(MenuElement m, MouseEvent e){
