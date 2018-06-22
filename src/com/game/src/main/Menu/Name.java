@@ -19,9 +19,12 @@ public class Name extends MenuElement{
     }
 
     public static void addChar(KeyEvent e){
-        if (e.getKeyCode()>65&&e.getKeyCode()<90){
+        if (e.getKeyCode()>=65&&e.getKeyCode()<=90){
             n+=e.getKeyChar();
-        }
+        }//nur zeichen a bis z
+        if (e.getKeyCode()==8){
+
+        }//fuer backspace/loeschen
 
         System.out.println(e);
     }
