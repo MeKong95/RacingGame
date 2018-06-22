@@ -19,7 +19,11 @@ public class Name extends MenuElement{
     }
 
     public static void addChar(KeyEvent e){
-        n+=e.getKeyChar();
+        if (e.getKeyCode()>65&&e.getKeyCode()<90){
+            n+=e.getKeyChar();
+        }
+
+        System.out.println(e);
     }
 
 
@@ -40,7 +44,7 @@ public class Name extends MenuElement{
         g.setColor(Color.yellow);
         g.fillRect(r.x, r.y, r.width, r.height);
         g.setColor(Color.black);
-        g.drawString(n, r.x, r.y+r.height);
+        g.drawString(n.toUpperCase(), r.x, r.y+r.height);
 
     }
 }
