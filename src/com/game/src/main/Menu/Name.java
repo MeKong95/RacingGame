@@ -17,7 +17,6 @@ public class Name extends MenuElement{
 
     private String name = "";
 
-
     public Name(){
         buttons.add(playButton);
     }
@@ -27,12 +26,14 @@ public class Name extends MenuElement{
             name+=e.getKeyChar();
         }//nur zeichen a bis z
         if (e.getKeyCode()==8){
-
+            name = name.substring(0, name.length() - 1);
         }//fuer backspace/loeschen
 
     }
 
     public String getName(){
+        String s = name.substring(0,1).toUpperCase();
+        name = s + name.substring(1);//Sorgt dafuer das unabhängig der Eingabe der erste Bchstb groß ist
         return name;
     }
 
