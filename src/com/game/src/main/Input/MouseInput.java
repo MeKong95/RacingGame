@@ -1,3 +1,7 @@
+package com.game.src.main.Input;
+
+import com.game.src.main.Game;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 

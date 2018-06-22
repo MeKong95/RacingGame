@@ -1,3 +1,7 @@
+package com.game.src.main.Menu;
+
+import com.game.src.main.Game;
+
 import java.awt.*;
 //https://stackoverflow.com/questions/37977143/get-an-input-from-the-user-using-graphics
 public class Name {

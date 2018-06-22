@@ -1,3 +1,7 @@
+package com.game.src.main.Menu;
+
+import com.game.src.main.Game;
+
 import java.awt.*;
 
 public class Levelselect {

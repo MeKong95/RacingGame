@@ -1,3 +1,8 @@
+package com.game.src.main.Menu;
+
+import com.game.src.main.Input.FileController;
+import com.game.src.main.Game;
+
 import java.awt.*;
 import java.util.Collections;
 import java.util.Comparator;
