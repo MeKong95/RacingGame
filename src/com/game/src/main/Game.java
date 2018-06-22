@@ -218,6 +218,9 @@ public class Game extends Canvas implements Runnable {
     public static void keyPressed(KeyEvent e){
         int key = e.getKeyCode();
 
+        if(status == STATUS.NAME)
+            n.addChar(e);
+
         switch(key){
             case KeyEvent.VK_W:
                 p.setAccY(-0.1);
