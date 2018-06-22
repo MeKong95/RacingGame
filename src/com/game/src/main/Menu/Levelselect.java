@@ -1,6 +1,7 @@
 package com.game.src.main.Menu;
 
 import com.game.src.main.Game;
+import com.game.src.main.SpriteSheet;
 
 import java.awt.*;
 
@@ -16,6 +17,8 @@ public class Levelselect extends MenuElement {
         buttons.add(Level_2);
         buttons.add(Level_3);
         buttons.add(Level_4);
+        SpriteSheet ss = new SpriteSheet(Game.getSpriteSheet());
+
     }
 
     public void render(Graphics g){

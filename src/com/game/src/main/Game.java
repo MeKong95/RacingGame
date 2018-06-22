@@ -35,8 +35,6 @@ public class Game extends Canvas implements Runnable {
 
     private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
     private static BufferedImage spriteSheet = null;
-    private static BufferedImage backgroundmenu = null;
-
 
     private static LinkedList<MapObject> listMapObjects = new LinkedList<MapObject>();
     private static GoalObject goalObject;
@@ -149,7 +147,6 @@ public class Game extends Canvas implements Runnable {
                                                         // unser sprite sheet zu laden
         try{    // java fordert error handling, weil beim laden von dateien fehler auftreten können
             spriteSheet = loader.loadImage("/spritesheet.png");
-            backgroundmenu = loader.loadImage("/racetracksharp.png");
         }catch(IOException e){
             e.printStackTrace();
         }
