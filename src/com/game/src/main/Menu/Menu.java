@@ -4,11 +4,14 @@ import com.game.src.main.Game;
 
 import java.awt.*;
 
+
 public class Menu extends MenuElement{
 
     private Rectangle playButton = new Rectangle(Game.WIDTH /2 -90, 400, 180,50);
     private Rectangle scoreButton = new Rectangle(Game.WIDTH /2 -90, 500, 280,50);
     private Rectangle quitButton = new Rectangle(Game.WIDTH /2 -90, 600, 180,50);
+
+
 
     public Menu(){
         buttons.add(playButton);
@@ -18,7 +21,6 @@ public class Menu extends MenuElement{
 
     public void render(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
-
         Font fnt1 = new Font("Gill Sans", Font.BOLD, 50);
         g.setFont(fnt1);
         g.setColor(Color.YELLOW);

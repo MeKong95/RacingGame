@@ -31,6 +31,9 @@ public class Name extends MenuElement{
     }
 
     public String getName(){
+        if(name==""){
+            name="Anonym";
+        }
         String s = name.substring(0,1).toUpperCase();
         name = s + name.substring(1);//Sorgt dafuer das unabhängig der Eingabe der erste Bchstb groß ist
         return name;
