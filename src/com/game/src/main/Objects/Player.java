@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 
 public class Player {
+    private String name;
     private final double s = 3;
     private double x;
     private double y;
@@ -23,11 +24,12 @@ public class Player {
     private BufferedImage sprite0, sprite1, sprite2,sprite3,sprite4,sprite5,sprite6,sprite7; // variable für sprites des spielers
     private Timer timer;
 
-    public Player(double x, double y, double winkel){
-        //konstruktor legt startposition und sprite fest
+    public Player(double x, double y, double winkel, String name){
+        //konstruktor legt startposition, winkel und sprite fest
         this.x = x;
         this.y = y;
         this.winkel = winkel;
+        this.name = name;
         SpriteSheet ss = new SpriteSheet(Game.getSpriteSheet());
 
         sprite0 = ss.grabImage(1, 1, 32, 32);
@@ -42,6 +44,7 @@ public class Player {
         timer = new Timer(this);
     }
 
+    /* ungenutzte getter und setter funktionen
     public void setX(double x){
         this.x = x;
     }
@@ -66,6 +69,11 @@ public class Player {
     public double getVelY(){
         return velY;
     }
+    */
+    public String getName(){
+        return name;
+    }
+
     public void setAccX(double accX){
         this.accX = accX;
     }
@@ -94,20 +102,25 @@ public class Player {
         if(velY < 0.01 && velY > -0.01)
             velY = 0;
 
+
         //Geschwindigkeitsbegrenzung x-Richtung
         velX+=accX;
+
+        /* Diese art der begrenzung ist nicht mehr nötig da die untere lösung das bereits handlet
         if(velX>s)
             velX = s;
         if(velX<-s)
-            velX = -s;
+            velX = -s;*/
         //Geschwindigkeitsbegrenzung y-Richtung
         velY+=accY;
+
+        /*Diese art der begrenzung ist nicht mehr nötig da die untere lösung das bereits handlet
         if(velY>s)
             velY = s;
         if(velY<-s)
-            velY = -s;
+            velY = -s;*/
 
-        //Korrektur damit Diagonal Bewegung nicht schneller als gerade Bwg
+        //Korrektur damit Diagonal Bewegung nicht schneller als gerade Bug
 
         //Argument kann spaeter fuer Geschwindigkeits Anzeige benutzt werden
         velA=Math.sqrt(Math.pow(velX,2)+Math.pow(velY,2));
@@ -136,7 +149,7 @@ public class Player {
         }
 
         //Geschwindigkeitsanzeige entwicklung
-        //System.out.println(Math.sqrt(Math.pow(velX,2)+Math.pow(velY,2)));
+        System.out.println(Math.sqrt(Math.pow(velX,2)+Math.pow(velY,2)));
 
 
 
@@ -212,34 +225,9 @@ public class Player {
             g.drawImage(sprite7, (int)x, (int)y, null);
 
 
-        /*
-        if(velX > 0  && velY > 0){// rechts unten
-            g.drawImage(sprite0, (int)x, (int)y, null);
-        }else
-        if(velX > 0  && velY == 0){// rechts
-            g.drawImage(sprite1, (int)x, (int)y, null);
-        }else
-        if(velX > 0  && velY < 0){// rechts oben
-            g.drawImage(sprite2, (int)x, (int)y, null);
-        }else
-        if(velX == 0  && velY < 0){// oben
-            g.drawImage(sprite3, (int)x, (int)y, null);
-        }else
-        if(velX < 0  && velY < 0){// links oben
-            g.drawImage(sprite4, (int)x, (int)y, null);
-        }else
-        if(velX < 0  && velY == 0){// links
-            g.drawImage(sprite5, (int)x, (int)y, null);
-        }else
-        if(velX < 0  && velY > 0){// links unten
-            g.drawImage(sprite6, (int)x, (int)y, null);
-        }else
-        if(velX == 0  && velY > 0){// unten
-            g.drawImage(sprite7, (int)x, (int)y, null);
-        }
-        */
-
-            timer.displayTime(g);
+        timer.displayTime(g);
     }
+
+
 }
 

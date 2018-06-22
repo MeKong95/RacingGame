@@ -242,7 +242,7 @@ public class Game extends Canvas implements Runnable {
                         p.setAccX(0.1);
                         break;
                     case KeyEvent.VK_F2:
-                        initMap(track);
+                        initMap(track , n.getName());
                         break;
                     case KeyEvent.VK_ESCAPE:
                         status = STATUS.MENU;
@@ -283,20 +283,23 @@ public class Game extends Canvas implements Runnable {
     public static void keyReleased(KeyEvent e){
         int key = e.getKeyCode();
 
-        switch(key){
-            case KeyEvent.VK_W:
-                p.setAccY(0);
-                break;
-            case KeyEvent.VK_A:
-                p.setAccX(0);
-                break;
-            case KeyEvent.VK_S:
-                p.setAccY(0);
-                break;
-            case KeyEvent.VK_D:
-                p.setAccX(0);
-                break;
-            }
+        switch(status){
+            case GAME:
+                switch(key){
+                    case KeyEvent.VK_W:
+                        p.setAccY(0);
+                        break;
+                    case KeyEvent.VK_A:
+                        p.setAccX(0);
+                        break;
+                    case KeyEvent.VK_S:
+                        p.setAccY(0);
+                        break;
+                    case KeyEvent.VK_D:
+                        p.setAccX(0);
+                        break;
+                }
+        }
     }
 
     public static void mousePressed(MouseEvent e) {
@@ -308,6 +311,7 @@ public class Game extends Canvas implements Runnable {
                 switch(temp){
                     case 0:
                         //play button
+                        n = new Name();
                         status = STATUS.NAME;
                         break;
                     case 1:
@@ -340,25 +344,25 @@ public class Game extends Canvas implements Runnable {
                     case 0:
                         //track 1 button
                         track = 1;
-                        initMap(track);
+                        initMap(track, n.getName());
                         status = STATUS.GAME;
                         break;
                     case 1:
                         //track 2 button
                         track = 2;
-                        initMap(track);
+                        initMap(track, n.getName());
                         status = STATUS.GAME;
                         break;
                     case 2:
                         //track 3 button
                         track = 3;
-                        initMap(track);
+                        initMap(track, n.getName());
                         status = STATUS.GAME;
                         break;
                     case 3:
                         //track 4 button
                         track = 4;
-                        initMap(track);
+                        initMap(track, n.getName());
                         status = STATUS.GAME;
                         break;
                     default:
@@ -391,7 +395,7 @@ public class Game extends Canvas implements Runnable {
 
 
 
-    private static void initMap(int nr){
+    private static void initMap(int nr, String name){
         //liste enthält Spieler, Ziel und Mapobjects
         LinkedList<String[]> tempList;
         map = new FileController("res/map_" + nr + ".crsp");
@@ -399,7 +403,8 @@ public class Game extends Canvas implements Runnable {
         p = new Player(
                 Double.parseDouble(tempList.get(0)[0]),
                 Double.parseDouble(tempList.get(0)[1]),
-                Double.parseDouble(tempList.get(0)[2]));
+                Double.parseDouble(tempList.get(0)[2]),
+                name);
 
         goalObject = new GoalObject(
                 Double.parseDouble(tempList.get(1)[0]),

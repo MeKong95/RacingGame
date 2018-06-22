@@ -11,19 +11,27 @@ import static com.sun.java.accessibility.util.AWTEventMonitor.addKeyListener;
 //https://stackoverflow.com/questions/37977143/get-an-input-from-the-user-using-graphics
 public class Name extends MenuElement{
 
-    public Rectangle playButton = new Rectangle(Game.WIDTH /2 -130, 400, 330,50);
-    Rectangle r = new Rectangle(Game.WIDTH /2 -130,200,250,30);
-    static String n = "";
+    private Rectangle playButton = new Rectangle(Game.WIDTH /2 -130, 400, 330,50);
+    private Rectangle nameField = new Rectangle(Game.WIDTH /2 -130,200,250,30);
+
+
+    private String name = "";
+
+
     public Name(){
         buttons.add(playButton);
     }
 
-    public static void addChar(KeyEvent e){
+    public void addChar(KeyEvent e){
         if (e.getKeyCode()>65&&e.getKeyCode()<90){
-            n+=e.getKeyChar();
+            name+=e.getKeyChar();
         }
 
         System.out.println(e);
+    }
+
+    public String getName(){
+        return name;
     }
 
 
@@ -42,9 +50,9 @@ public class Name extends MenuElement{
         g2d.draw(playButton);
 
         g.setColor(Color.yellow);
-        g.fillRect(r.x, r.y, r.width, r.height);
+        g.fillRect(nameField.x, nameField.y, nameField.width, nameField.height);
         g.setColor(Color.black);
-        g.drawString(n.toUpperCase(), r.x, r.y+r.height);
+        g.drawString(name.toUpperCase(), nameField.x, nameField.y+nameField.height);
 
     }
 }

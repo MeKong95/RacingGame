@@ -11,14 +11,14 @@ public class Timer {
     private double goalTime = 0;
     private boolean running = false;
     private boolean finished = false;
+    private String name;
     DecimalFormat df = new DecimalFormat();
     Font fnt1 = new Font("arial", Font.BOLD, 30);
 
     public Timer(Player p){
         df.setMaximumFractionDigits(2);
         df.setMinimumFractionDigits(2);
-
-
+        name = p.getName();
     }
 
     public void start(){
@@ -49,7 +49,7 @@ public class Timer {
             int track= Game.getTrack();
             FileController f = new FileController("res/highscores_" + track + ".crsp");
             goalTime = System.currentTimeMillis() - startTime;
-            f.write(String.valueOf(df.format((goalTime)/1000.0)), "name");
+            f.write(String.valueOf(df.format((goalTime)/1000.0)),name);
         }
 
 
