@@ -81,7 +81,7 @@ public class Player {
         this.accY = accY;
     }
 
-    public boolean Collision(MapObject m){ //Entscheidet ob der Spieler mit einer Wand kollidiert
+    private boolean Collision(MapObject m){ //Entscheidet ob der Spieler mit einer Wand kollidiert
         return
                 (x < m.getXpos()+m.getXlen()) && (x > m.getXpos()-size) //X-Seiten checken
                 &&
