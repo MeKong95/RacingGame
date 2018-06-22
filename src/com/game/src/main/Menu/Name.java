@@ -4,11 +4,11 @@ import com.game.src.main.Game;
 
 import java.awt.*;
 //https://stackoverflow.com/questions/37977143/get-an-input-from-the-user-using-graphics
-public class Name {
+public class Name extends MenuElement{
 
     public Rectangle playButton = new Rectangle(Game.WIDTH /2 -130, 400, 330,50);
     public Name(){
-
+        buttons.add(playButton);
     }
 
     public void render(Graphics g){

@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
 
-public class Highscore {
+public class Highscore extends MenuElement {
 
     private FileController fc1,fc2,fc3,fc4;
     private LinkedList<String> ll1,ll2,ll3,ll4;

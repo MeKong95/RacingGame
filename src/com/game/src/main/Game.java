@@ -8,6 +8,7 @@ import com.game.src.main.Menu.Highscore;
 import com.game.src.main.Menu.Levelselect;
 import com.game.src.main.Menu.Menu;
 import com.game.src.main.Menu.Name;
+import com.game.src.main.Menu.MenuElement;
 import com.game.src.main.Objects.GoalObject;
 import com.game.src.main.Objects.MapObject;
 import com.game.src.main.Objects.Player;
@@ -40,7 +41,7 @@ public class Game extends Canvas implements Runnable {
     private static Player p;
     private static com.game.src.main.Menu.Menu m;
     private static Name n;
-    private Levelselect l;
+    private static Levelselect l;
     private static Highscore h;
     private static FileController map;
 
@@ -319,7 +320,68 @@ public class Game extends Canvas implements Runnable {
     }
 
     public static void mousePressed(MouseEvent e) {
-        if(
+
+        int temp;
+        switch(status){
+            case MENU:
+                temp = checkClick(m,e);
+                switch(temp){
+                    case 0:
+                        status = STATUS.NAME;
+                        break;
+                    case 1:
+                        h = new Highscore();
+                        status = STATUS.SCORE;
+                        break;
+                    case 2:
+                        System.exit(1);
+                        break;
+                    default:
+                        break;
+                    }
+                    break;
+            case NAME:
+                temp = checkClick(n,e);
+                switch(temp){
+                    case 0:
+                        status = STATUS.LEVEL;
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case LEVEL:
+                temp = checkClick(l,e);
+                switch(temp){
+                    case 0:
+                        track = 1;
+                        initMap(track);
+                        status = STATUS.GAME;
+                        break;
+                    case 1:
+                        track = 2;
+                        initMap(track);
+                        status = STATUS.GAME;
+                        break;
+                    case 2:
+                        track = 3;
+                        initMap(track);
+                        status = STATUS.GAME;
+                        break;
+                    case 3:
+                        track = 4;
+                        initMap(track);
+                        status = STATUS.GAME;
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case SCORE:
+                break;
+        }
+
+        /*if(
                 e.getX() > m.playButton.x &&
                 e.getX() < m.playButton.x + m.playButton.width &&
                 e.getY() > m.playButton.y &&
@@ -344,8 +406,25 @@ public class Game extends Canvas implements Runnable {
                 e.getX() < m.quitButton.x + m.quitButton.width &&
                 e.getY() > m.quitButton.y &&
                 e.getY() < m.quitButton.y + m.quitButton.height)
-            System.exit(0);
+            System.exit(0);*/
     }
+
+    public static int checkClick(MenuElement m, MouseEvent e){
+        int i;
+        LinkedList<Rectangle> buttons = m.getButtons();
+        double x = e.getX();
+        double y = e.getY();
+
+        for(i = 0; i<buttons.size();i++)
+            if(
+                    x > buttons.get(i).x &&
+                    x < buttons.get(i).x + buttons.get(i).width &&
+                    y > buttons.get(i).y &&
+                    y < buttons.get(i).y + buttons.get(i).height){
+                break;
+            }
+            return i;
+        }
 
 
 

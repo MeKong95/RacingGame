@@ -4,14 +4,16 @@ import com.game.src.main.Game;
 
 import java.awt.*;
 
-public class Menu {
+public class Menu extends MenuElement{
 
-    public Rectangle playButton = new Rectangle(Game.WIDTH /2 -90, 400, 180,50);
-    public Rectangle scoreButton = new Rectangle(Game.WIDTH /2 -90, 500, 280,50);
-    public Rectangle quitButton = new Rectangle(Game.WIDTH /2 -90, 600, 180,50);
+    private Rectangle playButton = new Rectangle(Game.WIDTH /2 -90, 400, 180,50);
+    private Rectangle scoreButton = new Rectangle(Game.WIDTH /2 -90, 500, 280,50);
+    private Rectangle quitButton = new Rectangle(Game.WIDTH /2 -90, 600, 180,50);
 
     public Menu(){
-
+        buttons.add(playButton);
+        buttons.add(scoreButton);
+        buttons.add(quitButton);
     }
 
     public void render(Graphics g){

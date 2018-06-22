@@ -4,14 +4,18 @@ import com.game.src.main.Game;
 
 import java.awt.*;
 
-public class Levelselect {
+public class Levelselect extends MenuElement {
 
-    public Rectangle Level_1 = new Rectangle(Game.WIDTH /2 -90, 250, 180,50);
-    public Rectangle Level_2 = new Rectangle(Game.WIDTH /2 -90, 350, 180,50);
-    public Rectangle Level_3 = new Rectangle(Game.WIDTH /2 -90, 450, 180,50);
-    public Rectangle Level_4 = new Rectangle(Game.WIDTH /2 -90, 550, 180,50);
+    private Rectangle Level_1 = new Rectangle(Game.WIDTH /2 -90, 250, 180,50);
+    private Rectangle Level_2 = new Rectangle(Game.WIDTH /2 -90, 350, 180,50);
+    private Rectangle Level_3 = new Rectangle(Game.WIDTH /2 -90, 450, 180,50);
+    private Rectangle Level_4 = new Rectangle(Game.WIDTH /2 -90, 550, 180,50);
+
     public Levelselect(){
-
+        buttons.add(Level_1);
+        buttons.add(Level_2);
+        buttons.add(Level_3);
+        buttons.add(Level_4);
     }
 
     public void render(Graphics g){
