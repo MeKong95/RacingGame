@@ -2,10 +2,7 @@ package com.game.src.main.Menu;
 
 import com.game.src.main.Game;
 import com.game.src.main.Input.ImageLoader;
-import com.game.src.main.SpriteSheet;
-
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class Levelselect extends GameState {
