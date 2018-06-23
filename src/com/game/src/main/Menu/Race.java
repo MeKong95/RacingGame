@@ -57,6 +57,7 @@ public class Race extends GameState{
     public void render(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
 
+
         Font fnt1 = new Font("arial", Font.BOLD, 30);
         g.setFont(fnt1);
         g.setColor(Color.ORANGE);
