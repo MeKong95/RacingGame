@@ -18,22 +18,25 @@ public class Name extends MenuElement{
 
     public Name(){
         buttons.add(playButton);
+
     }
 
     public void addChar(KeyEvent e){
+        System.out.println(name.length());
         if (e.getKeyCode()>=65&&e.getKeyCode()<=90){
             name+=e.getKeyChar();
         }//nur zeichen a bis z
         if (e.getKeyCode()==8){
-            name = name.substring(0, name.length() - 1);
+            if (name.length()>0){
+                name = name.substring(0, name.length() - 1);
+            }
         }//fuer backspace/loeschen
-
     }
 
     public String getName(){
-        if(name==""){
+        if(name.length()==0){
             name="Anonym";
-        }
+        }//ausnahme bei keiner eingabe ODER wieder geloeschter eingabe
         String s = name.substring(0,1).toUpperCase();
         name = s + name.substring(1);//Sorgt dafuer das unabhängig der Eingabe der erste Bchstb groß ist
         return name;
