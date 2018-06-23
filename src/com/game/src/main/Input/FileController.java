@@ -38,6 +38,7 @@ public class FileController {
             while((str=br.readLine())!=null) {
                 Data.add(str.split(";"));
             }
+            System.out.println("Daten erfolgreich gelesen");
         }catch(IOException e){
             e.printStackTrace();
         }
@@ -54,6 +55,7 @@ public class FileController {
             while((str=br.readLine())!=null) {
                 Data.add(str);
             }
+            System.out.println("Daten erfolgreich gelesen");
         }catch(IOException e){
             e.printStackTrace();
         }

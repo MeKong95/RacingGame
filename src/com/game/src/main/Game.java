@@ -4,10 +4,8 @@ import com.game.src.main.Input.FileController;
 import com.game.src.main.Input.ImageLoader;
 import com.game.src.main.Input.KeyInput;
 import com.game.src.main.Input.MouseInput;
-import com.game.src.main.Menu.Highscore;
-import com.game.src.main.Menu.Levelselect;
+import com.game.src.main.Menu.*;
 import com.game.src.main.Menu.Menu;
-import com.game.src.main.Menu.Name;
 import com.game.src.main.Menu.MenuElement;
 import com.game.src.main.Objects.GoalObject;
 import com.game.src.main.Objects.MapObject;
@@ -39,10 +37,11 @@ public class Game extends Canvas implements Runnable {
     private static LinkedList<MapObject> listMapObjects = new LinkedList<MapObject>();
     private static GoalObject goalObject;
     private static Player p;
-    private static com.game.src.main.Menu.Menu m;
+    private static Menu m;
     private static Name n;
     private static Levelselect l;
     private static Highscore h;
+    private static Race r;
     private static FileController map;
 
     private static int track;
@@ -152,7 +151,6 @@ public class Game extends Canvas implements Runnable {
         }
 
         m = new Menu();
-        n = new Name();
         l = new Levelselect();
 
 
@@ -167,8 +165,7 @@ public class Game extends Canvas implements Runnable {
 
     private void tick(){
         if(status == STATUS.GAME) {
-            p.tick(listMapObjects);
-            p.tick(goalObject);
+            r.tick();
         }
     }
 
@@ -190,11 +187,7 @@ public class Game extends Canvas implements Runnable {
                 m.render(g);
                 break;
             case GAME:
-                p.render(g);
-                goalObject.render(g);
-                // durchlaufen der liste von map objects und rendern dieser
-                for (int i = 0; i < listMapObjects.size(); i++)
-                    listMapObjects.get(i).render(g);
+                r.render(g);
                 break;
             case NAME:
                 n.render(g);
@@ -245,7 +238,7 @@ public class Game extends Canvas implements Runnable {
                         p.setAccX(0.1);
                         break;
                     case KeyEvent.VK_F2:
-                        initMap(track , n.getName());
+                        r = new Race(track, n.getName());
                         break;
                     case KeyEvent.VK_ESCAPE:
                         status = STATUS.MENU;
@@ -347,25 +340,25 @@ public class Game extends Canvas implements Runnable {
                     case 0:
                         //track 1 button
                         track = 1;
-                        initMap(track, n.getName());
+                        r = new Race(track, n.getName());
                         status = STATUS.GAME;
                         break;
                     case 1:
                         //track 2 button
                         track = 2;
-                        initMap(track, n.getName());
+                        r = new Race(track, n.getName());
                         status = STATUS.GAME;
                         break;
                     case 2:
                         //track 3 button
                         track = 3;
-                        initMap(track, n.getName());
+                        r = new Race(track, n.getName());
                         status = STATUS.GAME;
                         break;
                     case 3:
                         //track 4 button
                         track = 4;
-                        initMap(track, n.getName());
+                        r = new Race(track, n.getName());
                         status = STATUS.GAME;
                         break;
                     default:
