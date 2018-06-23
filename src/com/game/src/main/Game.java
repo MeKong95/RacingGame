@@ -1,15 +1,12 @@
 package com.game.src.main;
 
-import com.game.src.main.Input.FileController;
 import com.game.src.main.Input.ImageLoader;
 import com.game.src.main.Input.KeyInput;
 import com.game.src.main.Input.MouseInput;
 import com.game.src.main.Menu.*;
 import com.game.src.main.Menu.Menu;
 import com.game.src.main.Menu.GameState;
-import com.game.src.main.Objects.GoalObject;
-import com.game.src.main.Objects.MapObject;
-import com.game.src.main.Objects.Player;
+
 
 import java.awt.*;
 import javax.swing.*;

@@ -2,16 +2,11 @@ package com.game.src.main.Menu;
 
 import com.game.src.main.Game;
 import com.game.src.main.Input.ImageLoader;
-import com.game.src.main.Input.ImageLoader;
-import com.game.src.main.Input.KeyInput;
+
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-
-import static com.sun.java.accessibility.util.AWTEventMonitor.addKeyListener;
 
 //https://stackoverflow.com/questions/37977143/get-an-input-from-the-user-using-graphics
 public class Name extends GameState{

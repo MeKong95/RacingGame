@@ -149,7 +149,7 @@ public class Player {
         }
 
         //Geschwindigkeitsanzeige entwicklung
-        System.out.println(Math.sqrt(Math.pow(velX,2)+Math.pow(velY,2)));
+        //System.out.println(Math.sqrt(Math.pow(velX,2)+Math.pow(velY,2)));
 
 
 

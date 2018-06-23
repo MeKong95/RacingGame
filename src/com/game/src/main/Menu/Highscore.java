@@ -5,7 +5,6 @@ import com.game.src.main.Game;
 import com.game.src.main.Input.ImageLoader;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.Comparator;
