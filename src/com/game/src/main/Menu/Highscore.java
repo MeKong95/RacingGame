@@ -60,7 +60,6 @@ public class Highscore extends MenuElement {
         g.drawImage(background,0,0,Game.WIDTH,Game.HEIGHT/4, null);
         g.drawImage(background,0,Game.HEIGHT/4*3,Game.WIDTH,Game.HEIGHT/4, null);
 
-
         Font fnt1 = new Font("arial", Font.BOLD, 50);
         g.setFont(fnt1);
         g.setColor(Color.ORANGE);
