@@ -11,12 +11,11 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
 
-public class Highscore extends MenuElement {
+public class Highscore extends GameState {
 
     private FileController fc1,fc2,fc3,fc4;
     private LinkedList<String> ll1,ll2,ll3,ll4;
     private Comparator<String> c;
-    private static BufferedImage background = null;
 
 
     public Highscore(){

@@ -9,7 +9,7 @@ import java.awt.event.KeyEvent;
 import static com.sun.java.accessibility.util.AWTEventMonitor.addKeyListener;
 
 //https://stackoverflow.com/questions/37977143/get-an-input-from-the-user-using-graphics
-public class Name extends MenuElement{
+public class Name extends GameState{
 
     private Rectangle playButton = new Rectangle(Game.WIDTH /2 -130, 400, 330,50);
     private Rectangle nameField = new Rectangle(Game.WIDTH /2 -130,200,250,30);

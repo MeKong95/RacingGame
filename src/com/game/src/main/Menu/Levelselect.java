@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-public class Levelselect extends MenuElement {
+public class Levelselect extends GameState {
 
     private Rectangle Level_1 = new Rectangle(Game.WIDTH /2 -90, 250, 180,50);
     private Rectangle Level_2 = new Rectangle(Game.WIDTH /2 -90, 350, 180,50);

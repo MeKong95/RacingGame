@@ -6,7 +6,7 @@ import com.game.src.main.Input.KeyInput;
 import com.game.src.main.Input.MouseInput;
 import com.game.src.main.Menu.*;
 import com.game.src.main.Menu.Menu;
-import com.game.src.main.Menu.MenuElement;
+import com.game.src.main.Menu.GameState;
 import com.game.src.main.Objects.GoalObject;
 import com.game.src.main.Objects.MapObject;
 import com.game.src.main.Objects.Player;
@@ -34,15 +34,11 @@ public class Game extends Canvas implements Runnable {
     private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
     private static BufferedImage spriteSheet = null;
 
-    private static LinkedList<MapObject> listMapObjects = new LinkedList<MapObject>();
-    private static GoalObject goalObject;
-    private static Player p;
     private static Menu m;
     private static Name n;
     private static Levelselect l;
     private static Highscore h;
     private static Race r;
-    private static FileController map;
 
     private static int track;
 
@@ -226,16 +222,16 @@ public class Game extends Canvas implements Runnable {
             case GAME:
                 switch(key) {
                     case KeyEvent.VK_W:
-                        p.setAccY(-0.1);
+                        r.getP().setAccY(-0.1);
                         break;
                     case KeyEvent.VK_A:
-                        p.setAccX(-0.1);
+                        r.getP().setAccX(-0.1);
                         break;
                     case KeyEvent.VK_S:
-                        p.setAccY(0.1);
+                        r.getP().setAccY(0.1);
                         break;
                     case KeyEvent.VK_D:
-                        p.setAccX(0.1);
+                        r.getP().setAccX(0.1);
                         break;
                     case KeyEvent.VK_F2:
                         r = new Race(track, n.getName());
@@ -283,16 +279,16 @@ public class Game extends Canvas implements Runnable {
             case GAME:
                 switch(key){
                     case KeyEvent.VK_W:
-                        p.setAccY(0);
+                        r.getP().setAccY(0);
                         break;
                     case KeyEvent.VK_A:
-                        p.setAccX(0);
+                        r.getP().setAccX(0);
                         break;
                     case KeyEvent.VK_S:
-                        p.setAccY(0);
+                        r.getP().setAccY(0);
                         break;
                     case KeyEvent.VK_D:
-                        p.setAccX(0);
+                        r.getP().setAccX(0);
                         break;
                 }
         }
@@ -372,7 +368,7 @@ public class Game extends Canvas implements Runnable {
 
     }
 
-    public static int checkClick(MenuElement m, MouseEvent e){
+    public static int checkClick(GameState m, MouseEvent e){
         int i;
         LinkedList<Rectangle> buttons = m.getButtons();
         double x = e.getX();

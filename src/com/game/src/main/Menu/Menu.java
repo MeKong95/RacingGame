@@ -8,13 +8,11 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 
-public class Menu extends MenuElement{
+public class Menu extends GameState{
 
     private Rectangle playButton = new Rectangle(Game.WIDTH /2 -90, 400, 180,50);
     private Rectangle scoreButton = new Rectangle(Game.WIDTH /2 -90, 500, 280,50);
     private Rectangle quitButton = new Rectangle(Game.WIDTH /2 -90, 600, 180,50);
-    private static BufferedImage background = null;
-
 
     public Menu(){
         buttons.add(playButton);

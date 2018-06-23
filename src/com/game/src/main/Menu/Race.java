@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.LinkedList;
 
 
-public class Race extends MenuElement{
+public class Race extends GameState{
 
     private Player p;
     private GoalObject goalObject;
@@ -61,6 +61,10 @@ public class Race extends MenuElement{
     public void tick(){
         p.tick(listMapObjects);
         p.tick(goalObject);
+    }
+
+    public Player getP(){
+        return p;
     }
 
 }
