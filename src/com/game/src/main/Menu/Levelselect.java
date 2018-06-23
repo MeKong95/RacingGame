@@ -14,7 +14,6 @@ public class Levelselect extends GameState {
     private Rectangle Level_2 = new Rectangle(Game.WIDTH /2 -90, 350, 180,50);
     private Rectangle Level_3 = new Rectangle(Game.WIDTH /2 -90, 450, 180,50);
     private Rectangle Level_4 = new Rectangle(Game.WIDTH /2 -90, 550, 180,50);
-    private static BufferedImage background = null;
 
 
     public Levelselect(){
