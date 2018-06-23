@@ -58,7 +58,6 @@ public class Name extends MenuElement{
 
         g.drawImage(background,0,0,Game.WIDTH,Game.HEIGHT,null);
 
-
         Font fnt1 = new Font("arial", Font.BOLD, 60);
         g.setFont(fnt1);
         g.setColor(Color.BLACK);
@@ -68,8 +67,5 @@ public class Name extends MenuElement{
         g.setFont(fnt2);
         g.drawString("CONTINUE", playButton.x+30, playButton.y+32);
         g2d.draw(playButton);
-
-
-
     }
 }
