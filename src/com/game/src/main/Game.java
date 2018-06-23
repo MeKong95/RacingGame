@@ -240,6 +240,7 @@ public class Game extends Canvas implements Runnable {
             case NAME:
                 switch(key){
                     case KeyEvent.VK_ENTER:
+                        l = new Levelselect();
                         status = STATUS.LEVEL;
                         break;
                     case KeyEvent.VK_ESCAPE:
