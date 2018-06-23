@@ -33,13 +33,13 @@ public class Timer {
         g.setColor(Color.LIGHT_GRAY);
         if(!running){
             //g.drawString("0,00", Game.WIDTH/2-150, 100);
-            g.drawString("Press W/A/S/D to start",Game.WIDTH/2-150, 200 );
+            g.drawString("Press W/A/S/D to start",Game.WIDTH * 1 / 4 + 50, Game.HEIGHT -45 );
         }else if(!finished){
-            g.drawString(df.format((System.currentTimeMillis()-startTime)/1000.0), Game.WIDTH/2-150, 200);
+            g.drawString(df.format((System.currentTimeMillis()-startTime)/1000.0), Game.WIDTH * 1 / 4 +50, Game.HEIGHT - 45);
         }else{
-            g.drawString(df.format((goalTime)/1000.0), Game.WIDTH/2-150, 200);
-            g.drawString("Finished!",Game.WIDTH/2-150, 250 );
-            g.drawString("Try again (F2)",Game.WIDTH/2-150,300);
+            g.drawString(df.format((goalTime)/1000.0),  Game.WIDTH * 1 / 4 +50, Game.HEIGHT - 45);
+            g.drawString("Finished!", Game.WIDTH * 1 / 4 +50, Game.HEIGHT - 70);
+            g.drawString("Try again (F2)", Game.WIDTH * 1 / 4 +50, Game.HEIGHT - 20);
         }
     }
 

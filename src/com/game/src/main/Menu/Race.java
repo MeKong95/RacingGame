@@ -18,11 +18,13 @@ public class Race extends GameState{
     private Player p;
     private GoalObject goalObject;
     private LinkedList<MapObject> listMapObjects = new LinkedList<>();
-    private FileController map;
+    
+
+    private LinkedList<Rectangle> StatusBar = new LinkedList<>();
 
 
     public Race(int trackNr, String name){
-
+        FileController map;
         //liste enthält Spieler, Ziel und Mapobjects
         LinkedList<String[]> tempList;
         map = new FileController("res/map_" + trackNr + ".crsp");
@@ -45,10 +47,27 @@ public class Race extends GameState{
                     Double.parseDouble(tempList.get(i)[2]),
                     Double.parseDouble(tempList.get(i)[3])));
         }
+
+        StatusBar.add(new Rectangle(0, Game.HEIGHT - 100, Game.WIDTH * 1 / 4,200));
+        StatusBar.add(new Rectangle(0, Game.HEIGHT - 100, Game.WIDTH * 2 / 4,200));
+        StatusBar.add(new Rectangle(0, Game.HEIGHT - 100, Game.WIDTH * 3 / 4,200));
+        StatusBar.add(new Rectangle(0, Game.HEIGHT - 100, Game.WIDTH * 4 / 4,200));
     }
 
     public void render(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
+
+        Font fnt1 = new Font("arial", Font.BOLD, 30);
+        g.setFont(fnt1);
+        g.setColor(Color.ORANGE);
+        g.drawString("Player: " + p.getName(), 50, Game.HEIGHT-50);
+
+        g2d.setStroke(new BasicStroke(5));
+        for (Rectangle r: StatusBar) {
+            g2d.draw(r);
+        }
+
+
 
         p.render(g);
         goalObject.render(g);
