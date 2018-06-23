@@ -17,10 +17,10 @@ public class Race extends GameState{
 
     private Player p;
     private GoalObject goalObject;
-    private LinkedList<MapObject> listMapObjects = new LinkedList<>();
+    private LinkedList<MapObject> listMapObjects = new LinkedList<MapObject>();
     
 
-    private LinkedList<Rectangle> StatusBar = new LinkedList<>();
+    private LinkedList<Rectangle> StatusBar = new LinkedList<Rectangle>();
 
 
     public Race(int trackNr, String name){

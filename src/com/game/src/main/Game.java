@@ -237,6 +237,7 @@ public class Game extends Canvas implements Runnable {
                         r = new Race(track, n.getName());
                         break;
                     case KeyEvent.VK_ESCAPE:
+                        m=new Menu();
                         status = STATUS.MENU;
                         break;
                 }
@@ -247,6 +248,7 @@ public class Game extends Canvas implements Runnable {
                         status = STATUS.LEVEL;
                         break;
                     case KeyEvent.VK_ESCAPE:
+                        m=new Menu();
                         status = STATUS.MENU;
                         break;
                     default:
@@ -257,6 +259,7 @@ public class Game extends Canvas implements Runnable {
             case LEVEL:
                 switch(key) {
                     case KeyEvent.VK_ESCAPE:
+                        m=new Menu();
                         status = STATUS.MENU;
                         break;
                 }
@@ -264,6 +267,7 @@ public class Game extends Canvas implements Runnable {
             case SCORE:
                 switch(key) {
                     case KeyEvent.VK_ESCAPE:
+                        m=new Menu();
                         status = STATUS.MENU;
                         break;
                 }
