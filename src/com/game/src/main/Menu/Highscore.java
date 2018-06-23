@@ -2,8 +2,11 @@ package com.game.src.main.Menu;
 
 import com.game.src.main.Input.FileController;
 import com.game.src.main.Game;
+import com.game.src.main.Input.ImageLoader;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
@@ -13,6 +16,8 @@ public class Highscore extends MenuElement {
     private FileController fc1,fc2,fc3,fc4;
     private LinkedList<String> ll1,ll2,ll3,ll4;
     private Comparator<String> c;
+    private static BufferedImage background = null;
+
 
     public Highscore(){
 
@@ -40,16 +45,28 @@ public class Highscore extends MenuElement {
         Collections.sort(ll2,c);
         Collections.sort(ll3,c);
         Collections.sort(ll4,c);
+        ImageLoader loader = new ImageLoader();
+        try{
+            background = loader.loadImage("/flag.png");
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     public void render(Graphics g){
         String str[];
         Graphics2D g2d = (Graphics2D) g;
 
+        g.drawImage(background,0,0,Game.WIDTH,Game.HEIGHT/4, null);
+        g.drawImage(background,0,Game.HEIGHT/4*3,Game.WIDTH,Game.HEIGHT/4, null);
+
+
         Font fnt1 = new Font("arial", Font.BOLD, 50);
         g.setFont(fnt1);
-        g.setColor(Color.YELLOW);
-        g.drawString("TOP TIMES FOR EVERY TRACK", Game.WIDTH/2 - 280, 150);
+        g.setColor(Color.ORANGE);
+        g.drawString("TOP TIMES FOR EVERY TRACK", Game.WIDTH/2 - 350, 150);
+
+
 
         Font fnt2 = new Font("arial", Font.BOLD, 30);
         g.setFont(fnt2);
