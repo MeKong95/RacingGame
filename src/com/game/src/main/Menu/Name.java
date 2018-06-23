@@ -11,7 +11,6 @@ import java.io.IOException;
 
 import static com.sun.java.accessibility.util.AWTEventMonitor.addKeyListener;
 
-//https://stackoverflow.com/questions/37977143/get-an-input-from-the-user-using-graphics
 public class Name extends MenuElement{
 
     private Rectangle playButton = new Rectangle(Game.WIDTH /2 -160, 600, 240,50);
@@ -55,7 +54,6 @@ public class Name extends MenuElement{
 
     public void render(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
-
         g.drawImage(background,0,0,Game.WIDTH,Game.HEIGHT,null);
 
         Font fnt1 = new Font("arial", Font.BOLD, 60);
