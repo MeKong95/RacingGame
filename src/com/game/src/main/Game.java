@@ -82,7 +82,6 @@ public class Game extends Canvas implements Runnable {
         }catch(InterruptedException e){
             e.printStackTrace();
         }
-
         System.exit(1);
     }
 
@@ -128,7 +127,6 @@ public class Game extends Canvas implements Runnable {
     }
 
     public void initialize(){
-
         ImageLoader loader = new ImageLoader();         // immageloader fuer spritesheet
         try{    // error-handling, beim laden koennen fehler auftreten
             spriteSheet = loader.loadImage("/spritesheet.png");
