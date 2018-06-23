@@ -147,8 +147,6 @@ public class Game extends Canvas implements Runnable {
         }
 
         m = new Menu();
-        l = new Levelselect();
-
 
         requestFocus();
 
@@ -328,6 +326,7 @@ public class Game extends Canvas implements Runnable {
                 switch(temp){
                     case 0:
                         //enter button
+                        l = new Levelselect();
                         status = STATUS.LEVEL;
                         break;
                     default:

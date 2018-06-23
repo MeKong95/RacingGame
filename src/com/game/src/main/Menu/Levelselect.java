@@ -21,7 +21,6 @@ public class Levelselect extends GameState {
         buttons.add(Level_2);
         buttons.add(Level_3);
         buttons.add(Level_4);
-        SpriteSheet ss = new SpriteSheet(Game.getSpriteSheet());
         ImageLoader loader = new ImageLoader();
         try{
             background = loader.loadImage("/racetracklight.png");

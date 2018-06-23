@@ -49,7 +49,6 @@ public class Race extends GameState{
         }
 
         StatusBar.add(new Rectangle(0, Game.HEIGHT - 100, Game.WIDTH * 1 / 4,200));
-        StatusBar.add(new Rectangle(0, Game.HEIGHT - 100, Game.WIDTH * 2 / 4,200));
         StatusBar.add(new Rectangle(0, Game.HEIGHT - 100, Game.WIDTH * 3 / 4,200));
         StatusBar.add(new Rectangle(0, Game.HEIGHT - 100, Game.WIDTH * 4 / 4,200));
     }
