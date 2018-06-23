@@ -31,18 +31,18 @@ public class Menu extends GameState{
 
         g.drawImage(background,0,0, Game.WIDTH, Game.HEIGHT,null);
 
-        Font fnt1 = new Font("Gill Sans", Font.BOLD, 50);
+        Font fnt1 = new Font("Gill Sans", Font.BOLD, 70);
         g.setFont(fnt1);
-        g.setColor(Color.ORANGE);
-        g.drawString("COOLES RENN SPEIL", Game.WIDTH/2 - 280, 300);
+        g.setColor(Color.white);
+        g.drawString("COOLES RENN SPEIL", Game.WIDTH/2 - 400, 100);
 
         Font fnt2 = new Font("arial", Font.BOLD, 30);
         g.setFont(fnt2);
-        g.drawString("Play", playButton.x+30, playButton.y+32);
+        g.drawString("Play", playButton.x+30, playButton.y+35);
         g2d.draw(playButton);
-        g.drawString("Highscore", scoreButton.x+19, scoreButton.y+32);
+        g.drawString("Highscore", scoreButton.x+19, scoreButton.y+35);
         g2d.draw(scoreButton);
-        g.drawString("Quit", quitButton.x+19, quitButton.y+32);
+        g.drawString("Quit", quitButton.x+30, quitButton.y+35);
         g2d.draw(quitButton);
     }
 }
