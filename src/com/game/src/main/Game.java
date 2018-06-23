@@ -185,23 +185,26 @@ public class Game extends Canvas implements Runnable {
 
         g.drawImage(image, 0,0, getWidth(), getHeight(), this); //
 
-        if(status == STATUS.GAME) {
-            p.render(g);
-            goalObject.render(g);
-            // durchlaufen der liste von map objects und rendern dieser
-            for(int i = 0; i < listMapObjects.size(); i++){
-                listMapObjects.get(i).render(g);
-
-
-            }
-        }else if(status == STATUS.MENU){
-            m.render(g);
-        } else if (status == STATUS.NAME) {
-            n.render(g);
-        } else if (status == STATUS.LEVEL) {
-            l.render(g);
-        } else if (status == STATUS.SCORE) {
-            h.render(g);
+        switch(status) {
+            case MENU:
+                m.render(g);
+                break;
+            case GAME:
+                p.render(g);
+                goalObject.render(g);
+                // durchlaufen der liste von map objects und rendern dieser
+                for (int i = 0; i < listMapObjects.size(); i++)
+                    listMapObjects.get(i).render(g);
+                break;
+            case NAME:
+                n.render(g);
+                break;
+            case LEVEL:
+                l.render(g);
+                break;
+            case SCORE:
+                h.render(g);
+                break;
         }
 
 
@@ -395,32 +398,7 @@ public class Game extends Canvas implements Runnable {
 
 
 
-    private static void initMap(int nr, String name){
-        //liste enthält Spieler, Ziel und Mapobjects
-        LinkedList<String[]> tempList;
-        map = new FileController("res/map_" + nr + ".crsp");
-        tempList= map.read();
-        p = new Player(
-                Double.parseDouble(tempList.get(0)[0]),
-                Double.parseDouble(tempList.get(0)[1]),
-                Double.parseDouble(tempList.get(0)[2]),
-                name);
 
-        goalObject = new GoalObject(
-                Double.parseDouble(tempList.get(1)[0]),
-                Double.parseDouble(tempList.get(1)[1]),
-                Double.parseDouble(tempList.get(1)[2]),
-                Double.parseDouble(tempList.get(1)[3]));
-
-        listMapObjects.clear();
-        for(int i = 2; i<tempList.size();i++){
-            listMapObjects.add(new MapObject(
-                    Double.parseDouble(tempList.get(i)[0]),
-                    Double.parseDouble(tempList.get(i)[1]),
-                    Double.parseDouble(tempList.get(i)[2]),
-                    Double.parseDouble(tempList.get(i)[3])));
-        }
-    }
 
     public static int getTrack(){
         return track;
