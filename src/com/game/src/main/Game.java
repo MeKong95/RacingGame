@@ -350,19 +350,14 @@ public class Game extends Canvas implements Runnable {
     public static int checkClick(GameState m, MouseEvent e){
         int i;
         LinkedList<Rectangle> buttons = m.getButtons();
-        double x = e.getX();
-        double y = e.getY();
 
         for(i = 0; i<buttons.size();i++)
-            if(
-                    x > buttons.get(i).x &&
-                    x < buttons.get(i).x + buttons.get(i).width &&
-                    y > buttons.get(i).y &&
-                    y < buttons.get(i).y + buttons.get(i).height){
+            if(buttons.get(i).intersects(e.getX(), e.getY(), 1,1))
+                //ermittelt die nummer des ersten buttons der mit den Mauskoordinaten übereinstimmt
                 break;
-            }
-            return i;
-        }
+        return i;
+    }
+
     public static int getTrack(){
         return track;
     }
