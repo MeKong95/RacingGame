@@ -89,30 +89,30 @@ public class Game extends Canvas implements Runnable {
     public void run(){
         initialize();
         //solide game clock
-        long lastTime = System.nanoTime();
+        long lastTime = System.currentTimeMillis();
         final double amountOfTicks = 60.0;  //konstante für anzahl der berechnungen pro sekunde
-        double frameTime = 1000000000 / amountOfTicks; //konstante für anzahl der nano sekunden
+        double frameTime = 1000 / amountOfTicks; //konstante für anzahl der nano sekunden
                                                        // pro berechnungszyklus
         double delta = 0;
         int updates = 0;
         int frames = 0;
         long timer = System.currentTimeMillis();
         while(running){
-            long now = System.nanoTime();           // erster zeitstempel
+            long now = System.currentTimeMillis();           // erster zeitstempel
             delta += (now - lastTime) / frameTime;  //vergrößern der zählvariable um die
                                                     // vergangene zeit und relativierung
             lastTime = now;                         // vorbereitung für den nächsten test
             if(delta >= 1){                         //wenn die zählvariable einen berechnungszyklus
                                                     // erreicht wird alles asugeführt
                 tick();
-              //  updates++;
+                //updates++;
                 delta--;                            //Zählvariable auf 0 zurücksetzen
             }
             render();
             //frames++;
             /*if(System.currentTimeMillis()-timer > 1000){
                 timer +=1000;
-                System.out.println(updates+ "Tickes," + frames + "FPS");
+                System.out.println(updates+ "Ticks," + frames + "FPS");
                 updates=0;
                 frames=0;
             }*/
