@@ -343,6 +343,13 @@ public class Game extends Canvas implements Runnable {
                 }
                 break;
             case SCORE:
+                temp = checkClick(h,e);
+                switch(temp) {
+                    case 0:
+                        //back button
+                        status = STATUS.MENU;
+                        break;
+                }
                 break;
         }
     }

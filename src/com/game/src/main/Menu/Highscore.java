@@ -16,8 +16,12 @@ public class Highscore extends GameState {
     private LinkedList<String> ll1,ll2,ll3,ll4;
     private Comparator<String> c;
 
+    private Rectangle backButton = new Rectangle(Game.WIDTH*3/4,Game.HEIGHT*3/4+50, 150, 40 );
+
 
     public Highscore(){
+
+        buttons.add(backButton);
 
         c = new Comparator<String>() {
             public int compare(String o1, String o2) {
@@ -39,10 +43,10 @@ public class Highscore extends GameState {
         ll2 = fc2.readScr();
         ll3 = fc3.readScr();
         ll4 = fc4.readScr();
-        Collections.sort(ll1,c);
-        Collections.sort(ll2,c);
-        Collections.sort(ll3,c);
-        Collections.sort(ll4,c);
+        ll1.sort(c);
+        ll2.sort(c);
+        ll3.sort(c);
+        ll4.sort(c);
         ImageLoader loader = new ImageLoader();
         try{
             background = loader.loadImage("/flag.png");
@@ -62,6 +66,8 @@ public class Highscore extends GameState {
         g.setFont(fnt1);
         g.setColor(Color.ORANGE);
         g.drawString("TOP TIMES FOR EVERY TRACK", Game.WIDTH/2 - 350, 150);
+
+
 
 
 
@@ -96,6 +102,10 @@ public class Highscore extends GameState {
             g.drawString(str[0] + "   " + str[1], Game.WIDTH * 4 / 4 - 250, 300+(i*50));
             i++;
         }
+
+        g.setFont(fnt2);
+        g.drawString("BACK", backButton.x+15, backButton.y+30);
+        g2d.draw(backButton);
 
     }
 }
