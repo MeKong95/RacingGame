@@ -136,6 +136,7 @@ public class Game extends Canvas implements Runnable {
         }
 
         m = new Menu();
+        l = new Levelselect();
         requestFocus();
         addKeyListener(new KeyInput());     //ruft unsere KeyInput klasse auf und übergibt
                                                         // ihr die instanz unseres spiels
@@ -212,7 +213,6 @@ public class Game extends Canvas implements Runnable {
                         r = new Race(track, n.getName());
                         break;
                     case KeyEvent.VK_ESCAPE:
-                        m=new Menu();
                         status = STATUS.MENU;
                         break;
                 }
@@ -220,11 +220,9 @@ public class Game extends Canvas implements Runnable {
             case NAME:
                 switch(key){
                     case KeyEvent.VK_ENTER:
-                        l = new Levelselect();
                         status = STATUS.LEVEL;
                         break;
                     case KeyEvent.VK_ESCAPE:
-                        m=new Menu();
                         status = STATUS.MENU;
                         break;
                     default:
@@ -235,7 +233,6 @@ public class Game extends Canvas implements Runnable {
             case LEVEL:
                 switch(key) {
                     case KeyEvent.VK_ESCAPE:
-                        m=new Menu();
                         status = STATUS.MENU;
                         break;
                 }
@@ -243,7 +240,6 @@ public class Game extends Canvas implements Runnable {
             case SCORE:
                 switch(key) {
                     case KeyEvent.VK_ESCAPE:
-                        m=new Menu();
                         status = STATUS.MENU;
                         break;
                 }
@@ -304,7 +300,6 @@ public class Game extends Canvas implements Runnable {
                 switch(temp){
                     case 0:
                         //enter button
-                        l = new Levelselect();
                         status = STATUS.LEVEL;
                         break;
                     default:
