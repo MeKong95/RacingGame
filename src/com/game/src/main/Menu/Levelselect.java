@@ -34,7 +34,7 @@ public class Levelselect extends GameState {
         Font fnt1 = new Font("arial", Font.BOLD, 30);
         g.setFont(fnt1);
         g.setColor(Color.BLACK);
-        g.drawString("Please choose the track of your choise", Game.WIDTH/2 - 580, 200);
+        g.drawString("Please choose the track of your choice", Game.WIDTH/2 - 580, 200);
 
         Font fnt2 = new Font("arial", Font.BOLD, 30);
         g.setFont(fnt2);

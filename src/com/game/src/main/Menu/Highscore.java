@@ -72,28 +72,28 @@ public class Highscore extends GameState {
 
         while(i < ll1.size() && i < 5) {
             str = ll1.get(i).split(";");
-            g.drawString(str[1] + "   " + str[0], Game.WIDTH * 1 / 4 - 200, 300+(i*50));
+            g.drawString(str[0] + "   " + str[1], Game.WIDTH * 1 / 4 - 250, 300+(i*50));
             i++;
         }
         i = 0;
         g.drawString("Track 2", Game.WIDTH*2/4 - 200, 250);
         while(i < ll2.size() && i < 5) {
             str = ll2.get(i).split(";");
-            g.drawString(str[1] + "   " + str[0], Game.WIDTH * 2 / 4 - 200, 300+(i*50));
+            g.drawString(str[0] + "   " + str[1], Game.WIDTH * 2 / 4 - 250, 300+(i*50));
             i++;
         }
         i = 0;
         g.drawString("Track 3", Game.WIDTH*3/4 - 200, 250);
         while(i < ll3.size() && i < 5) {
             str = ll3.get(i).split(";");
-            g.drawString(str[1] + "   " + str[0], Game.WIDTH * 3 / 4 - 200, 300+(i*50));
+            g.drawString(str[0] + "   " + str[1], Game.WIDTH * 3 / 4 - 250, 300+(i*50));
             i++;
         }
         i = 0;
         g.drawString("Track 4", Game.WIDTH*4/4 - 200, 250);
         while(i < ll4.size() && i < 5) {
             str = ll4.get(i).split(";");
-            g.drawString(str[1] + "   " + str[0], Game.WIDTH * 4 / 4 - 200, 300+(i*50));
+            g.drawString(str[0] + "   " + str[1], Game.WIDTH * 4 / 4 - 250, 300+(i*50));
             i++;
         }
 

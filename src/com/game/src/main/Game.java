@@ -29,6 +29,7 @@ public class Game extends Canvas implements Runnable {
     private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
     private static BufferedImage spriteSheet = null;
 
+    public static JFrame frame;
     private static Menu m;
     private static Name n;
     private static Levelselect l;
@@ -51,7 +52,7 @@ public class Game extends Canvas implements Runnable {
         instance.setPreferredSize(new Dimension(WIDTH, HEIGHT));
 
         //erstellen und konfigurieren des fensters
-        JFrame frame = new JFrame(instance.TITLE);
+        frame = new JFrame(instance.TITLE);
         frame.add(instance);
         frame.pack(); //?
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
