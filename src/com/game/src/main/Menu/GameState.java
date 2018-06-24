@@ -7,7 +7,7 @@ import java.util.LinkedList;
 abstract public class GameState {
 
     protected LinkedList<Rectangle> buttons = new LinkedList<Rectangle>();
-    protected static BufferedImage background = null;
+    protected BufferedImage background = null;
 
 
     public abstract void render(Graphics g);
