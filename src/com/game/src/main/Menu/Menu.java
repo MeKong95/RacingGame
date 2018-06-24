@@ -4,7 +4,6 @@ import com.game.src.main.Game;
 import com.game.src.main.Input.ImageLoader;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 
@@ -36,7 +35,7 @@ public class Menu extends GameState{
         g.setColor(Color.white);
         g.drawString("COOLES RENN SPEIL", Game.WIDTH/2 - 400, 100);
 
-        Font fnt2 = new Font("arial", Font.BOLD, 30);
+        Font fnt2 = new Font("Gill Sans", Font.BOLD, 30);
         g.setFont(fnt2);
         g.drawString("Play", playButton.x+30, playButton.y+35);
         g2d.draw(playButton);

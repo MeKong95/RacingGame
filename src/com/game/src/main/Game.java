@@ -1,15 +1,11 @@
 package com.game.src.main;
 
-import com.game.src.main.Input.FileController;
 import com.game.src.main.Input.ImageLoader;
 import com.game.src.main.Input.KeyInput;
 import com.game.src.main.Input.MouseInput;
 import com.game.src.main.Menu.*;
 import com.game.src.main.Menu.Menu;
 import com.game.src.main.Menu.GameState;
-import com.game.src.main.Objects.GoalObject;
-import com.game.src.main.Objects.MapObject;
-import com.game.src.main.Objects.Player;
 
 import java.awt.*;
 import javax.swing.*;
@@ -25,7 +21,6 @@ public class Game extends Canvas implements Runnable {
     public static final int SCALE = 4;
     public static final int WIDTH = 320*SCALE;
     public static final int HEIGHT = WIDTH / 16 *9;
-
     public final String TITLE = "Marco und Jannis Game";
 
     private boolean running = false;
@@ -39,17 +34,14 @@ public class Game extends Canvas implements Runnable {
     private static Levelselect l;
     private static Highscore h;
     private static Race r;
-
     private static int track;
-
     private enum STATUS{
         MENU,
         GAME,
         NAME,
         LEVEL,
         SCORE
-    };
-
+    }
     private static STATUS status = STATUS.MENU; //Spiel startet im status MENU
 
     public static void main(String args[]){
@@ -65,7 +57,6 @@ public class Game extends Canvas implements Runnable {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
         frame.setVisible(true);
-
         instance.start();
     }
 
@@ -91,7 +82,6 @@ public class Game extends Canvas implements Runnable {
         }catch(InterruptedException e){
             e.printStackTrace();
         }
-
         System.exit(1);
     }
 
@@ -137,24 +127,18 @@ public class Game extends Canvas implements Runnable {
     }
 
     public void initialize(){
-
-        ImageLoader loader = new ImageLoader();         // ruft die imageloader klasse auf um
-                                                        // unser sprite sheet zu laden
-        try{    // java fordert error handling, weil beim laden von dateien fehler auftreten können
+        ImageLoader loader = new ImageLoader();         // immageloader fuer spritesheet
+        try{    // error-handling, beim laden koennen fehler auftreten
             spriteSheet = loader.loadImage("/spritesheet.png");
         }catch(IOException e){
             e.printStackTrace();
         }
 
         m = new Menu();
-
         requestFocus();
-
         addKeyListener(new KeyInput());     //ruft unsere KeyInput klasse auf und übergibt
                                                         // ihr die instanz unseres spiels
         addMouseListener(new MouseInput());             //ruft unsere MouseInput klasse auf
-
-
     }
 
     private void tick(){
@@ -172,7 +156,6 @@ public class Game extends Canvas implements Runnable {
         }
 
         Graphics g = strategy.getDrawGraphics();
-        //////////////////
 
         g.drawImage(image, 0,0, getWidth(), getHeight(), this); //
 
@@ -194,20 +177,13 @@ public class Game extends Canvas implements Runnable {
                 break;
         }
 
-
-
-
-        ///////////////////
         g.dispose();
         strategy.show();
-
-
     }
 
     // diese funktion wird durch die KeyInput klasse beim drücken einer taste aufgerufen
     public static void keyPressed(KeyEvent e){
         int key = e.getKeyCode();
-
         switch(status){
             case MENU:
                 switch(key) {
@@ -368,8 +344,6 @@ public class Game extends Canvas implements Runnable {
             case SCORE:
                 break;
         }
-
-
     }
 
     public static int checkClick(GameState m, MouseEvent e){
@@ -388,19 +362,11 @@ public class Game extends Canvas implements Runnable {
             }
             return i;
         }
-
-
-
-
-
     public static int getTrack(){
         return track;
     }
-
-
     public static BufferedImage getSpriteSheet(){
         return spriteSheet;
     }
-
 }
 

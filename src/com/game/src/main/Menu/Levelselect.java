@@ -2,10 +2,7 @@ package com.game.src.main.Menu;
 
 import com.game.src.main.Game;
 import com.game.src.main.Input.ImageLoader;
-import com.game.src.main.SpriteSheet;
-
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class Levelselect extends GameState {
@@ -37,7 +34,7 @@ public class Levelselect extends GameState {
         Font fnt1 = new Font("arial", Font.BOLD, 30);
         g.setFont(fnt1);
         g.setColor(Color.BLACK);
-        g.drawString("Please choose the track of your choise (Navigate with Numbers on Keyboard)", Game.WIDTH/2 - 580, 200);
+        g.drawString("Please choose the track of your choise", Game.WIDTH/2 - 580, 200);
 
         Font fnt2 = new Font("arial", Font.BOLD, 30);
         g.setFont(fnt2);

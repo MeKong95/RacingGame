@@ -2,23 +2,15 @@ package com.game.src.main.Menu;
 
 import com.game.src.main.Game;
 import com.game.src.main.Input.ImageLoader;
-import com.game.src.main.Input.ImageLoader;
-import com.game.src.main.Input.KeyInput;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 
-import static com.sun.java.accessibility.util.AWTEventMonitor.addKeyListener;
-
-//https://stackoverflow.com/questions/37977143/get-an-input-from-the-user-using-graphics
 public class Name extends GameState{
 
     private Rectangle playButton = new Rectangle(Game.WIDTH /2 -160, 600, 240,50);
     private Rectangle nameField = new Rectangle(Game.WIDTH /2 -100,200,250,30);
-
     private String name = "";
 
     public Name(){
@@ -32,7 +24,6 @@ public class Name extends GameState{
     }
 
     public void addChar(KeyEvent e){
-        System.out.println(name.length());
         if (e.getKeyCode()>=65&&e.getKeyCode()<=90){
             name+=e.getKeyChar();
         }//nur zeichen a bis z
@@ -40,28 +31,29 @@ public class Name extends GameState{
             if (name.length()>0){
                 name = name.substring(0, name.length() - 1);
             }
+            else{}
         }//fuer backspace/loeschen
+        else {}
     }
 
     public String getName(){
         if(name.length()==0){
             name="Anonym";
         }//ausnahme bei keiner eingabe ODER wieder geloeschter eingabe
-        String s = name.substring(0,1).toUpperCase();
-        name = s + name.substring(1);//Sorgt dafuer das unabhängig der Eingabe der erste Bchstb groß ist
         return name;
     }
-
-
 
     public void render(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
         g.drawImage(background,0,0,Game.WIDTH,Game.HEIGHT,null);
-
-        Font fnt1 = new Font("arial", Font.BOLD, 60);
+        if(name.length()>0){
+            String s = name.substring(0,1).toUpperCase();
+            name = s + name.substring(1);//Sorgt dafuer das unabhängig der Eingabe der erste Bchstb groß ist
+        }
+        Font fnt1 = new Font("arial", Font.BOLD, 55);
         g.setFont(fnt1);
         g.setColor(Color.BLACK);
-        g.drawString(name.toUpperCase(), nameField.x, nameField.y+nameField.height);
+        g.drawString(name, nameField.x, nameField.y+nameField.height);
 
         Font fnt2 = new Font("arial", Font.BOLD, 30);
         g.setFont(fnt2);
