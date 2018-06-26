@@ -36,6 +36,8 @@ public class Game extends Canvas implements Runnable {
     private static Highscore h;
     private static Race r;
     private static int track;
+    private static int allUpdates; //schöneren variablennamen finden
+
     private enum STATUS{
         MENU,
         GAME,
@@ -95,6 +97,7 @@ public class Game extends Canvas implements Runnable {
                                                        // pro berechnungszyklus
         double delta = 0;
         int updates = 0;
+        allUpdates = 0;
         int frames = 0;
         long timer = System.currentTimeMillis();
         while(running){
@@ -105,17 +108,18 @@ public class Game extends Canvas implements Runnable {
             if(delta >= 1){                         //wenn die zählvariable einen berechnungszyklus
                                                     // erreicht wird alles asugeführt
                 tick();
-                //updates++;
+                updates++;
+                allUpdates++;
                 delta--;                            //Zählvariable auf 0 zurücksetzen
             }
             render();
-            //frames++;
-            /*if(System.currentTimeMillis()-timer > 1000){
+            frames++;
+            if(System.currentTimeMillis()-timer > 1000){
                 timer +=1000;
                 System.out.println(updates+ "Ticks," + frames + "FPS");
                 updates=0;
                 frames=0;
-            }*/
+            }
             //Sleep Befehl
             /*try{
                 Thread.sleep(10);
@@ -363,6 +367,7 @@ public class Game extends Canvas implements Runnable {
     public static int getTrack(){
         return track;
     }
+    public static int getAllUpdates(){return allUpdates;}
     public static BufferedImage getSpriteSheet(){
         return spriteSheet;
     }
