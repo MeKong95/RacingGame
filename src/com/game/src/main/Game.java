@@ -110,7 +110,7 @@ public class Game extends Canvas implements Runnable {
                 tick();
                 updates++;
                 allUpdates++;
-                delta--;                            //Zählvariable auf 0 zurücksetzen
+                delta = 0;                            //Zählvariable auf 0 zurücksetzen
             }
             render();
             frames++;
