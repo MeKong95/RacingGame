@@ -64,13 +64,10 @@ public class Race extends GameState{
             g2d.draw(r);
         }
 
-
-
         p.render(g);
         goalObject.render(g);
         // durchlaufen der liste von map objects und rendern dieser
-        for (int i = 0; i < listMapObjects.size(); i++)
-            listMapObjects.get(i).render(g);
+        for (MapObject listMapObject : listMapObjects) listMapObject.render(g);
 
     }
 

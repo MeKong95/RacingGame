@@ -17,6 +17,7 @@ public class Menu extends GameState{
         buttons.add(playButton);
         buttons.add(scoreButton);
         buttons.add(quitButton);
+
         ImageLoader loader = new ImageLoader();
         try{
             background = loader.loadImage("/racetracksharp.png");
