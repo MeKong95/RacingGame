@@ -25,7 +25,13 @@ public class MapObject {
 
         SpriteSheet ss = new SpriteSheet(Game.getSpriteSheet());
 
-        mapobj = ss.grabImage(1, 2, 32, 32);
+        if(xlen == ylen)
+            mapobj = ss.grabImage(8, 1, 32, 32);
+        else if(xlen > ylen)
+            mapobj = ss.grabImage(1, 8, 32*8, 32);
+        else if(xlen < ylen)
+            mapobj = ss.grabImage(8, 1, 32, 32*8);
+
     }
 
     //für mögliche erweiterungen

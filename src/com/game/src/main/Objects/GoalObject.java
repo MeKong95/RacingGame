@@ -25,7 +25,7 @@ public class GoalObject {
 
         SpriteSheet ss = new SpriteSheet(Game.getSpriteSheet());
 
-        goalobj = ss.grabImage(2, 2, 32, 32);
+        goalobj = ss.grabImage(4, 1, 32, 32);
     }
 
     //für mögliche erweiterungen

@@ -30,14 +30,14 @@ public class Player {
         this.angle = winkel;
         this.name = name;
         SpriteSheet ss = new SpriteSheet(Game.getSpriteSheet());
-        s0 = ss.grabImage(1, 1, 32, 32);
-        s1 = ss.grabImage(2, 1, 32, 32);
-        s2 = ss.grabImage(3, 1, 32, 32);
-        s3 = ss.grabImage(4, 1, 32, 32);
-        s4 = ss.grabImage(5, 1, 32, 32);
-        s5 = ss.grabImage(6, 1, 32, 32);
-        s6 = ss.grabImage(7, 1, 32, 32);
-        s7 = ss.grabImage(8, 1, 32, 32);
+        s0 = ss.grabImage(2, 1, 32, 32);
+        s1 = ss.grabImage(3, 1, 32, 32);
+        s2 = ss.grabImage(3, 2, 32, 32);
+        s3 = ss.grabImage(3, 3, 32, 32);
+        s4 = ss.grabImage(2, 3, 32, 32);
+        s5 = ss.grabImage(1, 3, 32, 32);
+        s6 = ss.grabImage(1, 2, 32, 32);
+        s7 = ss.grabImage(1, 1, 32, 32);
         timer = new Timer(this);
     }
 
