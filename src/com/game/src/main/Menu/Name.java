@@ -24,16 +24,13 @@ public class Name extends GameState{
     }
 
     public void addChar(KeyEvent e){
-        if (e.getKeyCode()>=65&&e.getKeyCode()<=90){
+        if (e.getKeyCode()>=65&&e.getKeyCode()<=90 && name.length() < 8){
             name+=e.getKeyChar();
         }//nur zeichen a bis z
-        if (e.getKeyCode()==8){
-            if (name.length()>0){
+        if (e.getKeyCode()==8 && name.length()>0){
                 name = name.substring(0, name.length() - 1);
-            }
-            else{}
         }//fuer backspace/loeschen
-        else {}
+
     }
 
     public String getName(){
