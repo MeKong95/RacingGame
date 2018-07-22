@@ -10,7 +10,6 @@ import java.io.IOException;
 public class Name extends GameState{
 
     private Button playButton = new Button(Game.WIDTH /2 -160, 600, 240,50, "Play");
-    private Button nameField = new Button(Game.WIDTH /2 -100,200,250,30, "?");
     private String name = "";
 
     public Name(){
@@ -49,7 +48,7 @@ public class Name extends GameState{
         Font fnt1 = new Font("arial", Font.BOLD, 55);
         g.setFont(fnt1);
         g.setColor(Color.BLACK);
-        g.drawString(name, nameField.x, nameField.y+nameField.height);
+        g.drawString(name, Game.WIDTH /2 -100, 200+30);
 
         for (Button b: buttons
                 ) {
