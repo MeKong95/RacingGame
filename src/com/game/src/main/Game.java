@@ -6,7 +6,6 @@ import com.game.src.main.Input.MouseInput;
 import com.game.src.main.Menu.*;
 import com.game.src.main.Menu.Button;
 import com.game.src.main.Menu.Menu;
-import com.game.src.main.Menu.GameState;
 
 import java.awt.*;
 import javax.swing.*;

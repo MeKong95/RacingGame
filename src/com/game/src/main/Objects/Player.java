@@ -18,7 +18,7 @@ public class Player {
     private double accX = 0;
     private double accY = 0;
     private int size = 20;  //groeße des sprites , wird fuer kollision benoetigt
-    private double angle = 0;
+    private double angle;
 
     private BufferedImage s0, s1, s2,s3,s4,s5,s6,s7; // variable für sprites des spielers
     private Timer timer;
@@ -112,8 +112,8 @@ public class Player {
 
         // bewegung in x richtung, falls es eine kollision gibt, zurueck bewegen
         x+=velX;
-        for(int i = 0; i < list.size(); i++) {
-            if (Collision((MapObject) list.get(i))) {
+        for (Object aList : list) {
+            if (Collision((MapObject) aList)) {
                 x -= velX;
                 break;
             }

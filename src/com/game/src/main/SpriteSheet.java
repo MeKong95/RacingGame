@@ -14,8 +14,7 @@ public class SpriteSheet {
     public BufferedImage grabImage(int collumn, int row, int width, int height){
         //funktion zum extrahieren eines sprites aus unserem spritesheet
 
-        BufferedImage img = image.getSubimage((collumn * 32) - 32, (row * 32) - 32, width, height);
-        return img;
+        return image.getSubimage((collumn * 32) - 32, (row * 32) - 32, width, height);
     }
 
 }
