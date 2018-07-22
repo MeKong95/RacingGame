@@ -131,7 +131,7 @@ public class Game extends Canvas implements Runnable {
         stop();
     }
 
-    public void initialize(){
+    private void initialize(){
         ImageLoader loader = new ImageLoader();         // immageloader fuer spritesheet
         try{    // error-handling, beim laden koennen fehler auftreten
             spriteSheet = loader.loadImage("/spritesheet.png");
@@ -145,6 +145,7 @@ public class Game extends Canvas implements Runnable {
         addKeyListener(new KeyInput());     //ruft unsere KeyInput klasse auf und übergibt
                                                         // ihr die instanz unseres spiels
         addMouseListener(new MouseInput());             //ruft unsere MouseInput klasse auf
+        addMouseMotionListener(new MouseInput());
     }
 
     private void tick(){
@@ -279,7 +280,7 @@ public class Game extends Canvas implements Runnable {
         int temp;
         switch(status){
             case MENU:
-                temp = checkClick(m,e);
+                temp = checkButtons(m,e);
                 switch(temp){
                     case 0:
                         //play button
@@ -300,7 +301,7 @@ public class Game extends Canvas implements Runnable {
                     }
                     break;
             case NAME:
-                temp = checkClick(n,e);
+                temp = checkButtons(n,e);
                 switch(temp){
                     case 0:
                         //enter button
@@ -311,7 +312,7 @@ public class Game extends Canvas implements Runnable {
                 }
                 break;
             case LEVEL:
-                temp = checkClick(l,e);
+                temp = checkButtons(l,e);
                 switch(temp){
                     case 0:
                         //track 1 button
@@ -342,7 +343,7 @@ public class Game extends Canvas implements Runnable {
                 }
                 break;
             case SCORE:
-                temp = checkClick(h,e);
+                temp = checkButtons(h,e);
                 switch(temp) {
                     case 0:
                         //back button
@@ -353,7 +354,11 @@ public class Game extends Canvas implements Runnable {
         }
     }
 
-    public static int checkClick(GameState m, MouseEvent e){
+    public static void mouseMoved(MouseEvent e) {
+
+    }
+
+    public static int checkButtons(GameState m, MouseEvent e){
         int i;
         LinkedList<Rectangle> buttons = m.getButtons();
 

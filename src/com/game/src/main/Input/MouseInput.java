@@ -15,4 +15,6 @@ public class MouseInput extends MouseAdapter {
         Game.mousePressed(e);
     }
 
+    public void mouseMoved(MouseEvent e){ Game.mouseMoved(e);}
+
 }
