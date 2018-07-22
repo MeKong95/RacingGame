@@ -120,8 +120,8 @@ public class Player {
         }
         // bewegung in y richtung, falls es eine kollision gibt, zurueck bewegen
         y+=velY;
-        for(int i = 0; i < list.size(); i++){
-            if(Collision((MapObject) list.get(i))) {
+        for (Object aList : list) {
+            if (Collision((MapObject) aList)) {
                 y -= velY;
                 break;
             }
