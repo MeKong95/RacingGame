@@ -26,8 +26,11 @@ public class Name extends GameState{
     public void addChar(KeyEvent e){
         if (e.getKeyCode()>=65&&e.getKeyCode()<=90 && name.length() < 8){
             name+=e.getKeyChar();
+            if(name.length()==1)
+                name = name.toUpperCase();
+                //Sorgt dafuer das unabhängig der Eingabe der erste Bchstb groß ist
         }//nur zeichen a bis z
-        if (e.getKeyCode()==8 && name.length()>0){
+        else if (e.getKeyCode()==8 && name.length()>0){
                 name = name.substring(0, name.length() - 1);
         }//fuer backspace/loeschen
 
@@ -41,12 +44,8 @@ public class Name extends GameState{
     }
 
     public void render(Graphics g){
-        Graphics2D g2d = (Graphics2D) g;
         g.drawImage(background,0,0,Game.WIDTH,Game.HEIGHT,null);
-        if(name.length()>0){
-            String s = name.substring(0,1).toUpperCase();
-            name = s + name.substring(1);//Sorgt dafuer das unabhängig der Eingabe der erste Bchstb groß ist
-        }
+
         Font fnt1 = new Font("arial", Font.BOLD, 55);
         g.setFont(fnt1);
         g.setColor(Color.BLACK);
