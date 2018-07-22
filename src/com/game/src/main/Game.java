@@ -4,6 +4,7 @@ import com.game.src.main.Input.ImageLoader;
 import com.game.src.main.Input.KeyInput;
 import com.game.src.main.Input.MouseInput;
 import com.game.src.main.Menu.*;
+import com.game.src.main.Menu.Button;
 import com.game.src.main.Menu.Menu;
 import com.game.src.main.Menu.GameState;
 
@@ -355,12 +356,59 @@ public class Game extends Canvas implements Runnable {
     }
 
     public static void mouseMoved(MouseEvent e) {
-
+        // frequenz begrenzen zur optimierung?
+        int temp;
+        switch(status){
+            case MENU:
+                temp = checkButtons(m,e);
+                //play button
+                //score button
+                //exit button
+                if(temp < m.getButtons().size())
+                    m.getButtons().get(temp).startHovering();
+                break;
+            case NAME:
+                temp = checkButtons(n,e);
+                switch(temp){
+                    case 0:
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case LEVEL:
+                temp = checkButtons(l,e);
+                switch(temp){
+                    case 0:
+                        //track 1 button
+                        break;
+                    case 1:
+                        //track 2 button
+                        break;
+                    case 2:
+                        //track 3 button
+                        break;
+                    case 3:
+                        //track 4 button
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case SCORE:
+                temp = checkButtons(h,e);
+                switch(temp) {
+                    case 0:
+                        //back button
+                        break;
+                }
+                break;
+        }
     }
 
     public static int checkButtons(GameState m, MouseEvent e){
         int i;
-        LinkedList<Rectangle> buttons = m.getButtons();
+        LinkedList<Button> buttons = m.getButtons();
 
         for(i = 0; i<buttons.size();i++)
             if(buttons.get(i).intersects(e.getX(), e.getY(), 1,1))

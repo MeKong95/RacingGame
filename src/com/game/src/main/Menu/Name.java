@@ -9,8 +9,8 @@ import java.io.IOException;
 
 public class Name extends GameState{
 
-    private Rectangle playButton = new Rectangle(Game.WIDTH /2 -160, 600, 240,50);
-    private Rectangle nameField = new Rectangle(Game.WIDTH /2 -100,200,250,30);
+    private Button playButton = new Button(Game.WIDTH /2 -160, 600, 240,50, "Play");
+    private Button nameField = new Button(Game.WIDTH /2 -100,200,250,30, "?");
     private String name = "";
 
     public Name(){
@@ -55,9 +55,14 @@ public class Name extends GameState{
         g.setColor(Color.BLACK);
         g.drawString(name, nameField.x, nameField.y+nameField.height);
 
-        Font fnt2 = new Font("arial", Font.BOLD, 30);
+        for (Button b: buttons
+                ) {
+            b.render(g);
+        }
+
+        /*Font fnt2 = new Font("arial", Font.BOLD, 30);
         g.setFont(fnt2);
         g.drawString("CONTINUE", playButton.x+30, playButton.y+32);
-        g2d.draw(playButton);
+        g2d.draw(playButton);*/
     }
 }

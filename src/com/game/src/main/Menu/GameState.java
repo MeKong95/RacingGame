@@ -6,14 +6,14 @@ import java.util.LinkedList;
 
 abstract public class GameState {
 
-    protected LinkedList<Rectangle> buttons = new LinkedList<Rectangle>();
+    protected LinkedList<Button> buttons = new LinkedList<Button>();
     protected BufferedImage background = null;
 
 
     public abstract void render(Graphics g);
 
 
-    public LinkedList<Rectangle> getButtons(){
+    public LinkedList<Button> getButtons(){
         return buttons;
     }
 }

@@ -16,7 +16,7 @@ public class Highscore extends GameState {
     private LinkedList<String> ll1,ll2,ll3,ll4;
     private Comparator<String> c;
 
-    private Rectangle backButton = new Rectangle(Game.WIDTH*3/4,Game.HEIGHT*3/4+50, 150, 40 );
+    private Button backButton = new Button(Game.WIDTH*3/4,Game.HEIGHT*3/4+50, 150, 40, "Back");
 
 
     public Highscore(){
@@ -103,9 +103,13 @@ public class Highscore extends GameState {
             i++;
         }
 
-        g.setFont(fnt2);
+        for (Button b: buttons
+                ) {
+            b.render(g);
+        }
+        /*g.setFont(fnt2);
         g.drawString("BACK", backButton.x+15, backButton.y+30);
-        g2d.draw(backButton);
+        g2d.draw(backButton);*/
 
     }
 }
