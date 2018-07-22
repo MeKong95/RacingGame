@@ -366,42 +366,48 @@ public class Game extends Canvas implements Runnable {
                 //exit button
                 if(temp < m.getButtons().size())
                     m.getButtons().get(temp).startHovering();
+                else
+                    for (Button b: m.getButtons()
+                         ) {
+                        b.stopHovering();
+                    }
                 break;
             case NAME:
                 temp = checkButtons(n,e);
-                switch(temp){
-                    case 0:
-                        break;
-                    default:
-                        break;
-                }
+                if(temp < n.getButtons().size())
+                    n.getButtons().get(temp).startHovering();
+                else
+                    for (Button b: n.getButtons()
+                            ) {
+                        b.stopHovering();
+                    }
                 break;
+
             case LEVEL:
                 temp = checkButtons(l,e);
-                switch(temp){
-                    case 0:
-                        //track 1 button
-                        break;
-                    case 1:
-                        //track 2 button
-                        break;
-                    case 2:
-                        //track 3 button
-                        break;
-                    case 3:
-                        //track 4 button
-                        break;
-                    default:
-                        break;
-                }
+                    //track 1 button
+                    //track 2 button
+                    //track 3 button
+                    //track 4 button
+
+                if(temp < l.getButtons().size())
+                    l.getButtons().get(temp).startHovering();
+                else
+                    for (Button b: l.getButtons()
+                            ) {
+                        b.stopHovering();
+                    }
                 break;
+
             case SCORE:
                 temp = checkButtons(h,e);
-                switch(temp) {
-                    case 0:
-                        //back button
-                        break;
-                }
+                if(temp < h.getButtons().size())
+                    h.getButtons().get(temp).startHovering();
+                else
+                    for (Button b: h.getButtons()
+                            ) {
+                        b.stopHovering();
+                    }
                 break;
         }
     }
