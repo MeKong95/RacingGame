@@ -71,6 +71,8 @@ public class Player {
         return name;
     }
 
+    public Timer getTimer(){ return timer;}
+
     public void setAccX(double accX){
         this.accX = accX;
     }
