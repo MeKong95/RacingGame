@@ -9,13 +9,12 @@ import java.io.IOException;
 
 public class Menu extends GameState{
 
-    private Button playButton = new Button(Game.WIDTH /2 -90, 400, 180,50, "Play");
-    private Button scoreButton = new Button(Game.WIDTH /2 -90, 500, 280,50, "Highscores");
-    private Button quitButton = new Button(Game.WIDTH /2 -90, 600, 180,50, "Quit");
-
     public Menu(){
+        Button playButton = new Button(Game.WIDTH / 2 - 90, 400, 180, 50, "Play");
         buttons.add(playButton);
+        Button scoreButton = new Button(Game.WIDTH / 2 - 90, 500, 280, 50, "Highscores");
         buttons.add(scoreButton);
+        Button quitButton = new Button(Game.WIDTH / 2 - 90, 600, 180, 50, "Quit");
         buttons.add(quitButton);
 
         ImageLoader loader = new ImageLoader();

@@ -11,18 +11,15 @@ import java.util.LinkedList;
 
 public class Highscore extends GameState {
 
-    private FileController fc1,fc2,fc3,fc4;
     private LinkedList<String> ll1,ll2,ll3,ll4;
-    private Comparator<String> c;
-
-    private Button backButton = new Button(Game.WIDTH*3/4,Game.HEIGHT*3/4+50, 150, 40, "Back");
 
 
     public Highscore(){
 
+        Button backButton = new Button(Game.WIDTH * 3 / 4, Game.HEIGHT * 3 / 4 + 50, 150, 40, "Back");
         buttons.add(backButton);
 
-        c = new Comparator<String>() {
+        Comparator<String> c = new Comparator<String>() {
             public int compare(String o1, String o2) {
                 return extractInt(o1) - extractInt(o2);
             }
@@ -34,10 +31,10 @@ public class Highscore extends GameState {
             }
         };
 
-        fc1 = new FileController("res/highscores_"  +"1"+ ".crsp");
-        fc2 = new FileController("res/highscores_"  +"2"+ ".crsp");
-        fc3 = new FileController("res/highscores_"  +"3"+ ".crsp");
-        fc4 = new FileController("res/highscores_"  +"4"+ ".crsp");
+        FileController fc1 = new FileController("res/highscores_" + "1" + ".crsp");
+        FileController fc2 = new FileController("res/highscores_" + "2" + ".crsp");
+        FileController fc3 = new FileController("res/highscores_" + "3" + ".crsp");
+        FileController fc4 = new FileController("res/highscores_" + "4" + ".crsp");
         ll1 = fc1.readScr();
         ll2 = fc2.readScr();
         ll3 = fc3.readScr();

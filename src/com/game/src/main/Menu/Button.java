@@ -10,7 +10,7 @@ public class Button extends Rectangle {
     private Color color = new Color(150,150,150);
     private Stroke stroke = new BasicStroke(5);
 
-    public Button(int x, int y, int width, int height, String text){
+    Button(int x, int y, int width, int height, String text){
         this.x = x;
         this.y = y;
         this.width = width;
@@ -34,7 +34,7 @@ public class Button extends Rectangle {
     public void startHovering(){
         fnt = new Font("arial", Font.BOLD, 30);
         color = new Color(50,50,80);
-        stroke = new BasicStroke(8);
+        stroke = new BasicStroke(10);
         //aussehen ändern
     }
 

@@ -7,17 +7,16 @@ import java.io.IOException;
 
 public class Levelselect extends GameState {
 
-    private Button Level_1 = new Button(Game.WIDTH /2 -90, 250, 180,50, "Track #1");
-    private Button Level_2 = new Button(Game.WIDTH /2 -90, 350, 180,50, "Track #2");
-    private Button Level_3 = new Button(Game.WIDTH /2 -90, 450, 180,50, "Track #3");
-    private Button Level_4 = new Button(Game.WIDTH /2 -90, 550, 180,50, "Track #4");
-
 
     public Levelselect(){
-        buttons.add(Level_1);
-        buttons.add(Level_2);
-        buttons.add(Level_3);
-        buttons.add(Level_4);
+        Button level_1 = new Button(Game.WIDTH / 2 - 90, 250, 180, 50, "Track #1");
+        buttons.add(level_1);
+        Button level_2 = new Button(Game.WIDTH / 2 - 90, 350, 180, 50, "Track #2");
+        buttons.add(level_2);
+        Button level_3 = new Button(Game.WIDTH / 2 - 90, 450, 180, 50, "Track #3");
+        buttons.add(level_3);
+        Button level_4 = new Button(Game.WIDTH / 2 - 90, 550, 180, 50, "Track #4");
+        buttons.add(level_4);
         ImageLoader loader = new ImageLoader();
         try{
             background = loader.loadImage("/racetracklight.png");
