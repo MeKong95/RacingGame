@@ -81,10 +81,12 @@ public class Player {
     }
 
     private boolean Collision(MapObject m){ //Entscheidet ob der Spieler mit einer Wand kollidiert
-        return
-                (x < m.getXpos()+m.getXlen()) && (x > m.getXpos()-size) //X-Seiten checken
-                &&
-                (y < m.getYpos()+m.getYlen()) && (y > m.getYpos()-size);//Y-Seiten checken
+        return !(
+                x > m.getXpos() + m.getXlen() ||
+                x + size < m.getXpos() ||
+                y > m.getYpos() + m.getYlen() ||
+                y + size < m.getYpos());
+                //es ist wesentlich effizienter zu testen ob sie nicht kollidieren und dann zu negieren
     }
 
     public void tick(LinkedList list) {
