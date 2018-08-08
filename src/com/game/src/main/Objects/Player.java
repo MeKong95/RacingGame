@@ -17,7 +17,7 @@ public class Player {
     private double velA = 0;
     private double accX = 0;
     private double accY = 0;
-    private int size = 20;  //groeße des sprites , wird fuer kollision benoetigt
+    private int size = 32;  //groeße des sprites , wird fuer kollision benoetigt
     private double angle;
 
     private BufferedImage s0, s1, s2,s3,s4,s5,s6,s7; // variable für sprites des spielers
@@ -90,12 +90,17 @@ public class Player {
     }
 
     public void tick(LinkedList list) {
+        // startet timer bei der ersten bewegung
         if(velX!=0 || velY!=0){
             timer.start();
         }
 
+        // auto verliert langsam geschwindigkeit
         velX*=0.97;
         velY*=0.97;
+
+        // verallgemeinerung der geschwindigkeiten nahe null
+        // bewirkt schönere drehung vom auto
         if(velX < 0.01 && velX > -0.01)
             velX = 0;
         if(velY < 0.01 && velY > -0.01)
