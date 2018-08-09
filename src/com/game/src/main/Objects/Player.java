@@ -150,11 +150,11 @@ public class Player {
 
     public void tick(GoalObject g){
         // test zur kollision mit dem ziel
-        if(     x+size >= g.getXpos() &&
-                x <= g.getXpos() + g.getXlen() &&
-                y+size >= g.getYpos() &&
-                y <= g.getYpos() + g.getYlen()
-                )
+        if(!(
+                x > g.getXpos() + g.getXlen() ||
+                x + size < g.getXpos() ||
+                y > g.getYpos() + g.getYlen() ||
+                y + size < g.getYpos()))
             timer.stop();
     }
 

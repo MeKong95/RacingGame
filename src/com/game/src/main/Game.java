@@ -110,10 +110,11 @@ public class Game extends Canvas implements Runnable {
                 tick();
                 updates++;
                 allUpdates++;
-                delta = 0;                            //Zählvariable auf 0 zurücksetzen
+                delta = 0;                          //Zählvariable auf 0 zurücksetzen
+                render();
+                frames++;
             }
-            render();
-            frames++;
+
             if(System.currentTimeMillis()-timer > 1000){
                 timer +=1000;
                 System.out.println(updates+ "Ticks," + frames + "FPS");
