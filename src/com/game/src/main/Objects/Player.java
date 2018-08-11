@@ -1,11 +1,15 @@
 package com.game.src.main.Objects;
 
 import com.game.src.main.Game;
+import com.game.src.main.QuadTree;
 import com.game.src.main.SpriteSheet;
 import com.game.src.main.Timer;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.LinkedList;
+import java.util.Map;
+
+import com.game.src.main.Menu.Race;
 
 public class Player {
     private String name;
@@ -19,6 +23,7 @@ public class Player {
     private double accY = 0;
     private int size = 32;  //groeße des sprites , wird fuer kollision benoetigt
     private double angle;
+    private LinkedList<MapObject> list = new LinkedList<MapObject>();
 
     private BufferedImage s0, s1, s2,s3,s4,s5,s6,s7; // variable für sprites des spielers
     private Timer timer;
@@ -89,7 +94,7 @@ public class Player {
                 //es ist wesentlich effizienter zu testen ob sie nicht kollidieren und dann zu negieren
     }
 
-    public void tick(LinkedList list) {
+    public void tick(QuadTree qtree) {
         // startet timer bei der ersten bewegung
         if(velX!=0 || velY!=0){
             timer.start();
@@ -121,6 +126,7 @@ public class Player {
 
         // bewegung in x richtung, falls es eine kollision gibt, zurueck bewegen
         x+=velX;
+        list = qtree.retrieve((int)x,(int)y,size);
         for (Object aList : list) {
             if (Collision((MapObject) aList)) {
                 x -= velX;
@@ -129,6 +135,7 @@ public class Player {
         }
         // bewegung in y richtung, falls es eine kollision gibt, zurueck bewegen
         y+=velY;
+        list = qtree.retrieve((int)x,(int)y,size);
         for (Object aList : list) {
             if (Collision((MapObject) aList)) {
                 y -= velY;

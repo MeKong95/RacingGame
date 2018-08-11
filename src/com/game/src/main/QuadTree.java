@@ -22,15 +22,23 @@ public class QuadTree {
     }
 
     public LinkedList<MapObject> retrieve(int x, int y, int size){
+
         //sucht alle potenziell kollidierenden rechtecke
         if(intersects(x,y,size)){
-            containedObj.addAll(lu.retrieve(x,y,size));
-            containedObj.addAll(ld.retrieve(x,y,size));
-            containedObj.addAll(ru.retrieve(x,y,size));
-            containedObj.addAll(rd.retrieve(x,y,size));
+            //wenn spieler das rechteck schneidet, testen welche kinder geschnitten werden
+            if(lu != null)
+                containedObj.addAll(lu.retrieve(x,y,size));
+            if(ld != null)
+                containedObj.addAll(ld.retrieve(x,y,size));
+            if(ru != null)
+                containedObj.addAll(ru.retrieve(x,y,size));
+            if(rd != null)
+                containedObj.addAll(rd.retrieve(x,y,size));
+            //alle "gesammelten" mapobjects zurückgeben
             return containedObj;
         }
-        return null;
+        //leere liste wird zurückgegeben
+        return new LinkedList<MapObject>();
     }
 
     public boolean add(MapObject m){

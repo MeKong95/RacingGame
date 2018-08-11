@@ -5,6 +5,7 @@ import com.game.src.main.Input.FileController;
 import com.game.src.main.Objects.GoalObject;
 import com.game.src.main.Objects.MapObject;
 import com.game.src.main.Objects.Player;
+import com.game.src.main.QuadTree;
 
 import java.awt.*;
 import java.util.Comparator;
@@ -14,6 +15,8 @@ import java.util.LinkedList;
 public class Race extends GameState{
 
     private LinkedList<String> scores;
+
+    private QuadTree qTree = new QuadTree(0,0, Game.WIDTH, Game.HEIGHT);
 
     private Player p;
     private GoalObject goalObject;
@@ -44,7 +47,8 @@ public class Race extends GameState{
                 Double.parseDouble(tempList.get(0)[0]),
                 Double.parseDouble(tempList.get(0)[1]),
                 Double.parseDouble(tempList.get(0)[2]),
-                name);
+                name
+        );
         goalObject = new GoalObject(
                 Double.parseDouble(tempList.get(1)[0]),
                 Double.parseDouble(tempList.get(1)[1]),
@@ -57,6 +61,11 @@ public class Race extends GameState{
                     Double.parseDouble(tempList.get(i)[1]),
                     Double.parseDouble(tempList.get(i)[2]),
                     Double.parseDouble(tempList.get(i)[3])));
+        }
+
+        for (MapObject m:listMapObjects
+             ) {
+            qTree.add(m);
         }
 
         scores = score.readScr();
@@ -91,13 +100,15 @@ public class Race extends GameState{
     }
 
     public void tick(){
-        p.tick(listMapObjects);
+        p.tick(qTree);
         p.tick(goalObject);
     }
 
     public Player getP(){
         return p;
     }
+
+    public QuadTree getqTree(){return qTree;}
 
 
 }
