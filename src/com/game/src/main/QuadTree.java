@@ -50,11 +50,11 @@ public class QuadTree {
             lu = new QuadTree(x, y, width/2, height/2);
             if(!lu.add(m)){
                 ld = new QuadTree(x, y + height/2, width/2, height/2);
-                if(!lu.add(m)){
+                if(!ld.add(m)){
                     ru = new QuadTree(x + width/2, y, width/2, height/2);
-                    if(!lu.add(m)){
+                    if(!ru.add(m)){
                         rd = new QuadTree(x + width/2, y + height/2, width/2, height/2);
-                        if(!lu.add(m)){
+                        if(!rd.add(m)){
                             //wenn das mapobject nicht in die kleineren sektoren passt, selber aufnehmen
                             containedObj.add(m);
                         }
