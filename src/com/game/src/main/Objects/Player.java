@@ -127,6 +127,7 @@ public class Player {
         // bewegung in x richtung, falls es eine kollision gibt, zurueck bewegen
         x+=velX;
         list = qtree.retrieve((int)x,(int)y,size);
+
         for (Object aList : list) {
             if (Collision((MapObject) aList)) {
                 x -= velX;
@@ -142,7 +143,6 @@ public class Player {
                 break;
             }
         }
-
         //hard coded begrenzung ans spielfenster
         if(x < 0)
             x = 0;

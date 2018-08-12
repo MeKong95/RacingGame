@@ -25,7 +25,7 @@ public class Race extends GameState{
 
     private LinkedList<Rectangle> StatusBar = new LinkedList<Rectangle>();
 
-    Comparator<String> c = new Comparator<String>() {
+    private Comparator<String> c = new Comparator<String>() {
         public int compare(String o1, String o2) {
             return extractInt(o1) - extractInt(o2);
         }
@@ -68,6 +68,7 @@ public class Race extends GameState{
             qTree.add(m);
         }
 
+
         scores = score.readScr();
         scores.sort(c);
 
@@ -93,9 +94,13 @@ public class Race extends GameState{
         }
 
         p.render(g);
+
         goalObject.render(g);
         // durchlaufen der liste von map objects und rendern dieser
         for (MapObject l : listMapObjects) l.render(g);
+
+        // funktion zum veranschaulichen der quad trees
+        //qTree.show(g);
 
     }
 

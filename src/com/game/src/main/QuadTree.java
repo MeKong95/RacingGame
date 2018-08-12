@@ -5,10 +5,12 @@ package com.game.src.main;
 
 import com.game.src.main.Objects.MapObject;
 
+import java.awt.*;
 import java.util.LinkedList;
 
 public class QuadTree {
 
+    public static int count = 0;
     private int x, y, width, height;
     private QuadTree lu, ld, ru, rd; //rekursive bäume left up, left down, right up, right down
     private LinkedList<MapObject> containedObj = new LinkedList<MapObject>(); //Alle objekte die direkt im qtree enthalten sind, nicht in den children
@@ -22,60 +24,88 @@ public class QuadTree {
     }
 
     public LinkedList<MapObject> retrieve(int x, int y, int size){
-
+        LinkedList<MapObject> retrieved = new LinkedList<MapObject>();
         //sucht alle potenziell kollidierenden rechtecke
         if(intersects(x,y,size)){
             //wenn spieler das rechteck schneidet, testen welche kinder geschnitten werden
             if(lu != null)
-                containedObj.addAll(lu.retrieve(x,y,size));
+                retrieved.addAll(lu.retrieve(x,y,size));
             if(ld != null)
-                containedObj.addAll(ld.retrieve(x,y,size));
+                retrieved.addAll(ld.retrieve(x,y,size));
             if(ru != null)
-                containedObj.addAll(ru.retrieve(x,y,size));
+                retrieved.addAll(ru.retrieve(x,y,size));
             if(rd != null)
-                containedObj.addAll(rd.retrieve(x,y,size));
+                retrieved.addAll(rd.retrieve(x,y,size));
             //alle "gesammelten" mapobjects zurückgeben
-            return containedObj;
+            retrieved.addAll(containedObj);
+            return retrieved;
         }
         //leere liste wird zurückgegeben
         return new LinkedList<MapObject>();
     }
 
-    public boolean add(MapObject m){
+    public void add(MapObject m){
         //versucht so weit wie möglich unten das Mapobject einzufügen
-        //gibt bei erfolg true zurück
-        if(!fits(m)) {
-            return false;
+
+
+        if (fits(m, x, y, width / 2, height / 2)) {
+            // checken ob child tree schon existiert, um diesen nicht zu überschreiben
+            if (lu == null) {
+                lu = new QuadTree(x, y, width / 2, height / 2);
+            }
+            lu.add(m);
         }else{
-            lu = new QuadTree(x, y, width/2, height/2);
-            if(!lu.add(m)){
-                ld = new QuadTree(x, y + height/2, width/2, height/2);
-                if(!ld.add(m)){
-                    ru = new QuadTree(x + width/2, y, width/2, height/2);
-                    if(!ru.add(m)){
-                        rd = new QuadTree(x + width/2, y + height/2, width/2, height/2);
-                        if(!rd.add(m)){
-                            //wenn das mapobject nicht in die kleineren sektoren passt, selber aufnehmen
-                            containedObj.add(m);
-                        }
+            if (fits(m,x, y + height/2, width/2, height/2)) {
+                if (ld == null) {
+                    ld = new QuadTree(x, y + height/2, width/2, height/2);
+                }
+                ld.add(m);
+            }else{
+                if (fits(m, x + width/2, y, width/2, height/2)) {
+                    if (ru == null) {
+                        ru = new QuadTree(x + width/2, y, width/2, height/2);
                     }
+                    ru.add(m);
+                }else{
+                    if (fits(m, x + width/2, y + height/2, width/2, height/2)) {
+                        if (rd == null) {
+                            rd = new QuadTree(x + width/2, y + height/2, width/2, height/2);
+                        }
+                        rd.add(m);
+                    }else{
+                        //wenn das mapobject nicht in die kleineren sektoren passt, selber aufnehmen
+                        containedObj.add(m);
                 }
             }
-            return true;
         }
+    }
+}
 
+
+    public void show(Graphics g){
+        g.drawRect(x,y,width,height);
+        if(lu != null)
+            lu.show(g);
+        if(ld != null)
+            ld.show(g);
+        if(ru != null)
+            ru.show(g);
+        if(rd != null)
+            rd.show(g);
     }
 
-    private boolean fits(MapObject m){
+
+    private boolean fits(MapObject m, int x, int y, int width, int height){
         return(!(
-                m.getXpos() < this.x ||
-                m.getXpos() + m.getXlen() > this.x + this.width ||
-                m.getYpos() < this.y ||
-                m.getYpos() + m.getYlen() > this.y + this.height
+                m.getXpos() < x ||
+                m.getXpos() + m.getXlen() > x + width ||
+                m.getYpos() < y ||
+                m.getYpos() + m.getYlen() > y + height
         ));
     }
 
     private boolean intersects(int x, int y, int size){
+        count++;
         return(!(
                 x > this.x + this.width ||
                 x + size < this.x ||
