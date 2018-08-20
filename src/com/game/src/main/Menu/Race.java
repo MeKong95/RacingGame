@@ -68,7 +68,6 @@ public class Race extends GameState{
             qTree.add(m);
         }
 
-
         scores = score.readScr();
         scores.sort(c);
 
@@ -93,11 +92,11 @@ public class Race extends GameState{
             g2d.draw(r);
         }
 
-        p.render(g);
-
         goalObject.render(g);
         // durchlaufen der liste von map objects und rendern dieser
         for (MapObject l : listMapObjects) l.render(g);
+
+        p.render(g);
 
         // funktion zum veranschaulichen der quad trees
         //qTree.show(g);
@@ -113,7 +112,6 @@ public class Race extends GameState{
         return p;
     }
 
-    public QuadTree getqTree(){return qTree;}
 
 
 }

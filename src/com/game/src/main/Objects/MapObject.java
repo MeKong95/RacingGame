@@ -63,8 +63,12 @@ public class MapObject {
 
     }
 
-    public  void render(Graphics g){
+    public void render(Graphics g){
 
         g.drawImage(mapobj, (int)xpos, (int)ypos,(int)xlen, (int)ylen, null);
+    }
+
+    public void renderDebug(Graphics g){
+        g.drawRect((int)xpos,(int)ypos,(int)xlen,(int)ylen);
     }
 }

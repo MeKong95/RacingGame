@@ -28,6 +28,7 @@ public class Player {
     private BufferedImage s0, s1, s2,s3,s4,s5,s6,s7; // variable für sprites des spielers
     private Timer timer;
 
+
     public Player(double x, double y, double winkel, String name){
         //konstruktor legt startposition, winkel und sprite fest
         this.x = x;
@@ -76,7 +77,7 @@ public class Player {
         return name;
     }
 
-    public Timer getTimer(){ return timer;}
+
 
     public void setAccX(double accX){
         this.accX = accX;
@@ -137,6 +138,7 @@ public class Player {
         // bewegung in y richtung, falls es eine kollision gibt, zurueck bewegen
         y+=velY;
         list = qtree.retrieve((int)x,(int)y,size);
+
         for (Object aList : list) {
             if (Collision((MapObject) aList)) {
                 y -= velY;
@@ -194,6 +196,13 @@ public class Player {
             g.drawImage(s7, (int)x, (int)y, null);
 
         timer.displayTime(g);
+
+        //Zur visualisierung der geprüften mapobjects
+//        for (MapObject m: list
+//             ) {
+//            m.renderDebug(g);
+//        }
     }
+
 }
 
