@@ -5,6 +5,7 @@ import com.game.src.main.Input.FileController;
 import com.game.src.main.Objects.GoalObject;
 import com.game.src.main.Objects.MapObject;
 import com.game.src.main.Objects.Player;
+import com.game.src.main.QuadTree;
 
 import java.awt.*;
 import java.util.Comparator;
@@ -15,6 +16,8 @@ public class Race extends GameState{
 
     private LinkedList<String> scores;
 
+    private QuadTree qTree = new QuadTree(0,0, Game.WIDTH, Game.HEIGHT);
+
     private Player p;
     private GoalObject goalObject;
     private LinkedList<MapObject> listMapObjects = new LinkedList<MapObject>();
@@ -22,7 +25,7 @@ public class Race extends GameState{
 
     private LinkedList<Rectangle> StatusBar = new LinkedList<Rectangle>();
 
-    Comparator<String> c = new Comparator<String>() {
+    private Comparator<String> c = new Comparator<String>() {
         public int compare(String o1, String o2) {
             return extractInt(o1) - extractInt(o2);
         }
@@ -44,7 +47,8 @@ public class Race extends GameState{
                 Double.parseDouble(tempList.get(0)[0]),
                 Double.parseDouble(tempList.get(0)[1]),
                 Double.parseDouble(tempList.get(0)[2]),
-                name);
+                name
+        );
         goalObject = new GoalObject(
                 Double.parseDouble(tempList.get(1)[0]),
                 Double.parseDouble(tempList.get(1)[1]),
@@ -58,6 +62,12 @@ public class Race extends GameState{
                     Double.parseDouble(tempList.get(i)[2]),
                     Double.parseDouble(tempList.get(i)[3])));
         }
+
+        for (MapObject m:listMapObjects
+             ) {
+            qTree.add(m);
+        }
+
 
         scores = score.readScr();
         scores.sort(c);
@@ -84,20 +94,26 @@ public class Race extends GameState{
         }
 
         p.render(g);
+
         goalObject.render(g);
         // durchlaufen der liste von map objects und rendern dieser
         for (MapObject l : listMapObjects) l.render(g);
 
+        // funktion zum veranschaulichen der quad trees
+        //qTree.show(g);
+
     }
 
     public void tick(){
-        p.tick(listMapObjects);
+        p.tick(qTree);
         p.tick(goalObject);
     }
 
     public Player getP(){
         return p;
     }
+
+    public QuadTree getqTree(){return qTree;}
 
 
 }
