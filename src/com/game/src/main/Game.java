@@ -24,8 +24,11 @@ public class Game extends Canvas implements Runnable {
     public final String TITLE = "Marco und Jannis Game";
 
     public static class debug{
+        // aktiviert alle anderen debug shortcuts
         public static boolean shortcuts = false;
+        // zeigt die einzelnen quadranten des QuadTrees
         public static boolean showQTree = false;
+        // zeigt die für die kollisionsdetektion wichtige mapobjects an
         public static boolean showObj = false;
     }
 
@@ -41,7 +44,7 @@ public class Game extends Canvas implements Runnable {
     private static Levelselect l;
     private static Highscore h;
     private static Race r;
-    private static int track;
+    private static int track = 1;
     private static int allUpdates; //schöneren variablennamen finden
 
     private enum STATUS{
@@ -267,7 +270,8 @@ public class Game extends Canvas implements Runnable {
                     debug.showQTree = !debug.showQTree;
                     break;
                 case KeyEvent.VK_P:
-                    //hier kommt force read der mapdatei rein (zum testen der maps)
+                    // force reset der map (zum testen während map development)
+                    r = new Race(track, "debug");
                     break;
             }
         }
