@@ -46,8 +46,9 @@ public class QuadTree {
 
     public void add(MapObject m){
         //versucht so weit wie möglich unten das Mapobject einzufügen
+        //wird einmalig für alle objects gemacht
 
-
+        //wenn das jeweilige objekt reinpasst, es deinfügen
         if (fits(m, x, y, width / 2, height / 2)) {
             // checken ob child tree schon existiert, um diesen nicht zu überschreiben
             if (lu == null) {
@@ -74,6 +75,7 @@ public class QuadTree {
                         rd.add(m);
                     }else{
                         //wenn das mapobject nicht in die kleineren sektoren passt, selber aufnehmen
+                        //sozusagen ende der rekursion
                         containedObj.add(m);
                 }
             }
@@ -83,6 +85,8 @@ public class QuadTree {
 
 
     public void show(Graphics g){
+        //zum debuggen genutzte visualisierungsfunktion
+        g.setColor(Color.WHITE);
         g.drawRect(x,y,width,height);
         if(lu != null)
             lu.show(g);
@@ -96,6 +100,7 @@ public class QuadTree {
 
 
     private boolean fits(MapObject m, int x, int y, int width, int height){
+        //prüft ob das objekt vollständig in den unterbaum passt
         return(!(
                 m.getXpos() < x ||
                 m.getXpos() + m.getXlen() > x + width ||
@@ -105,6 +110,8 @@ public class QuadTree {
     }
 
     private boolean intersects(int x, int y, int size){
+        //prüft ob der spieler den unterbaum schneidet
+        //count variable zum zählen der berechnungen (vergleich mit alter methode)
         count++;
         return(!(
                 x > this.x + this.width ||

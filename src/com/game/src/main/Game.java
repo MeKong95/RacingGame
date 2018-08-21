@@ -23,6 +23,12 @@ public class Game extends Canvas implements Runnable {
     public static final int HEIGHT = WIDTH / 16 *9;
     public final String TITLE = "Marco und Jannis Game";
 
+    public static class debug{
+        public static boolean shortcuts = false;
+        public static boolean showQTree = false;
+        public static boolean showObj = false;
+    }
+
     private boolean running = false;
     private Thread thread;
 
@@ -250,6 +256,25 @@ public class Game extends Canvas implements Runnable {
                         break;
                 }
                 break;
+        }
+
+        if(debug.shortcuts){
+            switch(key){
+                case KeyEvent.VK_O:
+                    debug.showObj = !debug.showObj;
+                    break;
+                case KeyEvent.VK_L:
+                    debug.showQTree = !debug.showQTree;
+                    break;
+                case KeyEvent.VK_P:
+                    //hier kommt force read der mapdatei rein (zum testen der maps)
+                    break;
+            }
+        }
+
+        if(key == KeyEvent.VK_K){
+            //wechselt bei jedem drücken von k den debug modus
+            debug.shortcuts = !debug.shortcuts;
         }
     }
 

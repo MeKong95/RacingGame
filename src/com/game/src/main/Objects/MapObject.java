@@ -69,6 +69,7 @@ public class MapObject {
     }
 
     public void renderDebug(Graphics g){
+        g.setColor(Color.RED);
         g.drawRect((int)xpos,(int)ypos,(int)xlen,(int)ylen);
     }
 }

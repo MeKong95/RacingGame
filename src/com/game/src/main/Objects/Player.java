@@ -197,12 +197,12 @@ public class Player {
 
         timer.displayTime(g);
 
-        //Zur visualisierung der geprüften mapobjects
-//        for (MapObject m: list
-//             ) {
-//            m.renderDebug(g);
-//        }
+        if(Game.debug.showObj){
+            //Zur visualisierung der geprüften mapobjects
+            for (MapObject m: list
+                 ) {
+                m.renderDebug(g);
+            }
+        }
     }
-
 }
-

@@ -98,8 +98,11 @@ public class Race extends GameState{
 
         p.render(g);
 
-        // funktion zum veranschaulichen der quad trees
-        //qTree.show(g);
+        if(Game.debug.showQTree){
+            // funktion zum veranschaulichen der quad trees
+            qTree.show(g);
+        }
+
 
     }
 
