@@ -2,10 +2,12 @@ package com.game.src.main;
 
 import com.game.src.main.Input.ImageLoader;
 import com.game.src.main.Input.KeyInput;
+import com.game.src.main.Input.MapEditor;
 import com.game.src.main.Input.MouseInput;
 import com.game.src.main.Menu.*;
 import com.game.src.main.Menu.Button;
 import com.game.src.main.Menu.Menu;
+import com.game.src.main.Objects.MapObject;
 
 import java.awt.*;
 import javax.swing.*;
@@ -274,6 +276,9 @@ public class Game extends Canvas implements Runnable {
                     // force reset der map (zum testen während map development)
                     r = new Race(track, "debug");
                     break;
+                case KeyEvent.VK_I:
+                    MapEditor.end(track);
+                    break;
             }
         }
 
@@ -383,6 +388,10 @@ public class Game extends Canvas implements Runnable {
                         break;
                 }
                 break;
+            case GAME:
+                MapEditor.add(e);
+
+                break;
         }
     }
 
@@ -440,6 +449,9 @@ public class Game extends Canvas implements Runnable {
                             ) {
                         b.stopHovering();
                     }
+                break;
+            case GAME:
+                MapEditor.setTemp(e);
                 break;
         }
     }

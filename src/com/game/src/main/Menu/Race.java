@@ -2,6 +2,7 @@ package com.game.src.main.Menu;
 
 import com.game.src.main.Game;
 import com.game.src.main.Input.FileController;
+import com.game.src.main.Input.MapEditor;
 import com.game.src.main.Objects.GoalObject;
 import com.game.src.main.Objects.MapObject;
 import com.game.src.main.Objects.Player;
@@ -97,6 +98,8 @@ public class Race extends GameState{
         for (MapObject l : listMapObjects) l.render(g);
 
         p.render(g);
+
+        MapEditor.render(g);
 
         if(Game.debug.showQTree){
             // funktion zum veranschaulichen der quad trees
