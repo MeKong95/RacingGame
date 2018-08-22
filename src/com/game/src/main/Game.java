@@ -305,6 +305,7 @@ public class Game extends Canvas implements Runnable {
         }
     }
 
+    // diese funktion wird durch die MouseInput klasse beim drücken der maus aufgerufen
     public static void mousePressed(MouseEvent e) {
 
         int temp;
@@ -384,6 +385,7 @@ public class Game extends Canvas implements Runnable {
         }
     }
 
+    // diese funktion wird durch die MouseInput klasse beim bewegen der maus aufgerufen
     public static void mouseMoved(MouseEvent e) {
         // frequenz begrenzen zur optimierung?
         int temp;
