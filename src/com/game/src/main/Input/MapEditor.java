@@ -21,11 +21,13 @@ public class MapEditor {
 
     public static void add(MouseEvent e){
         // rundet auf das nächste vielfache von 25
+        // warnung muss leider ignoriert werden
         l.add(new MapObject(e.getX() / 25 * 25,e.getY() / 25 * 25,x,y));
     }
 
     public static void setTemp(MouseEvent e){
         // rundet auf das nächste vielfache von 25
+        // warnung muss leider ignoriert werden
         temp = new MapObject(e.getX()/25*25,e.getY()/25*25,x,y);
     }
 
