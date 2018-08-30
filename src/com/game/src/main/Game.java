@@ -23,15 +23,6 @@ public class Game extends Canvas implements Runnable {
     public static final int HEIGHT = WIDTH / 16 *9;
     public final String TITLE = "Marco und Jannis Game";
 
-    public static class debug{
-        // aktiviert alle anderen debug shortcuts
-        public static boolean shortcuts = false;
-        // zeigt die einzelnen quadranten des QuadTrees
-        public static boolean showQTree = false;
-        // zeigt die für die kollisionsdetektion wichtige mapobjects an
-        public static boolean showObj = false;
-    }
-
     private boolean running = false;
     private Thread thread;
 
@@ -261,25 +252,6 @@ public class Game extends Canvas implements Runnable {
                 break;
         }
 
-        if(debug.shortcuts){
-            switch(key){
-                case KeyEvent.VK_O:
-                    debug.showObj = !debug.showObj;
-                    break;
-                case KeyEvent.VK_L:
-                    debug.showQTree = !debug.showQTree;
-                    break;
-                case KeyEvent.VK_P:
-                    // force reset der map (zum testen während map development)
-                    r = new Race(track, "debug");
-                    break;
-            }
-        }
-
-        if(key == KeyEvent.VK_K){
-            //wechselt bei jedem drücken von k den debug modus
-            debug.shortcuts = !debug.shortcuts;
-        }
     }
 
     // diese funktion wird durch die KeyInput klasse beim drücken einer taste aufgerufen
