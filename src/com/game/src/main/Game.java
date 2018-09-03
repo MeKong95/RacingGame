@@ -32,6 +32,8 @@ public class Game extends Canvas implements Runnable {
         public static boolean showQTree = false;
         // zeigt die für die kollisionsdetektion wichtige mapobjects an
         public static boolean showObj = false;
+        // stoppt die game loop
+        public static boolean paused = false;
     }
 
     private boolean running = false;
@@ -116,7 +118,7 @@ public class Game extends Canvas implements Runnable {
             delta += (now - lastTime) / frameTime;  //vergrößern der zählvariable um die
                                                     // vergangene zeit und relativierung
             lastTime = now;                         // vorbereitung für den nächsten test
-            if(delta >= 1){                         //wenn die zählvariable einen berechnungszyklus
+            if(delta >= 1 && !debug.paused){                         //wenn die zählvariable einen berechnungszyklus
                                                     // erreicht wird alles asugeführt
                 tick();
                 updates++;
@@ -273,9 +275,8 @@ public class Game extends Canvas implements Runnable {
                     debug.showQTree = !debug.showQTree;
                     break;
                 case KeyEvent.VK_P:
-                    // force reset der map (zum testen während map development)
-                    r = new Race(track, "debug");
-                    break;
+                    // pausieren der game loop
+                    debug.paused = !debug.paused;
                 case KeyEvent.VK_I:
                     MapEditor.end(track);
                     break;
