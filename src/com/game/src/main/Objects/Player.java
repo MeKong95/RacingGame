@@ -13,7 +13,6 @@ import com.game.src.main.Menu.Race;
 
 public class Player {
     private String name;
-    private final double s = 3;
     private double x;
     private double y;
     private double velX = 0;
@@ -35,15 +34,16 @@ public class Player {
         this.y = y;
         this.angle = winkel;
         this.name = name;
-        SpriteSheet ss = new SpriteSheet(Game.getSpriteSheet());
-        s0 = ss.grabImage(2, 1, 32, 32);
-        s1 = ss.grabImage(3, 1, 32, 32);
-        s2 = ss.grabImage(3, 2, 32, 32);
-        s3 = ss.grabImage(3, 3, 32, 32);
-        s4 = ss.grabImage(2, 3, 32, 32);
-        s5 = ss.grabImage(1, 3, 32, 32);
-        s6 = ss.grabImage(1, 2, 32, 32);
-        s7 = ss.grabImage(1, 1, 32, 32);
+        SpriteSheet ob = new SpriteSheet(Game.getplobj());
+
+        s0 = ob.grabImage(1, 1, 32, 32);
+        s1 = ob.grabImage(2, 1, 32, 32);
+        s2 = ob.grabImage(3, 1, 32, 32);
+        s3 = ob.grabImage(4, 1, 32, 32);
+        s4 = ob.grabImage(4, 2, 32, 32);
+        s5 = ob.grabImage(3, 2, 32, 32);
+        s6 = ob.grabImage(2, 2, 32, 32);
+        s7 = ob.grabImage(1, 2, 32, 32);
         timer = new Timer(this);
     }
 
@@ -116,6 +116,7 @@ public class Player {
         velY+=accY;
         velA=Math.sqrt(Math.pow(velX,2)+Math.pow(velY,2));
 
+        double s = 3;
         if(velA > s) {
             velX -= (velA - s) * (velX / velA);
             velY -= (velA - s) * (velY / velA);

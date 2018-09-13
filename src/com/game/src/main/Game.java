@@ -28,6 +28,8 @@ public class Game extends Canvas implements Runnable {
 
     private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
     private static BufferedImage spriteSheet = null;
+    private static BufferedImage plobj = null;
+
 
     public static JFrame frame;
     private static Menu m;
@@ -139,6 +141,13 @@ public class Game extends Canvas implements Runnable {
         }catch(IOException e){
             e.printStackTrace();
         }
+        ImageLoader fig = new ImageLoader();         // immageloader fuer spritesheet
+        try{    // error-handling, beim laden koennen fehler auftreten
+            plobj = fig.loadImage("/plobjg.png");
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+
 
         m = new Menu();
         l = new Levelselect();
@@ -433,5 +442,9 @@ public class Game extends Canvas implements Runnable {
     public static BufferedImage getSpriteSheet(){
         return spriteSheet;
     }
+    public static BufferedImage getplobj(){
+        return plobj;
+    }
+
 }
 
