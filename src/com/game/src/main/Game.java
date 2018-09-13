@@ -18,7 +18,7 @@ import java.util.LinkedList;
 public class Game extends Canvas implements Runnable {
 
     private static final long serialVersionUID = 1L;
-    public static final int SCALE = 4;
+    private static final int SCALE = 4;
     public static final int WIDTH = 320*SCALE;
     public static final int HEIGHT = WIDTH / 16 *9;
     public final String TITLE = "Marco und Jannis Game";
@@ -49,6 +49,7 @@ public class Game extends Canvas implements Runnable {
     }
     private static STATUS status = STATUS.MENU; //Spiel startet im status MENU
 
+    @SuppressWarnings("MagicConstant")
     public static void main(String args[]){
         Game instance = new Game(); //erstellt instanz unseres spiels
 

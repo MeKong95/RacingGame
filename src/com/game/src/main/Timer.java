@@ -12,7 +12,7 @@ public class Timer {
     private boolean running = false;
     private boolean finished = false;
     private String name;
-    DecimalFormat df = new DecimalFormat();
+    private DecimalFormat df = new DecimalFormat();
     Font fnt1 = new Font("arial", Font.BOLD, 30);
 
     public Timer(Player p){

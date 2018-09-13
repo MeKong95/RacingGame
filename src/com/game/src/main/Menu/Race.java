@@ -25,18 +25,6 @@ public class Race extends GameState{
 
     private LinkedList<Rectangle> StatusBar = new LinkedList<Rectangle>();
 
-    private Comparator<String> c = new Comparator<String>() {
-        public int compare(String o1, String o2) {
-            return extractInt(o1) - extractInt(o2);
-        }
-
-        int extractInt(String s) {
-            String num = s.replaceAll("\\D", "");
-            // return 0 if no digits found
-            return num.isEmpty() ? 0 : Integer.parseInt(num);
-        }
-    };
-
 
     public Race(int trackNr, String name){
         //liste enthält Spieler, Ziel und Mapobjects
@@ -69,6 +57,18 @@ public class Race extends GameState{
         }
 
         scores = score.readScr();
+        // return 0 if no digits found
+        Comparator<String> c = new Comparator<String>() {
+            public int compare(String o1, String o2) {
+                return extractInt(o1) - extractInt(o2);
+            }
+
+            int extractInt(String s) {
+                String num = s.replaceAll("\\D", "");
+                // return 0 if no digits found
+                return num.isEmpty() ? 0 : Integer.parseInt(num);
+            }
+        };
         scores.sort(c);
 
         StatusBar.add(new Rectangle(0, Game.HEIGHT - 100, Game.WIDTH * 1 / 4,200));

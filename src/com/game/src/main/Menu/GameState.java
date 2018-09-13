@@ -6,7 +6,7 @@ import java.util.LinkedList;
 
 abstract public class GameState {
 
-    protected LinkedList<Button> buttons = new LinkedList<Button>();
+    LinkedList<Button> buttons = new LinkedList<Button>();
     protected BufferedImage background = null;
 
 

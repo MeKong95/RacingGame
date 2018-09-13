@@ -10,7 +10,7 @@ import java.util.LinkedList;
 
 public class QuadTree {
 
-    public static int count = 0;
+    private static int count = 0;
     private int x, y, width, height;
     private QuadTree lu, ld, ru, rd; //rekursive bäume left up, left down, right up, right down
     private LinkedList<MapObject> containedObj = new LinkedList<MapObject>(); //Alle objekte die direkt im qtree enthalten sind, nicht in den children

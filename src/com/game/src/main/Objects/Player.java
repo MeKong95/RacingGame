@@ -7,9 +7,6 @@ import com.game.src.main.Timer;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.LinkedList;
-import java.util.Map;
-
-import com.game.src.main.Menu.Race;
 
 public class Player {
     private String name;
@@ -17,7 +14,6 @@ public class Player {
     private double y;
     private double velX = 0;
     private double velY = 0;
-    private double velA = 0;
     private double accX = 0;
     private double accY = 0;
     private int size = 32;  //groeße des sprites , wird fuer kollision benoetigt
@@ -114,7 +110,7 @@ public class Player {
 
         velX+=accX;
         velY+=accY;
-        velA=Math.sqrt(Math.pow(velX,2)+Math.pow(velY,2));
+        double velA = Math.sqrt(Math.pow(velX, 2) + Math.pow(velY, 2));
 
         double s = 3;
         if(velA > s) {
@@ -187,7 +183,7 @@ public class Player {
             g.drawImage(s2, (int)x, (int)y, null);
         else if(angle >= 45-45/2 && angle <= 45+45/2)
             g.drawImage(s3, (int)x, (int)y, null);
-        else if(angle > 0-45/2 && angle < 0+45/2)
+        else if(angle > 0-45/2 && angle < 45 / 2)
             g.drawImage(s4, (int)x, (int)y, null);
         else if(angle >= -45-45/2 && angle <= -45+45/2)
             g.drawImage(s5, (int)x, (int)y, null);

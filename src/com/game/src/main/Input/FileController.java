@@ -4,10 +4,9 @@ import java.io.*;
 import java.util.LinkedList;
 
 public class FileController {
-    public File f;
+    private File f;
 
     public FileController(String path){
-        String p = path;
         f = new File(path);
     }
 
