@@ -2,12 +2,14 @@ package com.game.src.main.Menu;
 
 import com.game.src.main.Game;
 import com.game.src.main.Input.FileController;
+import com.game.src.main.Input.ImageLoader;
 import com.game.src.main.Objects.GoalObject;
 import com.game.src.main.Objects.MapObject;
 import com.game.src.main.Objects.Player;
 import com.game.src.main.QuadTree;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.Comparator;
 import java.util.LinkedList;
 
@@ -21,7 +23,7 @@ public class Race extends GameState{
     private Player p;
     private GoalObject goalObject;
     private LinkedList<MapObject> listMapObjects = new LinkedList<MapObject>();
-    
+    private Image asphalt;
 
     private LinkedList<Rectangle> StatusBar = new LinkedList<Rectangle>();
 
@@ -54,6 +56,14 @@ public class Race extends GameState{
         for (MapObject m:listMapObjects
              ) {
             qTree.add(m);
+        }
+
+        ImageLoader loader = new ImageLoader();
+
+        try{
+            asphalt = loader.loadImage("/asphalt.jpg");
+        }catch(IOException e){
+            e.printStackTrace();
         }
 
         scores = score.readScr();
@@ -91,6 +101,8 @@ public class Race extends GameState{
         for (Rectangle r: StatusBar) {
             g2d.draw(r);
         }
+
+        g.drawImage(asphalt, 50, 50, 1200,570, null);
 
         goalObject.render(g);
         // durchlaufen der liste von map objects und rendern dieser
