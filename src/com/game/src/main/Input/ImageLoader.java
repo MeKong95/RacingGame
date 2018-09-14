@@ -9,7 +9,6 @@ public class ImageLoader {
 
     public BufferedImage loadImage(String path) throws IOException {
         //.read fordert irgendein error handeling, da ein fehler auftreten kann, deshalb throws
-        BufferedImage image = ImageIO.read(getClass().getResource(path));
-        return image;
+        return ImageIO.read(getClass().getResource(path));
     }
 }

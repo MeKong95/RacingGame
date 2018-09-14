@@ -13,11 +13,15 @@ Beruecksichtigt werden nur Features. Bugs und Fixes werden gesondert gelistet
 
 006 - Highscore angelegt
 
-007 - 
 
-008 - 
+MUST
+Code aufräumen
+UML(java-Doc)
+Compilierbarkeit JavaEditor testen
+evtl Readme
+JDK erzeugen am Ende
 
-009 - 
+CAN
+Kommentare engl
 
-010 - 
 
