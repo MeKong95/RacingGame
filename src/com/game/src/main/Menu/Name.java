@@ -2,15 +2,12 @@ package com.game.src.main.Menu;
 
 import com.game.src.main.Game;
 import com.game.src.main.Input.ImageLoader;
-
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 
 public class Name extends GameState{
-
     private String name = "";
-
     public Name(){
         Button playButton = new Button(Game.WIDTH / 2 - 160, 600, 240, 50, "Play");
         buttons.add(playButton);
@@ -31,7 +28,6 @@ public class Name extends GameState{
         else if (e.getKeyCode()==8 && name.length()>0){
                 name = name.substring(0, name.length() - 1);
         }//for delete/backspace
-
     }
 
     public String getName(){
@@ -43,12 +39,16 @@ public class Name extends GameState{
 
     public void render(Graphics g){
         g.drawImage(background,0,0,Game.WIDTH,Game.HEIGHT,null);
-
         Font fnt1 = new Font("arial", Font.BOLD, 55);
+        Font fnt2 = new Font("arial", Font.BOLD, 40);
         g.setFont(fnt1);
         g.setColor(Color.BLACK);
         g.drawString(name, Game.WIDTH /2 -100, 200+30);
-
+        if(name.length()==0){
+            g.setFont(fnt2);
+            g.setColor(Color.GRAY);
+            g.drawString("Please enter a name", Game.WIDTH /2 -100, 200+30);
+        }
         for (Button b: buttons
                 ) {
             b.render(g);

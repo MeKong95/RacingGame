@@ -33,7 +33,7 @@ public class Button extends Rectangle {
 
     public void startHovering(){
         fnt = new Font("arial", Font.BOLD, 30);
-        color = new Color(50,50,80);
+        color = new Color(154, 148, 154);
         stroke = new BasicStroke(5);
     }
 
@@ -51,7 +51,4 @@ public class Button extends Rectangle {
         g.drawString(text, x+txtx, y+txty);
         g2d.draw(this);
     }
-
-
-
 }

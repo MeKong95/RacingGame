@@ -4,12 +4,10 @@ package com.game.src.main;
 // https://de.wikipedia.org/wiki/Quadtree
 
 import com.game.src.main.Objects.MapObject;
-
 import java.awt.*;
 import java.util.LinkedList;
 
 public class QuadTree {
-
     private static int count = 0;
     private final int x;
     private final int y;
@@ -17,7 +15,6 @@ public class QuadTree {
     private final int height;
     private QuadTree lu, ld, ru, rd; //recursive tree: left up, left down, right up, right down
     private final LinkedList<MapObject> containedObj = new LinkedList<MapObject>(); //objects in quad tree, not children
-
 
     public QuadTree(int x, int y, int width, int height){
         this.x = x;
@@ -85,7 +82,6 @@ public class QuadTree {
     }
 }
 
-
     private void show(Graphics g){
         //visualizing used for debugging
         g.setColor(Color.WHITE);
@@ -99,7 +95,6 @@ public class QuadTree {
         if(rd != null)
             rd.show(g);
     }
-
 
     private boolean fits(MapObject m, int x, int y, int width, int height){
         //checks if object fits completely in child tree
@@ -122,6 +117,4 @@ public class QuadTree {
                 y + size < this.y
         ));
     }
-
-
 }

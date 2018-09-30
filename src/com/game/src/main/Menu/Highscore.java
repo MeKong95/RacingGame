@@ -3,30 +3,23 @@ package com.game.src.main.Menu;
 import com.game.src.main.Input.FileController;
 import com.game.src.main.Game;
 import com.game.src.main.Input.ImageLoader;
-
 import java.awt.*;
 import java.io.IOException;
 import java.util.Comparator;
 import java.util.LinkedList;
 
 public class Highscore extends GameState {
-
     private final LinkedList<String> ll1;
     private final LinkedList<String> ll2;
     private final LinkedList<String> ll3;
     private final LinkedList<String> ll4;
-
-
     public Highscore(){
-
         Button backButton = new Button(Game.WIDTH * 3 / 4, Game.HEIGHT * 3 / 4 + 50, 150, 40, "Back");
         buttons.add(backButton);
-
         Comparator<String> c = new Comparator<String>() {
             public int compare(String o1, String o2) {
                 return extractInt(o1) - extractInt(o2);
             }
-
             int extractInt(String s) {
                 String num = s.replaceAll("\\D", "");
                 // return 0 if no digits found
@@ -57,24 +50,16 @@ public class Highscore extends GameState {
     public void render(Graphics g){
         String str[];
         Graphics2D g2d = (Graphics2D) g;
-
         g.drawImage(background,0,0,Game.WIDTH,Game.HEIGHT/4, null);
         g.drawImage(background,0,Game.HEIGHT/4*3,Game.WIDTH,Game.HEIGHT/4, null);
-
         Font fnt1 = new Font("arial", Font.BOLD, 50);
         g.setFont(fnt1);
-        g.setColor(Color.ORANGE);
-        g.drawString("TOP TIMES FOR EVERY TRACK", Game.WIDTH/2 - 350, 150);
-
-
-
-
-
+        g.setColor(Color.WHITE);
+        g.drawString("HIGHSCORES", Game.WIDTH/2 - 200, 150);
         Font fnt2 = new Font("arial", Font.BOLD, 30);
         g.setFont(fnt2);
         g.drawString("Track 1", Game.WIDTH /4 - 200, 250);
         int i = 0;
-
         while(i < ll1.size() && i < 5) {
             str = ll1.get(i).split(";");
             g.drawString(str[0] + "   " + str[1], Game.WIDTH / 4 - 250, 300+(i*50));
@@ -101,7 +86,6 @@ public class Highscore extends GameState {
             g.drawString(str[0] + "   " + str[1], Game.WIDTH * 4 / 4 - 250, 300+(i*50));
             i++;
         }
-
         for (Button b: buttons
                 ) {
             b.render(g);

@@ -18,7 +18,6 @@ public class Player {
     private double accY = 0;
     private final int size = 32;  //size of sprite,used for collision
     private double angle;
-
     private final BufferedImage s0;
     private final BufferedImage s1;
     private final BufferedImage s2;
@@ -29,14 +28,12 @@ public class Player {
     private final BufferedImage s7;
     private final Timer timer;
 
-
     public Player(double x, double y, double angle, String name){
         this.x = x;
         this.y = y;
         this.angle = angle;
         this.name = name;
         SpriteSheet ob = new SpriteSheet(Game.getplobj());
-
         s0 = ob.grabImage(1, 1, 32, 32);
         s1 = ob.grabImage(2, 1, 32, 32);
         s2 = ob.grabImage(3, 1, 32, 32);
@@ -48,18 +45,15 @@ public class Player {
         timer = new Timer(this);
     }
 
-
     public String getName(){
         return name;
     }
-
     public void setAccX(double accX){
         this.accX = accX;
     }
     public void setAccY(double accY){
         this.accY = accY;
     }
-
     private boolean Collision(MapObject m){ //checks for collision
         return !(
                 x > m.getXpos() + m.getXlen() ||
@@ -73,30 +67,23 @@ public class Player {
         if(velX!=0 || velY!=0){
             timer.start();
         }
-
         // player decelerates without further input
         velX*=0.97;
         velY*=0.97;
-
-
         if(velX < 0.01 && velX > -0.01)
             velX = 0;
         if(velY < 0.01 && velY > -0.01)
             velY = 0;
-
         velX+=accX;
         velY+=accY;
         double velA = Math.sqrt(Math.pow(velX, 2) + Math.pow(velY, 2));
-
         double s = 3;
         if(velA > s) {
             velX -= (velA - s) * (velX / velA);
             velY -= (velA - s) * (velY / velA);
         }//speed-restriction in x,y,x/y-direction
-
         x+=velX;
         LinkedList<MapObject> list = qtree.retrieve((int) x, (int) y, size);
-
         for (Object aList : list) {
             if (Collision((MapObject) aList)) {
                 x -= velX;
@@ -105,14 +92,12 @@ public class Player {
         }
         y+=velY;
         list = qtree.retrieve((int)x,(int)y,size);
-
         for (Object aList : list) {
             if (Collision((MapObject) aList)) {
                 y -= velY;
                 break;
             }
         }
-        //boundary in frame
         if(x < 0)
             x = 0;
         if(x > Game.WIDTH-size)
@@ -120,8 +105,7 @@ public class Player {
         if(y < 0)
             y = 0;
         if(y > Game.HEIGHT-size)
-            y = Game.HEIGHT-size;
-
+            y = Game.HEIGHT-size; //boundary in frame
     }
 
     public void tick(GoalObject g){
@@ -135,10 +119,8 @@ public class Player {
     }
 
     public void render(Graphics g){
-
-        //angle of movement
         if(Math.abs(velX) > 0.05 || Math.abs(velY) > 0.05)
-            angle = Math.toDegrees(Math.atan2(velX, velY));
+            angle = Math.toDegrees(Math.atan2(velX, velY));//angle of movement
 
         if(angle > 180-45/2 || angle < -180 +45/2)
             g.drawImage(s0, (int)x, (int)y, null);
@@ -156,8 +138,6 @@ public class Player {
             g.drawImage(s6, (int)x, (int)y, null);
         else if(angle >= -135-45/2 && angle <= -135+45/2)
             g.drawImage(s7, (int)x, (int)y, null);
-
         timer.displayTime(g);
-
     }
 }

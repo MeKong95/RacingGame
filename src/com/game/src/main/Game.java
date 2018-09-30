@@ -6,7 +6,6 @@ import com.game.src.main.Input.MouseInput;
 import com.game.src.main.Menu.*;
 import com.game.src.main.Menu.Button;
 import com.game.src.main.Menu.Menu;
-
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.KeyEvent;
@@ -16,24 +15,17 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.LinkedList;
 public class Game extends Canvas implements Runnable {
-
     private static final long serialVersionUID = 1L;
     private static final int SCALE = 4;
     public static final int WIDTH = 320*SCALE;
     public static final int HEIGHT = WIDTH / 16 *9;
     private final String TITLE = "Jannis and Marco JAVA-Game";
-
     private boolean running = false;
     private Thread thread;
-
     private final BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
     private static BufferedImage spriteSheet = null;
     private static BufferedImage plobj = null;
     private static BufferedImage mpobj = null;
-
-
-
-
     private static Menu m;
     private static Name n;
     private static Levelselect l;
@@ -41,7 +33,6 @@ public class Game extends Canvas implements Runnable {
     private static Race r;
     private static int track = 1;
     private static int allUpdates;
-
     private enum STATUS{
         MENU,
         GAME,
@@ -54,10 +45,8 @@ public class Game extends Canvas implements Runnable {
     @SuppressWarnings("MagicConstant")
     public static void main(String args[]){
         Game instance = new Game(); //creates instance
-
         //sets frame size
         instance.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-
         //creates frame
         JFrame frame = new JFrame(instance.TITLE);
         frame.add(instance);
@@ -72,7 +61,6 @@ public class Game extends Canvas implements Runnable {
         //limits number of frames to 1
         if(running)
             return;
-
         running = true;
         thread = new Thread(this);
         thread.start();
@@ -81,7 +69,6 @@ public class Game extends Canvas implements Runnable {
     private synchronized void stop(){
         if(!running)
             return;
-
         running = false;
         //try and catch for error management
         try{
@@ -114,7 +101,6 @@ public class Game extends Canvas implements Runnable {
                 render();
                 frames++;
             }
-
             if(System.currentTimeMillis()-timer > 1000){
                 timer +=1000;
                 System.out.println(updates+ "Ticks," + frames + "FPS");
@@ -151,8 +137,6 @@ public class Game extends Canvas implements Runnable {
         }catch(IOException e){
             e.printStackTrace();
         }
-
-
         m = new Menu();
         l = new Levelselect();
         requestFocus();
@@ -169,16 +153,12 @@ public class Game extends Canvas implements Runnable {
 
     private void render(){
         BufferStrategy strategy = this.getBufferStrategy();
-
         if(strategy == null){
             createBufferStrategy(3); //loads up to three images in advance
             return;
         }
-
         Graphics g = strategy.getDrawGraphics();
-
-        g.drawImage(image, 0,0, getWidth(), getHeight(), this); //
-
+        g.drawImage(image, 0,0, getWidth(), getHeight(), this);
         switch(status) {
             case MENU:
                 m.render(g);
@@ -196,7 +176,6 @@ public class Game extends Canvas implements Runnable {
                 h.render(g);
                 break;
         }
-
         g.dispose();
         strategy.show();
     }
@@ -212,7 +191,6 @@ public class Game extends Canvas implements Runnable {
                         break;
                 }
                 break;
-
             case GAME:
                 switch(key) {
                     case KeyEvent.VK_W:
@@ -403,7 +381,6 @@ public class Game extends Canvas implements Runnable {
                     //track 2 button
                     //track 3 button
                     //track 4 button
-
                 if(temp < l.getButtons().size())
                     l.getButtons().get(temp).startHovering();
                 else
@@ -445,7 +422,5 @@ public class Game extends Canvas implements Runnable {
     }
     public static BufferedImage getplobj(){return plobj;}
     public static BufferedImage getmpobj(){return mpobj;}
-
-
 }
 

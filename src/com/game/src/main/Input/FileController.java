@@ -5,7 +5,6 @@ import java.util.LinkedList;
 
 public class FileController {
     private final File f;
-
     public FileController(String path){
         f = new File(path);
     }
@@ -40,7 +39,6 @@ public class FileController {
             e.printStackTrace();
         }
         return Data;
-
     }
 
      public LinkedList<String> readScr(){
@@ -57,10 +55,5 @@ public class FileController {
             e.printStackTrace();
         }
         return Data;
-
     }
-
-
-
-
 }

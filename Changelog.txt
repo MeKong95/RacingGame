@@ -1,16 +1,8 @@
-DONE
-Code aufgeräumt
-Keine spellings mehr außer variblen namen
-
-
-
-
 UML(java-Doc)
 Compilierbarkeit JavaEditor testen
 evtl Readme
 JDK erzeugen am Ende
-Gras
-Asphalt
+
 
 
 

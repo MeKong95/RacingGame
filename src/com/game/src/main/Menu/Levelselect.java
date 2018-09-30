@@ -6,16 +6,14 @@ import java.awt.*;
 import java.io.IOException;
 
 public class Levelselect extends GameState {
-
-
     public Levelselect(){
-        Button level_1 = new Button(Game.WIDTH / 2 - 495, 420, 180, 50, "Track 1");
+        Button level_1 = new Button(Game.WIDTH / 2 - 495, 60, 444, 230, "");
         buttons.add(level_1);
-        Button level_2 = new Button(Game.WIDTH / 2 - 225, 420, 180, 50, "Track 2");
+        Button level_2 = new Button(Game.WIDTH / 2 + 51, 80, 444, 210, "");
         buttons.add(level_2);
-        Button level_3 = new Button(Game.WIDTH / 2 + 45, 420, 180, 50, "Track 3");
+        Button level_3 = new Button(Game.WIDTH / 2 - 495, 368, 444, 215, "");
         buttons.add(level_3);
-        Button level_4 = new Button(Game.WIDTH / 2 + 315, 420, 180, 50, "Track 4");
+        Button level_4 = new Button(Game.WIDTH / 2 + 51, 368, 444, 215, "");
         buttons.add(level_4);
         ImageLoader loader = new ImageLoader();
         try{
@@ -27,19 +25,18 @@ public class Levelselect extends GameState {
 
     public void render(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
-
         g.drawImage(background,0,0,Game.WIDTH,Game.HEIGHT,null);
-
         Font fnt1 = new Font("arial", Font.BOLD, 30);
         g.setFont(fnt1);
-        g.setColor(Color.BLACK);
-        g.drawString("Please choose a track", Game.WIDTH/2 - 350, 200);
-
+        g.setColor(Color.WHITE);
+        g2d.drawString("Track 1",Game.WIDTH / 2-180,275);
+        g2d.drawString("Track 2",Game.WIDTH / 2+380,275);
+        g2d.drawString("Track 3",Game.WIDTH / 2-180,570);
+        g2d.drawString("Track 4",Game.WIDTH / 2+380,570);
         for (Button b: buttons
              ) {
             b.render(g);
         }
-
         /*Font fnt2 = new Font("arial", Font.BOLD, 30);
         g.setFont(fnt2);
         g.drawString("Track #1", Level_1.x+30, Level_1.y+32);
