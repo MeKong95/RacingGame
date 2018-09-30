@@ -9,26 +9,31 @@ import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 
 public class Player {
-    private String name;
+    private final String name;
     private double x;
     private double y;
     private double velX = 0;
     private double velY = 0;
     private double accX = 0;
     private double accY = 0;
-    private int size = 32;  //groeße des sprites , wird fuer kollision benoetigt
+    private final int size = 32;  //size of sprite,used for collision
     private double angle;
-    private LinkedList<MapObject> list = new LinkedList<MapObject>();
 
-    private BufferedImage s0, s1, s2,s3,s4,s5,s6,s7; // variable für sprites des spielers
-    private Timer timer;
+    private final BufferedImage s0;
+    private final BufferedImage s1;
+    private final BufferedImage s2;
+    private final BufferedImage s3;
+    private final BufferedImage s4;
+    private final BufferedImage s5;
+    private final BufferedImage s6;
+    private final BufferedImage s7;
+    private final Timer timer;
 
 
-    public Player(double x, double y, double winkel, String name){
-        //konstruktor legt startposition, winkel und sprite fest
+    public Player(double x, double y, double angle, String name){
         this.x = x;
         this.y = y;
-        this.angle = winkel;
+        this.angle = angle;
         this.name = name;
         SpriteSheet ob = new SpriteSheet(Game.getplobj());
 
@@ -43,37 +48,10 @@ public class Player {
         timer = new Timer(this);
     }
 
-    /* ungenutzte getter und setter funktionen
-    public void setX(double x){
-        this.x = x;
-    }
-    public void setY(double y){
-        this.y = y;
-    }
-    public double getX(){
-        return x;
-    }
-    public double getY(){
-        return y;
-    }
-    public void setVelX(double velX){
-        this.velX = velX;
-    }
-    public void setVelY(double velY){
-        this.velY = velY;
-    }
-    public double getVelX(){
-        return velX;
-    }
-    public double getVelY(){
-        return velY;
-    }
-    */
+
     public String getName(){
         return name;
     }
-
-
 
     public void setAccX(double accX){
         this.accX = accX;
@@ -82,27 +60,25 @@ public class Player {
         this.accY = accY;
     }
 
-    private boolean Collision(MapObject m){ //Entscheidet ob der Spieler mit einer Wand kollidiert
+    private boolean Collision(MapObject m){ //checks for collision
         return !(
                 x > m.getXpos() + m.getXlen() ||
                 x + size < m.getXpos() ||
                 y > m.getYpos() + m.getYlen() ||
                 y + size < m.getYpos());
-                //es ist wesentlich effizienter zu testen ob sie nicht kollidieren und dann zu negieren
+                //higher efficiency when testing for "no-collision" and negate this
     }
 
-    public void tick(QuadTree qtree) {
-        // startet timer bei der ersten bewegung
+    public void tick(QuadTree qtree) {//Starting timer with first movement
         if(velX!=0 || velY!=0){
             timer.start();
         }
 
-        // auto verliert langsam geschwindigkeit
+        // player decelerates without further input
         velX*=0.97;
         velY*=0.97;
 
-        // verallgemeinerung der geschwindigkeiten nahe null
-        // bewirkt schönere drehung vom auto
+
         if(velX < 0.01 && velX > -0.01)
             velX = 0;
         if(velY < 0.01 && velY > -0.01)
@@ -116,15 +92,10 @@ public class Player {
         if(velA > s) {
             velX -= (velA - s) * (velX / velA);
             velY -= (velA - s) * (velY / velA);
-        }//Geschwindigkeitsbegrenzung in x,y,x/y-Richtung
+        }//speed-restriction in x,y,x/y-direction
 
-        //Geschwindigkeitsanzeige entwicklung
-        //System.out.println(Math.sqrt(Math.pow(velX,2)+Math.pow(velY,2)));
-
-
-        // bewegung in x richtung, falls es eine kollision gibt, zurueck bewegen
         x+=velX;
-        list = qtree.retrieve((int)x,(int)y,size);
+        LinkedList<MapObject> list = qtree.retrieve((int) x, (int) y, size);
 
         for (Object aList : list) {
             if (Collision((MapObject) aList)) {
@@ -132,7 +103,6 @@ public class Player {
                 break;
             }
         }
-        // bewegung in y richtung, falls es eine kollision gibt, zurueck bewegen
         y+=velY;
         list = qtree.retrieve((int)x,(int)y,size);
 
@@ -142,7 +112,7 @@ public class Player {
                 break;
             }
         }
-        //hard coded begrenzung ans spielfenster
+        //boundary in frame
         if(x < 0)
             x = 0;
         if(x > Game.WIDTH-size)
@@ -155,7 +125,7 @@ public class Player {
     }
 
     public void tick(GoalObject g){
-        // test zur kollision mit dem ziel
+        // collision with "finish" object
         if(!(
                 x > g.getXpos() + g.getXlen() ||
                 x + size < g.getXpos() ||
@@ -165,13 +135,8 @@ public class Player {
     }
 
     public void render(Graphics g){
-        /*if(velX < 0.01)
-            damit division durch 0 kein problem bringt
-            winkel = (360/(2*Math.PI)* Math.atan2(0.01, velY ));
 
-        else*/
-        //atan2 scheint kein problem mit velX = 0 zu haben
-        //nur winkel aktualisieren wenn man sich auch wirklich signifikant bewegt
+        //angle of movement
         if(Math.abs(velX) > 0.05 || Math.abs(velY) > 0.05)
             angle = Math.toDegrees(Math.atan2(velX, velY));
 

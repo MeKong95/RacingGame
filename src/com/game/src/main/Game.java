@@ -21,24 +21,23 @@ public class Game extends Canvas implements Runnable {
     private static final int SCALE = 4;
     public static final int WIDTH = 320*SCALE;
     public static final int HEIGHT = WIDTH / 16 *9;
-    public final String TITLE = "Marco und Jannis Game";
+    private final String TITLE = "J and M JAVA-Game";
 
     private boolean running = false;
     private Thread thread;
 
-    private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
+    private final BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
     private static BufferedImage spriteSheet = null;
     private static BufferedImage plobj = null;
 
 
-    public static JFrame frame;
     private static Menu m;
     private static Name n;
     private static Levelselect l;
     private static Highscore h;
     private static Race r;
     private static int track = 1;
-    private static int allUpdates; //schöneren variablennamen finden
+    private static int allUpdates;
 
     private enum STATUS{
         MENU,
@@ -47,17 +46,17 @@ public class Game extends Canvas implements Runnable {
         LEVEL,
         SCORE
     }
-    private static STATUS status = STATUS.MENU; //Spiel startet im status MENU
+    private static STATUS status = STATUS.MENU; //game starts in status MENU
 
     @SuppressWarnings("MagicConstant")
     public static void main(String args[]){
-        Game instance = new Game(); //erstellt instanz unseres spiels
+        Game instance = new Game(); //creates instance
 
-        //legt standardgroesse des fensters fest
+        //sets frame size
         instance.setPreferredSize(new Dimension(WIDTH, HEIGHT));
 
-        //erstellen und konfigurieren des fensters
-        frame = new JFrame(instance.TITLE);
+        //creates frame
+        JFrame frame = new JFrame(instance.TITLE);
         frame.add(instance);
         frame.pack(); //?
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -67,13 +66,12 @@ public class Game extends Canvas implements Runnable {
     }
 
     private synchronized void start(){
-        //verhindert erstellen von mehreren threads
+        //limits number of frames to 1
         if(running)
             return;
 
         running = true;
         thread = new Thread(this);
-        //startet thread und damit die run funktion
         thread.start();
     }
 
@@ -82,7 +80,7 @@ public class Game extends Canvas implements Runnable {
             return;
 
         running = false;
-        //java verlangt try und catch weil thread.join fehlschlagen kann
+        //try and catch for error management
         try{
             thread.join();
         }catch(InterruptedException e){
@@ -91,29 +89,25 @@ public class Game extends Canvas implements Runnable {
         System.exit(1);
     }
 
-    public void run(){
+    public void run(){ //solid game clock
         initialize();
-        //solide game clock
         long lastTime = System.currentTimeMillis();
-        final double amountOfTicks = 60.0;  //konstante für anzahl der berechnungen pro sekunde
-        double frameTime = 1000 / amountOfTicks; //konstante für anzahl der nano sekunden
-                                                       // pro berechnungszyklus
+        final double amountOfTicks = 60.0;  //constant number of calculations per second
+        double frameTime = 1000 / amountOfTicks;
         double delta = 0;
         int updates = 0;
         allUpdates = 0;
         int frames = 0;
         long timer = System.currentTimeMillis();
         while(running){
-            long now = System.currentTimeMillis();           // erster zeitstempel
-            delta += (now - lastTime) / frameTime;  //vergrößern der zählvariable um die
-                                                    // vergangene zeit und relativierung
-            lastTime = now;                         // vorbereitung für den nächsten test
-            if(delta >= 1){                         //wenn die zählvariable einen berechnungszyklus
-                                                    // erreicht wird alles asugeführt
+            long now = System.currentTimeMillis();           //first point of time
+            delta += (now - lastTime) / frameTime;  //increasing variable by passed time
+            lastTime = now;                         //preparation for test
+            if(delta >= 1){                         //when variable reaches end of cycle everything is run
                 tick();
                 updates++;
                 allUpdates++;
-                delta = 0;                          //Zählvariable auf 0 zurücksetzen
+                delta = 0;                          //setback variable to zero
                 render();
                 frames++;
             }
@@ -124,7 +118,7 @@ public class Game extends Canvas implements Runnable {
                 updates=0;
                 frames=0;
             }
-            //Sleep Befehl
+            //Sleep command test
             /*try{
                 Thread.sleep(10);
             }
@@ -136,14 +130,14 @@ public class Game extends Canvas implements Runnable {
     }
 
     private void initialize(){
-        ImageLoader loader = new ImageLoader();         // immageloader fuer spritesheet
-        try{    // error-handling, beim laden koennen fehler auftreten
+        ImageLoader loader = new ImageLoader();         // image loader for sprite sheet
+        try{    // error-handling
             spriteSheet = loader.loadImage("/spritesheet.png");
         }catch(IOException e){
             e.printStackTrace();
         }
-        ImageLoader fig = new ImageLoader();         // immageloader fuer spritesheet
-        try{    // error-handling, beim laden koennen fehler auftreten
+        ImageLoader fig = new ImageLoader();         // image loader for sprite sheet
+        try{    // error-handling
             plobj = fig.loadImage("/plobjg.png");
         }catch(IOException e){
             e.printStackTrace();
@@ -153,9 +147,8 @@ public class Game extends Canvas implements Runnable {
         m = new Menu();
         l = new Levelselect();
         requestFocus();
-        addKeyListener(new KeyInput());     //ruft unsere KeyInput klasse auf und übergibt
-                                                        // ihr die instanz unseres spiels
-        addMouseListener(new MouseInput());             //ruft unsere MouseInput klasse auf
+        addKeyListener(new KeyInput());     //calls KeyInput class and hands over instance of game
+        addMouseListener(new MouseInput());             //calls MouseInput class
         addMouseMotionListener(new MouseInput());
     }
 
@@ -168,8 +161,8 @@ public class Game extends Canvas implements Runnable {
     private void render(){
         BufferStrategy strategy = this.getBufferStrategy();
 
-        if(strategy == null){ //falls es noch keine strategie gibt erstelle eine neue
-            createBufferStrategy(3); // strategie läd bis zu 3 bilder im vorraus
+        if(strategy == null){
+            createBufferStrategy(3); //loads up to three images in advance
             return;
         }
 
@@ -199,7 +192,7 @@ public class Game extends Canvas implements Runnable {
         strategy.show();
     }
 
-    // diese funktion wird durch die KeyInput klasse beim drücken einer taste aufgerufen
+    // called when key is pressed
     public static void keyPressed(KeyEvent e){
         int key = e.getKeyCode();
         switch(status){
@@ -264,7 +257,7 @@ public class Game extends Canvas implements Runnable {
 
     }
 
-    // diese funktion wird durch die KeyInput klasse beim drücken einer taste aufgerufen
+    //called when key is released
     public static void keyReleased(KeyEvent e){
         int key = e.getKeyCode();
 
@@ -287,7 +280,7 @@ public class Game extends Canvas implements Runnable {
         }
     }
 
-    // diese funktion wird durch die MouseInput klasse beim drücken der maus aufgerufen
+    // called when mouse is pressed
     public static void mousePressed(MouseEvent e) {
 
         int temp;
@@ -367,9 +360,8 @@ public class Game extends Canvas implements Runnable {
         }
     }
 
-    // diese funktion wird durch die MouseInput klasse beim bewegen der maus aufgerufen
+    // called when mouse is moved
     public static void mouseMoved(MouseEvent e) {
-        // frequenz begrenzen zur optimierung?
         int temp;
         switch(status){
             case MENU:
@@ -425,13 +417,12 @@ public class Game extends Canvas implements Runnable {
         }
     }
 
-    public static int checkButtons(GameState m, MouseEvent e){
+    private static int checkButtons(GameState m, MouseEvent e){
         int i;
         LinkedList<Button> buttons = m.getButtons();
 
         for(i = 0; i<buttons.size();i++)
             if(buttons.get(i).intersects(e.getX(), e.getY(), 1,1))
-                //ermittelt die nummer des ersten buttons der mit den Mauskoordinaten übereinstimmt
                 break;
         return i;
     }

@@ -9,13 +9,13 @@ public class Levelselect extends GameState {
 
 
     public Levelselect(){
-        Button level_1 = new Button(Game.WIDTH / 2 - 90, 250, 180, 50, "Track #1");
+        Button level_1 = new Button(Game.WIDTH / 2 - 495, 420, 180, 50, "Track 1");
         buttons.add(level_1);
-        Button level_2 = new Button(Game.WIDTH / 2 - 90, 350, 180, 50, "Track #2");
+        Button level_2 = new Button(Game.WIDTH / 2 - 225, 420, 180, 50, "Track 2");
         buttons.add(level_2);
-        Button level_3 = new Button(Game.WIDTH / 2 - 90, 450, 180, 50, "Track #3");
+        Button level_3 = new Button(Game.WIDTH / 2 + 45, 420, 180, 50, "Track 3");
         buttons.add(level_3);
-        Button level_4 = new Button(Game.WIDTH / 2 - 90, 550, 180, 50, "Track #4");
+        Button level_4 = new Button(Game.WIDTH / 2 + 315, 420, 180, 50, "Track 4");
         buttons.add(level_4);
         ImageLoader loader = new ImageLoader();
         try{
@@ -33,7 +33,7 @@ public class Levelselect extends GameState {
         Font fnt1 = new Font("arial", Font.BOLD, 30);
         g.setFont(fnt1);
         g.setColor(Color.BLACK);
-        g.drawString("Please choose the track of your choice", Game.WIDTH/2 - 580, 200);
+        g.drawString("Please choose a track", Game.WIDTH/2 - 350, 200);
 
         for (Button b: buttons
              ) {

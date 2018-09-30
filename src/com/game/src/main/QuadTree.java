@@ -1,6 +1,6 @@
 package com.game.src.main;
 
-// Algorithmus verringert anzahl der kollisionsberechnungen O(x) --> O(ln(x))
+// algorithm to lower number of collision calculations O(x) --> O(ln(x))
 // https://de.wikipedia.org/wiki/Quadtree
 
 import com.game.src.main.Objects.MapObject;
@@ -11,9 +11,12 @@ import java.util.LinkedList;
 public class QuadTree {
 
     private static int count = 0;
-    private int x, y, width, height;
-    private QuadTree lu, ld, ru, rd; //rekursive bäume left up, left down, right up, right down
-    private LinkedList<MapObject> containedObj = new LinkedList<MapObject>(); //Alle objekte die direkt im qtree enthalten sind, nicht in den children
+    private final int x;
+    private final int y;
+    private final int width;
+    private final int height;
+    private QuadTree lu, ld, ru, rd; //recursive tree: left up, left down, right up, right down
+    private final LinkedList<MapObject> containedObj = new LinkedList<MapObject>(); //objects in quad tree, not children
 
 
     public QuadTree(int x, int y, int width, int height){
@@ -25,9 +28,9 @@ public class QuadTree {
 
     public LinkedList<MapObject> retrieve(int x, int y, int size){
         LinkedList<MapObject> retrieved = new LinkedList<MapObject>();
-        //sucht alle potenziell kollidierenden rechtecke
+        //gets every potentially collided rectangle
         if(intersects(x,y,size)){
-            //wenn spieler das rechteck schneidet, testen welche kinder geschnitten werden
+            //when player collides with rectangle: testing rectangles kids for collision
             if(lu != null)
                 retrieved.addAll(lu.retrieve(x,y,size));
             if(ld != null)
@@ -36,21 +39,20 @@ public class QuadTree {
                 retrieved.addAll(ru.retrieve(x,y,size));
             if(rd != null)
                 retrieved.addAll(rd.retrieve(x,y,size));
-            //alle "gesammelten" mapobjects zurückgeben
+            //give back collected map objects
             retrieved.addAll(containedObj);
             return retrieved;
         }
-        //leere liste wird zurückgegeben
+        //give back empty list
         return new LinkedList<MapObject>();
     }
 
     public void add(MapObject m){
-        //versucht so weit wie möglich unten das Mapobject einzufügen
-        //wird einmalig für alle objects gemacht
-
-        //wenn das jeweilige objekt reinpasst, es deinfügen
+        //tries to add map object below
+        //once for every map object
+        //when object fits: insert it
         if (fits(m, x, y, width / 2, height / 2)) {
-            // checken ob child tree schon existiert, um diesen nicht zu überschreiben
+            //check if child tree exists to not overwrite it
             if (lu == null) {
                 lu = new QuadTree(x, y, width / 2, height / 2);
             }
@@ -74,8 +76,8 @@ public class QuadTree {
                         }
                         rd.add(m);
                     }else{
-                        //wenn das mapobject nicht in die kleineren sektoren passt, selber aufnehmen
-                        //sozusagen ende der rekursion
+                        //when map object does not fit in smaller sector, add it to parent
+                        //end of recursion
                         containedObj.add(m);
                 }
             }
@@ -84,8 +86,8 @@ public class QuadTree {
 }
 
 
-    public void show(Graphics g){
-        //zum debuggen genutzte visualisierungsfunktion
+    private void show(Graphics g){
+        //visualizing used for debugging
         g.setColor(Color.WHITE);
         g.drawRect(x,y,width,height);
         if(lu != null)
@@ -100,7 +102,7 @@ public class QuadTree {
 
 
     private boolean fits(MapObject m, int x, int y, int width, int height){
-        //prüft ob das objekt vollständig in den unterbaum passt
+        //checks if object fits completely in child tree
         return(!(
                 m.getXpos() < x ||
                 m.getXpos() + m.getXlen() > x + width ||
@@ -110,8 +112,8 @@ public class QuadTree {
     }
 
     private boolean intersects(int x, int y, int size){
-        //prüft ob der spieler den unterbaum schneidet
-        //count variable zum zählen der berechnungen (vergleich mit alter methode)
+        //checks if player touches child tree
+        //count variable to count calculations (to compare with non quad tree method)
         count++;
         return(!(
                 x > this.x + this.width ||

@@ -3,11 +3,11 @@ package com.game.src.main.Menu;
 import java.awt.*;
 
 public class Button extends Rectangle {
-    private String text;
-    private int txtx;
-    private int txty;
+    private final String text;
+    private final int txtx;
+    private final int txty;
     private Font fnt = new Font("arial", Font.BOLD, 30);
-    private Color color = new Color(150,150,150);
+    private Color color = new Color(255,255,255);
     private Stroke stroke = new BasicStroke(5);
 
     Button(int x, int y, int width, int height, String text){
@@ -21,7 +21,7 @@ public class Button extends Rectangle {
     }
 
     public Button(int x, int y, int width, int height, int txtx, int txty, String text){
-        //kann benutzt werden um text um verschiedene werte zu offseten
+        //can be used to offset text
         this.x = x;
         this.y = y;
         this.width = width;
@@ -34,15 +34,13 @@ public class Button extends Rectangle {
     public void startHovering(){
         fnt = new Font("arial", Font.BOLD, 30);
         color = new Color(50,50,80);
-        stroke = new BasicStroke(10);
-        //aussehen ändern
+        stroke = new BasicStroke(5);
     }
 
     public void stopHovering(){
         fnt  = new Font("arial", Font.BOLD, 30);
-        color = new Color(150,150,150);
+        color = new Color(255,255,255);
         stroke = new BasicStroke(5);
-        //aussehen zurücksetzen
     }
 
     public void render(Graphics g){

@@ -11,7 +11,10 @@ import java.util.LinkedList;
 
 public class Highscore extends GameState {
 
-    private LinkedList<String> ll1,ll2,ll3,ll4;
+    private final LinkedList<String> ll1;
+    private final LinkedList<String> ll2;
+    private final LinkedList<String> ll3;
+    private final LinkedList<String> ll4;
 
 
     public Highscore(){
@@ -69,12 +72,12 @@ public class Highscore extends GameState {
 
         Font fnt2 = new Font("arial", Font.BOLD, 30);
         g.setFont(fnt2);
-        g.drawString("Track 1", Game.WIDTH*1/4 - 200, 250);
+        g.drawString("Track 1", Game.WIDTH /4 - 200, 250);
         int i = 0;
 
         while(i < ll1.size() && i < 5) {
             str = ll1.get(i).split(";");
-            g.drawString(str[0] + "   " + str[1], Game.WIDTH * 1 / 4 - 250, 300+(i*50));
+            g.drawString(str[0] + "   " + str[1], Game.WIDTH / 4 - 250, 300+(i*50));
             i++;
         }
         i = 0;

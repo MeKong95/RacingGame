@@ -4,15 +4,15 @@ import java.io.*;
 import java.util.LinkedList;
 
 public class FileController {
-    private File f;
+    private final File f;
 
     public FileController(String path){
         f = new File(path);
     }
 
     public void write(String s, String n){
-        //beschreiben der highscore datei
-        // s: Zeit, n: Name
+        //to write in high score files
+        // s: Time, n: Name
         try{
             FileWriter fw = new FileWriter(f, true); // true for appending
             PrintWriter pw = new PrintWriter(fw, true); // true for auto-flush
@@ -24,19 +24,18 @@ public class FileController {
     }
 
     public LinkedList<String[]> read(){
-        //liest alles aus der Map_x.crsp datei aus und legt arrays der daten in eine liste
+        //reads everything in map files and creates array in a list
         String str;
-        // = null wird verlangt
         LinkedList<String[]> Data = new LinkedList<String[]>();
         try{
             BufferedReader br = new BufferedReader(new FileReader(f));
-            //1. Spieler: xPos; yPos; startwinkel
-            //2. GoalObject xPos; yPos; länge; breite
-            //3. MapObject xPos; yPos; länge; breite
+            //1. Player: xPos; yPos; angle
+            //2. GoalObject xPos; yPos; length; width
+            //3. MapObject xPos; yPos; length; width
             while((str=br.readLine())!=null) {
                 Data.add(str.split(";"));
             }
-            System.out.println("Daten erfolgreich gelesen");
+            System.out.println("Files read successfully");
         }catch(IOException e){
             e.printStackTrace();
         }
@@ -45,7 +44,7 @@ public class FileController {
     }
 
      public LinkedList<String> readScr(){
-        //liest highscore dateien und gibt eine liste von Strings zurück
+        //reads from high score files and gives back list of strings
         String str;
         LinkedList<String> Data = new LinkedList<String>();
         try{
@@ -53,7 +52,7 @@ public class FileController {
             while((str=br.readLine())!=null) {
                 Data.add(str);
             }
-            System.out.println("Daten erfolgreich gelesen");
+            System.out.println("Files read successfully");
         }catch(IOException e){
             e.printStackTrace();
         }

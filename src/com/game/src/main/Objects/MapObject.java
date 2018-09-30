@@ -7,15 +7,15 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class MapObject {
-    // dimensionen und position des objekts
-    private double xpos;
-    private double ypos;
-    private double xlen;
-    private double ylen;
+    // size and position of objects
+    private final double xpos;
+    private final double ypos;
+    private final double xlen;
+    private final double ylen;
 
     private BufferedImage mapobj;
 
-    // konstruktor legt dimension, position und sprite fest
+    // constructor for size, position and sprite
     public MapObject(double x, double y, double width, double height){
 
         this.xpos = x;
@@ -34,8 +34,8 @@ public class MapObject {
 
     }
 
-    //für mögliche erweiterungen
-    /**public void setXpos(double x){
+    //für later add ons
+    /*public void setXpos(double x){
         this.xpos = x;
     }
     public void setYpos(double y){
@@ -46,7 +46,7 @@ public class MapObject {
     }
     public void setYlen(double y){
         this.ylen = y;
-    }**/
+    }*/
     public double getXpos(){
         return xpos;
     }
@@ -56,12 +56,6 @@ public class MapObject {
     public double getXlen(){return xlen;}
     public double getYlen(){return ylen;}
 
-
-    public void tick(){
-
-
-
-    }
 
     public void render(Graphics g){
 

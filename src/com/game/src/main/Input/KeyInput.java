@@ -7,13 +7,13 @@ import java.awt.event.KeyEvent;
 
 public class KeyInput extends KeyAdapter {
 
-    //keyPressed wird durch die klasse KeyAdapter aufgerufen wenn eine taste gedrückt wird
+    //keyPressed called by key adapter when key is pressed
     public void keyPressed(KeyEvent e){
-        Game.keyPressed(e);  // weitergeben des KeyEvents an unsere game instanz
+        Game.keyPressed(e);  // forward key event to game
     }
 
-    //keyReleased wird durch die klasse KeyAdapter aufgerufen wenn eine taste gedrückt wird
+    //keyReleased called by key adapter when key is released
     public void keyReleased(KeyEvent e){
-        Game.keyReleased(e); // weitergeben des KeyEvents an unsere game instanz
+        Game.keyReleased(e); // forward key event to game
     }
 }

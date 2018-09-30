@@ -33,7 +33,7 @@ public class Menu extends GameState{
         Font fnt1 = new Font("Gill Sans", Font.BOLD, 70);
         g.setFont(fnt1);
         g.setColor(Color.white);
-        g.drawString("COOLES RENN SPEIL", Game.WIDTH/2 - 400, 100);
+        g.drawString("RACE GAME", Game.WIDTH/2 - 200, 100);
 
 
 

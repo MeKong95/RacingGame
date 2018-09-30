@@ -16,20 +16,20 @@ import java.util.LinkedList;
 
 public class Race extends GameState{
 
-    private LinkedList<String> scores;
+    private final LinkedList<String> scores;
 
-    private QuadTree qTree = new QuadTree(0,0, Game.WIDTH, Game.HEIGHT);
+    private final QuadTree qTree = new QuadTree(0,0, Game.WIDTH, Game.HEIGHT);
 
-    private Player p;
-    private GoalObject goalObject;
-    private LinkedList<MapObject> listMapObjects = new LinkedList<MapObject>();
+    private final Player p;
+    private final GoalObject goalObject;
+    private final LinkedList<MapObject> listMapObjects = new LinkedList<MapObject>();
     private Image asphalt;
 
-    private LinkedList<Rectangle> StatusBar = new LinkedList<Rectangle>();
+    private final LinkedList<Rectangle> StatusBar = new LinkedList<Rectangle>();
 
 
     public Race(int trackNr, String name){
-        //liste enthält Spieler, Ziel und Mapobjects
+        //List contains player,goal and map objects
         FileController map = new FileController("res/map_" + trackNr + ".crsp");
         FileController score = new FileController("res/highscores_" + trackNr + ".crsp");
         LinkedList<String[]> tempList = map.read();
@@ -81,7 +81,7 @@ public class Race extends GameState{
         };
         scores.sort(c);
 
-        StatusBar.add(new Rectangle(0, Game.HEIGHT - 100, Game.WIDTH * 1 / 4,200));
+        StatusBar.add(new Rectangle(0, Game.HEIGHT - 100, Game.WIDTH / 4,200));
         StatusBar.add(new Rectangle(0, Game.HEIGHT - 100, Game.WIDTH * 3 / 4,200));
         StatusBar.add(new Rectangle(0, Game.HEIGHT - 100, Game.WIDTH * 4 / 4,200));
     }
@@ -105,7 +105,7 @@ public class Race extends GameState{
         g.drawImage(asphalt, 50, 50, 1200,570, null);
 
         goalObject.render(g);
-        // durchlaufen der liste von map objects und rendern dieser
+        // go through list of map objects an render them
         for (MapObject l : listMapObjects) l.render(g);
 
         p.render(g);

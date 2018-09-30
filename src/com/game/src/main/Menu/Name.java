@@ -27,18 +27,17 @@ public class Name extends GameState{
             name+=e.getKeyChar();
             if(name.length()==1)
                 name = name.toUpperCase();
-                //Sorgt dafuer das unabhängig der Eingabe der erste Bchstb groß ist
-        }//nur zeichen a bis z
+        }//only letters a/A to z/Z
         else if (e.getKeyCode()==8 && name.length()>0){
                 name = name.substring(0, name.length() - 1);
-        }//fuer backspace/loeschen
+        }//for delete/backspace
 
     }
 
     public String getName(){
         if(name.length()==0){
-            name="Anonym";
-        }//ausnahme bei keiner eingabe ODER wieder geloeschter eingabe
+            name="Anonymous";
+        }//for missing or invalid input
         return name;
     }
 

@@ -4,11 +4,11 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-// klasse dient nur zum laden einer bilddatei in eine variable
+// to load picture from image file
 public class ImageLoader {
 
     public BufferedImage loadImage(String path) throws IOException {
-        //.read fordert irgendein error handeling, da ein fehler auftreten kann, deshalb throws
+        //error handling
         return ImageIO.read(getClass().getResource(path));
     }
 }

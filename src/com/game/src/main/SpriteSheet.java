@@ -4,17 +4,17 @@ import java.awt.image.BufferedImage;
 
 public class SpriteSheet {
 
-    private BufferedImage image;
+    private final BufferedImage image;
 
-    // konstruktor benötigt das sprite sheet zur initialisierung
+    // constructor needs sprite sheet to initialize
     public SpriteSheet(BufferedImage image){
         this.image = image;
     }
 
-    public BufferedImage grabImage(int collumn, int row, int width, int height){
-        //funktion zum extrahieren eines sprites aus unserem spritesheet
+    public BufferedImage grabImage(int column, int row, int width, int height){
+        //extracts sprite from sheet
 
-        return image.getSubimage((collumn * 32) - 32, (row * 32) - 32, width, height);
+        return image.getSubimage((column * 32) - 32, (row * 32) - 32, width, height);
     }
 
 }
