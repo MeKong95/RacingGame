@@ -36,7 +36,7 @@ public class Name extends GameState{
 
     public String getName(){
         if(name.length()==0){
-            name="Anonymous";
+            name="Unknown";
         }//for missing or invalid input
         return name;
     }

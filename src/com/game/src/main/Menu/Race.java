@@ -92,7 +92,7 @@ public class Race extends GameState{
 
         Font fnt1 = new Font("arial", Font.BOLD, 30);
         g.setFont(fnt1);
-        g.setColor(Color.ORANGE);
+        g.setColor(Color.WHITE);
         g.drawString("Player: " + p.getName(), 50, Game.HEIGHT-50);
         g.drawString("Top-Time: " + scores.getFirst().split(";")[0],1000, Game.HEIGHT-70);
         g.drawString("by: " + scores.getFirst().split(";")[1], 1000, Game.HEIGHT-30);
@@ -102,7 +102,7 @@ public class Race extends GameState{
             g2d.draw(r);
         }
 
-        g.drawImage(asphalt, 50, 50, 1200,570, null);
+        g.drawImage(asphalt, 0, 0, Game.WIDTH, Game.HEIGHT-100, null);
 
         goalObject.render(g);
         // go through list of map objects an render them

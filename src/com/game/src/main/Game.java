@@ -21,7 +21,7 @@ public class Game extends Canvas implements Runnable {
     private static final int SCALE = 4;
     public static final int WIDTH = 320*SCALE;
     public static final int HEIGHT = WIDTH / 16 *9;
-    private final String TITLE = "J and M JAVA-Game";
+    private final String TITLE = "Jannis and Marco JAVA-Game";
 
     private boolean running = false;
     private Thread thread;
@@ -29,6 +29,9 @@ public class Game extends Canvas implements Runnable {
     private final BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
     private static BufferedImage spriteSheet = null;
     private static BufferedImage plobj = null;
+    private static BufferedImage mpobj = null;
+
+
 
 
     private static Menu m;
@@ -139,6 +142,12 @@ public class Game extends Canvas implements Runnable {
         ImageLoader fig = new ImageLoader();         // image loader for sprite sheet
         try{    // error-handling
             plobj = fig.loadImage("/plobjg.png");
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        ImageLoader gras = new ImageLoader();         // image loader for sprite sheet
+        try{    // error-handling
+            mpobj = gras.loadImage("/gras.png");
         }catch(IOException e){
             e.printStackTrace();
         }
@@ -434,9 +443,9 @@ public class Game extends Canvas implements Runnable {
     public static BufferedImage getSpriteSheet(){
         return spriteSheet;
     }
-    public static BufferedImage getplobj(){
-        return plobj;
-    }
+    public static BufferedImage getplobj(){return plobj;}
+    public static BufferedImage getmpobj(){return mpobj;}
+
 
 }
 

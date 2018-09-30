@@ -23,10 +23,10 @@ public class MapObject {
         this.xlen = width;
         this.ylen = height;
 
-        SpriteSheet ss = new SpriteSheet(Game.getSpriteSheet());
+        SpriteSheet ss = new SpriteSheet(Game.getmpobj());
 
         if(xlen == ylen)
-            mapobj = ss.grabImage(8, 1, 32, 32);
+            mapobj = ss.grabImage(1, 1, 32, 32);
         else if(xlen > ylen)
             mapobj = ss.grabImage(1, 8, 32*8, 32);
         else if(xlen < ylen)
