@@ -34,23 +34,30 @@ public class Race extends GameState{
         FileController score = new FileController("res/highscores_" + trackNr + ".crsp");
         LinkedList<String[]> tempList = map.read();
         p = new Player(
-                Double.parseDouble(tempList.get(0)[0]),
-                Double.parseDouble(tempList.get(0)[1]),
-                Double.parseDouble(tempList.get(0)[2]),
+                Double.parseDouble(tempList.get(0)[0]), // x coordinate
+                Double.parseDouble(tempList.get(0)[1]), // y coordinate
+                Double.parseDouble(tempList.get(0)[2]), // starting angle
                 name
         );
         goalObject = new GoalObject(
-                Double.parseDouble(tempList.get(1)[0]),
-                Double.parseDouble(tempList.get(1)[1]),
-                Double.parseDouble(tempList.get(1)[2]),
-                Double.parseDouble(tempList.get(1)[3]));
+                Double.parseDouble(tempList.get(1)[0]), // x coordinate
+                Double.parseDouble(tempList.get(1)[1]), // y coordinate
+                Double.parseDouble(tempList.get(1)[2]), // width
+                Double.parseDouble(tempList.get(1)[3])); //height
         listMapObjects.clear();
         for(int i = 2; i<tempList.size();i++){
-            listMapObjects.add(new MapObject(
-                    Double.parseDouble(tempList.get(i)[0]),
-                    Double.parseDouble(tempList.get(i)[1]),
-                    Double.parseDouble(tempList.get(i)[2]),
-                    Double.parseDouble(tempList.get(i)[3])));
+            // checks if map file contains empty strings
+            //if(!tempList.get(i)[0].equals(""))
+            // proper error handling is more efficient
+            try {
+                listMapObjects.add(new MapObject(
+                        Double.parseDouble(tempList.get(i)[0]), //x coordinate
+                        Double.parseDouble(tempList.get(i)[1]), //y coordinate
+                        Double.parseDouble(tempList.get(i)[2]), // width
+                        Double.parseDouble(tempList.get(i)[3]))); // height
+            }catch(NumberFormatException nfe){
+                nfe.printStackTrace();
+            }
         }
 
         for (MapObject m:listMapObjects
