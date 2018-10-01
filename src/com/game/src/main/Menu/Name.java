@@ -9,7 +9,7 @@ import java.io.IOException;
 public class Name extends GameState{
     private String name = "";
     public Name(){
-        Button playButton = new Button(Game.WIDTH / 2 - 160, 600, 240, 50, "Play");
+        Button playButton = new Button(Game.WIDTH / 2 - 80, 600, 130, 50, "Play");
         buttons.add(playButton);
         ImageLoader loader = new ImageLoader();
         try{

@@ -27,10 +27,10 @@ public class Highscore extends GameState {
             }
         };
 
-        FileController fc1 = new FileController("src/com/game/src/res/highscores_" + "1" + ".xml");
-        FileController fc2 = new FileController("src/com/game/src/res/highscores_" + "2" + ".xml");
-        FileController fc3 = new FileController("src/com/game/src/res/highscores_" + "3" + ".xml");
-        FileController fc4 = new FileController("src/com/game/src/res/highscores_" + "4" + ".xml");
+        FileController fc1 = new FileController("src/com/game/src/res/highscores_" + "1");
+        FileController fc2 = new FileController("src/com/game/src/res/highscores_" + "2");
+        FileController fc3 = new FileController("src/com/game/src/res/highscores_" + "3");
+        FileController fc4 = new FileController("src/com/game/src/res/highscores_" + "4");
         ll1 = fc1.readScr();
         ll2 = fc2.readScr();
         ll3 = fc3.readScr();

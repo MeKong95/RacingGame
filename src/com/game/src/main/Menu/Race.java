@@ -23,8 +23,8 @@ public class Race extends GameState{
 
     public Race(int trackNr, String name){
         //List contains player,goal and map objects
-        FileController map = new FileController("src/com/game/src/res/map_" + trackNr + ".xml");
-        FileController score = new FileController("src/com/game/src/res/highscores_" + trackNr + ".xml");
+        FileController map = new FileController("src/com/game/src/res/map_" + trackNr);
+        FileController score = new FileController("src/com/game/src/res/highscores_" + trackNr);
         LinkedList<String[]> tempList = map.read();
         p = new Player(
                 Double.parseDouble(tempList.get(0)[0]), // x coordinate

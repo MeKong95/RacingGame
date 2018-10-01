@@ -8,11 +8,11 @@ import java.io.IOException;
 
 public class Menu extends GameState{
     public Menu(){
-        Button playButton = new Button(Game.WIDTH / 2 - 90, 400, 180, 50, "Play");
+        Button playButton = new Button(Game.WIDTH / 2 - 90, 400, 130, 50, "Play");
         buttons.add(playButton);
-        Button scoreButton = new Button(Game.WIDTH / 2 - 90, 500, 280, 50, "Highscores");
+        Button scoreButton = new Button(Game.WIDTH / 2 - 90, 500, 230, 50, "Highscores");
         buttons.add(scoreButton);
-        Button quitButton = new Button(Game.WIDTH / 2 - 90, 600, 180, 50, "Quit");
+        Button quitButton = new Button(Game.WIDTH / 2 - 90, 600, 130, 50, "Quit");
         buttons.add(quitButton);
         ImageLoader loader = new ImageLoader();
         try{

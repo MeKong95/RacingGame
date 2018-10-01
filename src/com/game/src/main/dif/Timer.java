@@ -49,7 +49,7 @@ public class Timer {
         if(!finished){
             finished = true;
             int track= Game.getTrack();
-            FileController f = new FileController("src/com/game/src/res/highscores_" + track + ".xml");
+            FileController f = new FileController("src/com/game/src/res/highscores_" + track);
             //goalTime = System.currentTimeMillis() - startTime;
             goalTime = Game.getAllUpdates() - startTime;
             //f.write(String.valueOf(df.format((goalTime)/1000.0)),name);
