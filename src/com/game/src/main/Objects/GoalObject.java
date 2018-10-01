@@ -1,7 +1,7 @@
-package com.game.src.main.Objects;
+package Objects;
 
-import com.game.src.main.Game;
-import com.game.src.main.SpriteSheet;
+import dif.Game;
+import dif.SpriteSheet;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 

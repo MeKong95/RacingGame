@@ -1,4 +1,4 @@
-package com.game.src.main.Input;
+package Input;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

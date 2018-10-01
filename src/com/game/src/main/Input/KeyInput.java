@@ -1,6 +1,6 @@
-package com.game.src.main.Input;
+package Input;
 
-import com.game.src.main.Game;
+import dif.Game;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 

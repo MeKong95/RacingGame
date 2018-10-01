@@ -1,9 +1,0 @@
-UML(java-Doc)
-Compilierbarkeit JavaEditor testen
-evtl Readme
-JDK erzeugen am Ende
-
-
-
-
-

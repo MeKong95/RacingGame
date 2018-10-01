@@ -1,9 +1,9 @@
-package com.game.src.main;
+package dif;
 
 // algorithm to lower number of collision calculations O(x) --> O(ln(x))
 // https://de.wikipedia.org/wiki/Quadtree
 
-import com.game.src.main.Objects.MapObject;
+import Objects.MapObject;
 import java.awt.*;
 import java.util.LinkedList;
 

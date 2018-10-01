@@ -1,4 +1,4 @@
-package com.game.src.main.Menu;
+package Menu;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

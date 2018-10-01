@@ -1,4 +1,4 @@
-package com.game.src.main.Input;
+package Input;
 
 import java.io.*;
 import java.util.LinkedList;

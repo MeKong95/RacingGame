@@ -1,7 +1,7 @@
-package com.game.src.main.Menu;
+package Menu;
 
-import com.game.src.main.Game;
-import com.game.src.main.Input.ImageLoader;
+import dif.Game;
+import Input.ImageLoader;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;

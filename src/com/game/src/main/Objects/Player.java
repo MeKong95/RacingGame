@@ -1,9 +1,9 @@
-package com.game.src.main.Objects;
+package Objects;
 
-import com.game.src.main.Game;
-import com.game.src.main.QuadTree;
-import com.game.src.main.SpriteSheet;
-import com.game.src.main.Timer;
+import dif.Game;
+import dif.QuadTree;
+import dif.SpriteSheet;
+import dif.Timer;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.LinkedList;

@@ -1,12 +1,12 @@
-package com.game.src.main.Menu;
+package Menu;
 
-import com.game.src.main.Game;
-import com.game.src.main.Input.FileController;
-import com.game.src.main.Input.ImageLoader;
-import com.game.src.main.Objects.GoalObject;
-import com.game.src.main.Objects.MapObject;
-import com.game.src.main.Objects.Player;
-import com.game.src.main.QuadTree;
+import dif.Game;
+import Input.FileController;
+import Input.ImageLoader;
+import Objects.GoalObject;
+import Objects.MapObject;
+import Objects.Player;
+import dif.QuadTree;
 import java.awt.*;
 import java.io.IOException;
 import java.util.Comparator;
@@ -23,8 +23,8 @@ public class Race extends GameState{
 
     public Race(int trackNr, String name){
         //List contains player,goal and map objects
-        FileController map = new FileController("res/map_" + trackNr + ".crsp");
-        FileController score = new FileController("res/highscores_" + trackNr + ".crsp");
+        FileController map = new FileController("src/com/game/src/res/map_" + trackNr + ".xml");
+        FileController score = new FileController("src/com/game/src/res/highscores_" + trackNr + ".xml");
         LinkedList<String[]> tempList = map.read();
         p = new Player(
                 Double.parseDouble(tempList.get(0)[0]), // x coordinate

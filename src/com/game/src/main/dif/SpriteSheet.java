@@ -1,4 +1,4 @@
-package com.game.src.main;
+package dif;
 
 import java.awt.image.BufferedImage;
 

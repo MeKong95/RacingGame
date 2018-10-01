@@ -1,7 +1,7 @@
-package com.game.src.main;
+package dif;
 
-import com.game.src.main.Input.FileController;
-import com.game.src.main.Objects.Player;
+import Input.FileController;
+import Objects.Player;
 import java.awt.*;
 import java.text.DecimalFormat;
 
@@ -49,7 +49,7 @@ public class Timer {
         if(!finished){
             finished = true;
             int track= Game.getTrack();
-            FileController f = new FileController("res/highscores_" + track + ".crsp");
+            FileController f = new FileController("src/com/game/src/res/highscores_" + track + ".xml");
             //goalTime = System.currentTimeMillis() - startTime;
             goalTime = Game.getAllUpdates() - startTime;
             //f.write(String.valueOf(df.format((goalTime)/1000.0)),name);
