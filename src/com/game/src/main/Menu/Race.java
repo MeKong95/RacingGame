@@ -3,6 +3,7 @@ package com.game.src.main.Menu;
 import com.game.src.main.Game;
 import com.game.src.main.Input.FileController;
 import com.game.src.main.Input.ImageLoader;
+import com.game.src.main.Input.MapEditor;
 import com.game.src.main.Objects.GoalObject;
 import com.game.src.main.Objects.MapObject;
 import com.game.src.main.Objects.Player;
@@ -95,8 +96,15 @@ public class Race extends GameState{
         g.drawImage(asphalt, 0, 0, Game.WIDTH, Game.HEIGHT-100, null);
         goalObject.render(g);
         // go through list of map objects an render them
-        for (MapObject l : listMapObjects) l.render(g);
+        for (MapObject l : listMapObjects){
+            l.render(g);
+        }
         p.render(g);
+
+        MapEditor.render(g);
+
+        //if(Game.debug.showQTree)
+        //    qTree.show(g);
     }
 
     public void tick(){

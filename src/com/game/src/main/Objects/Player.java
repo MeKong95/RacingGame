@@ -27,6 +27,7 @@ public class Player {
     private final BufferedImage s6;
     private final BufferedImage s7;
     private final Timer timer;
+    private LinkedList<MapObject> list = new LinkedList<MapObject>();
 
     public Player(double x, double y, double angle, String name){
         this.x = x;
@@ -83,7 +84,7 @@ public class Player {
             velY -= (velA - s) * (velY / velA);
         }//speed-restriction in x,y,x/y-direction
         x+=velX;
-        LinkedList<MapObject> list = qtree.retrieve((int) x, (int) y, size);
+        list = qtree.retrieve((int) x, (int) y, size);
         for (Object aList : list) {
             if (Collision((MapObject) aList)) {
                 x -= velX;
@@ -139,5 +140,13 @@ public class Player {
         else if(angle >= -135-45/2 && angle <= -135+45/2)
             g.drawImage(s7, (int)x, (int)y, null);
         timer.displayTime(g);
+
+        if(Game.debug.showObj){
+            //Zur visualisierung der geprüften mapobjects
+            for (MapObject m: list
+            ) {
+                m.renderDebug(g);
+            }
+        }
     }
 }

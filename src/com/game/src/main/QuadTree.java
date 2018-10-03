@@ -82,7 +82,7 @@ public class QuadTree {
     }
 }
 
-    private void show(Graphics g){
+    public void show(Graphics g){
         //visualizing used for debugging
         g.setColor(Color.WHITE);
         g.drawRect(x,y,width,height);

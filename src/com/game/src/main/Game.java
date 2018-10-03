@@ -2,6 +2,7 @@ package com.game.src.main;
 
 import com.game.src.main.Input.ImageLoader;
 import com.game.src.main.Input.KeyInput;
+import com.game.src.main.Input.MapEditor;
 import com.game.src.main.Input.MouseInput;
 import com.game.src.main.Menu.*;
 import com.game.src.main.Menu.Button;
@@ -26,6 +27,16 @@ public class Game extends Canvas implements Runnable {
     private static BufferedImage spriteSheet = null;
     private static BufferedImage plobj = null;
     private static BufferedImage mpobj = null;
+
+    public static class debug{
+        // zeigt die einzelnen quadranten des QuadTrees
+        public static boolean showQTree = false;
+        // zeigt die für die kollisionsdetektion wichtige mapobjects an
+        public static boolean showObj = false;
+        // stoppt die game loop
+        public static boolean paused = false;
+    }
+
     private static Menu m;
     private static Name n;
     private static Levelselect l;
@@ -165,6 +176,7 @@ public class Game extends Canvas implements Runnable {
                 break;
             case GAME:
                 r.render(g);
+                MapEditor.render(g);
                 break;
             case NAME:
                 n.render(g);
@@ -210,6 +222,16 @@ public class Game extends Canvas implements Runnable {
                         break;
                     case KeyEvent.VK_ESCAPE:
                         status = STATUS.MENU;
+                        break;
+                    case KeyEvent.VK_O:
+                        debug.showObj = !debug.showObj;
+                        break;
+                    case KeyEvent.VK_L:
+                        debug.showQTree = !debug.showQTree;
+                        break;
+                    case KeyEvent.VK_P:
+                        // pausieren der game loop
+                        debug.paused = !debug.paused;
                         break;
                 }
                 break;
@@ -344,6 +366,8 @@ public class Game extends Canvas implements Runnable {
                         break;
                 }
                 break;
+            case GAME:
+                MapEditor.add(e);
         }
     }
 
@@ -402,6 +426,7 @@ public class Game extends Canvas implements Runnable {
                 break;
         }
     }
+
 
     private static int checkButtons(GameState m, MouseEvent e){
         int i;
