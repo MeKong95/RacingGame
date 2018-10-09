@@ -1,12 +1,12 @@
-package com.game.src.main;
+package dif;
 
-import com.game.src.main.Input.ImageLoader;
-import com.game.src.main.Input.KeyInput;
-import com.game.src.main.Input.MapEditor;
-import com.game.src.main.Input.MouseInput;
-import com.game.src.main.Menu.*;
-import com.game.src.main.Menu.Button;
-import com.game.src.main.Menu.Menu;
+import Input.ImageLoader;
+import Input.KeyInput;
+import Input.MapEditor;
+import Input.MouseInput;
+import Menu.*;
+import Menu.Button;
+import Menu.Menu;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.KeyEvent;

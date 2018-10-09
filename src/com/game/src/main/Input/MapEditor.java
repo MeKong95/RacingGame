@@ -1,8 +1,8 @@
-package com.game.src.main.Input;
+package Input;
 
-import com.game.src.main.Game;
-import com.game.src.main.Objects.MapObject;
-import com.game.src.main.QuadTree;
+import dif.Game;
+import Objects.MapObject;
+import dif.QuadTree;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
