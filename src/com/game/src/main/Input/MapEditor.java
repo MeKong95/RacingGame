@@ -1,6 +1,8 @@
-package Input;
+package com.game.src.main.Input;
 
-import Objects.MapObject;
+import com.game.src.main.Game;
+import com.game.src.main.Objects.MapObject;
+import com.game.src.main.QuadTree;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -15,14 +17,17 @@ import java.util.LinkedList;
 public class MapEditor {
 
     private static LinkedList<MapObject> l = new LinkedList<MapObject>();
+    private static QuadTree qTree = new QuadTree(0,0, Game.WIDTH, Game.HEIGHT);
     private static MapObject temp;
-    public static int x = 400;
-    public static int y = 50;
+    public static int x = 10;
+    public static int y = 10;
 
     public static void add(MouseEvent e){
         // rundet auf das nächste vielfache von 25
         // warnung muss leider ignoriert werden
-        l.add(new MapObject(e.getX() / 25 * 25,e.getY() / 25 * 25,x,y));
+        l.add(new MapObject(e.getX() / 10 * 10,e.getY() / 10 * 10,x,y));
+        qTree.add(new MapObject(e.getX() / 10 * 10,e.getY() / 10 * 10,x,y));
+
     }
 
     public static void setTemp(MouseEvent e){
@@ -32,6 +37,10 @@ public class MapEditor {
     }
 
     public static void render(Graphics g){
+
+        if(Game.debug.showQTree)
+            qTree.show(g);
+
         // error wenn gleichzeitig durch die liste iteriert wird und etwas hinzugefügt wird
         try{
             for(MapObject m: l){
@@ -43,22 +52,5 @@ public class MapEditor {
         }catch(ConcurrentModificationException e){
             e.printStackTrace();
         }
-
     }
-
-    public static void end(int track){
-        File f = new File("res/map_" + track + ".crsp");
-        try{
-            FileWriter fw = new FileWriter(f, true); // true for appending
-            PrintWriter pw = new PrintWriter(fw, true); // true for auto-flush
-            for(MapObject m: l){
-                pw.println(m.getXpos() + ";" + m.getYpos() + ";" + m.getXlen() + ";" + m.getYlen());
-            }
-
-            pw.close();
-        }catch(IOException e){
-            e.printStackTrace();
-        }
-    }
-
 }
