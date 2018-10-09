@@ -30,6 +30,11 @@ public class MapEditor {
 
     }
 
+    public static void clear(){
+        qTree = new QuadTree(0,0, Game.WIDTH, Game.HEIGHT);
+        l.clear();
+    }
+
     public static void setTemp(MouseEvent e){
         // rundet auf das nächste vielfache von 25
         // warnung muss leider ignoriert werden
