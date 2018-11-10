@@ -33,6 +33,10 @@ public class Game extends Canvas implements Runnable {
     private static Race r;
     private static int track = 1;
     private static int allUpdates;
+
+    public static boolean showobjects = false;
+    public static boolean showqtree = false;
+
     private enum STATUS{
         MENU,
         GAME,
@@ -239,6 +243,15 @@ public class Game extends Canvas implements Runnable {
                         status = STATUS.MENU;
                         break;
                 }
+                break;
+        }
+
+        switch (key){
+            case KeyEvent.VK_P:
+                showqtree = !showqtree;
+                break;
+            case KeyEvent.VK_O:
+                showobjects = !showobjects;
                 break;
         }
 

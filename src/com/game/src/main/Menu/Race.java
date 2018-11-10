@@ -97,6 +97,9 @@ public class Race extends GameState{
         // go through list of map objects an render them
         for (MapObject l : listMapObjects) l.render(g);
         p.render(g);
+
+        if(Game.showqtree)
+            qTree.show(g);
     }
 
     public void tick(){
